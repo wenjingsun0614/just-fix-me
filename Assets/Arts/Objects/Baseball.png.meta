@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 51e4e7cc7f5fc1249a76bed10c56a27e
+guid: a800180afa31ec844bed1f9190369ecb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1820028383074104549
-    second: Topleft_Button_0
+      213: -2837132198566730608
+    second: Baseball2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Topleft_Button_0
+      name: Baseball2_0
       rect:
         serializedVersion: 2
-        x: 1777
-        y: 949
-        width: 104
-        height: 99
+        x: 4
+        y: 11
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e4b246eb2a024910800000000000000
-      internalID: 1820028383074104549
+      spriteID: 0946b931c4b70a8d0800000000000000
+      internalID: -2837132198566730608
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Topleft_Button_0: 1820028383074104549
+      Baseball2_0: -2837132198566730608
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
