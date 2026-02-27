@@ -107,6 +107,8 @@ public class DraggableItem2D : MonoBehaviour
         // ⭐ 2.5) 触发气泡特效（星星上升）
         if (dropZoneFX != null) dropZoneFX.PlaySuccess();
 
+        if (sideBarUI != null) sideBarUI.SetFound(sideBarIndex, true);
+
         // 3) 在气泡里淡出消失
         yield return FadeTo(0f, fadeOutTime);
 
@@ -205,4 +207,9 @@ public class DraggableItem2D : MonoBehaviour
         }
         sr.color = to;
     }
+
+    [Header("SideBar UI")]
+    public SideBarUI sideBarUI;
+    public int sideBarIndex = 0;
+
 }
