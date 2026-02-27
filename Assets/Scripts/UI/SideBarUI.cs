@@ -19,6 +19,19 @@ public class SideBarUI : MonoBehaviour
 
     public Slot[] slots;
 
+    [HideInInspector] public int nextIndex = 0; // 下一个要解锁的槽位
+
+    public int RevealNext(bool playAnim = true)
+    {
+        if (nextIndex < 0) nextIndex = 0;
+        if (nextIndex >= slots.Length) return -1;
+
+        int idx = nextIndex;
+        SetFound(idx, true, playAnim);
+        nextIndex++;
+        return idx;
+    }
+
     [Header("Pop Animation")]
     public float popScale = 1.08f;      // 放大幅度（1.05~1.12都行）
     public float popUpTime = 0.08f;     // 放大时间
@@ -44,11 +57,13 @@ public class SideBarUI : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
             SetFound(i, false, playAnim: false);
+        nextIndex = 0;
     }
 
     // 对外调用：找到/未找到
     public void SetFound(int index, bool found, bool playAnim = true)
     {
+
         if (index < 0 || index >= slots.Length) return;
         var s = slots[index];
 
@@ -80,6 +95,28 @@ public class SideBarUI : MonoBehaviour
             StopAllCoroutines(); // 如果你担心多个槽同时触发会互相打断，可改成每槽单独协程（后面我也能给你）
             StartCoroutine(PopAndCheckIn(s));
         }
+    }
+
+    public int RevealNextWithIcon(Sprite icon, bool playAnim = true)
+    {
+        if (nextIndex < 0) nextIndex = 0;
+        if (nextIndex >= slots.Length) return -1;
+
+        int idx = nextIndex;
+
+        // 把 icon 塞到这个槽位的 ItemIcon
+        var s = slots[idx];
+        if (s.itemIcon != null && icon != null)
+        {
+            s.itemIcon.sprite = icon;
+            s.itemIcon.preserveAspect = true;
+        }
+
+        // 点亮这个槽位（你原来的动画也会跑）
+        SetFound(idx, true, playAnim);
+
+        nextIndex++;
+        return idx;
     }
 
     IEnumerator PopAndCheckIn(Slot s)

@@ -11,40 +11,54 @@ public class DraggableItem2D : MonoBehaviour
     public Collider2D dropZoneCollider;          // 拖入气泡的判定框
     public bool isCorrectItem = false;           // 正确物品勾 true
 
-    [Header("Drop Zone FX (Method B)")]
+    [Header("Drop Zone FX")]
     public DropZoneFX dropZoneFX;                // 气泡上的 DropZoneFX（负责播放星星）
 
     [Header("Success FX")]
     public Transform bubbleCenter;               // 气泡中心点（BubbleCenter）
-    public Transform patientAttachPoint;         // 病人挂点（PatientHatPoint）
+    public Transform patientAttachPoint;         // 病人挂点（可选：不填则用 GameManager 的 defaultAttachPoint）
     public float snapToCenterTime = 0.10f;       // 吸附到气泡中心速度
     public float popScale = 1.15f;               // pop 放大倍数
     public float popTime = 0.08f;                // pop 放大时间
     public float returnTime = 0.10f;             // pop 回到原比例时间
     public float fadeOutTime = 0.12f;            // 气泡里淡出
-    public float fadeInTime = 0.18f;             // 病人身上淡入
+    public float fadeInTime = 0.18f;             // （保留字段：现在病人淡入由 GameManager 负责，可未来用）
 
-    Vector3 startPos;
-    Vector3 startScale;
-    bool dragging;
-    bool locked;                                 // 成功后锁定不再拖
-    Camera cam;
-    Collider2D col;
-    SpriteRenderer sr;
-    Coroutine co;
+    [Header("Game Manager")]
+    public GameManager_JFM gameManager;          // 场景里的 GameManager_JFM（可留空，自动寻找）
+
+    [Header("SideBar (legacy - optional)")]
+    public SideBarUI sideBarUI;
+    public int sideBarIndex = 0;
+
+    private Vector3 startPos;
+    private Vector3 startScale;
+
+    private bool dragging;
+    private Vector3 dragOffset;                  // 鼠标抓取点偏移（防止物体跳动）
+
+    private Camera cam;
+    private Collider2D col;
+    private SpriteRenderer sr;
+    private Coroutine co;
+
+    public bool IsDragging => dragging;
 
     void Awake()
     {
         cam = Camera.main;
         col = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
+
         startPos = transform.position;
         startScale = transform.localScale;
+
+        if (gameManager == null)
+            gameManager = FindFirstObjectByType<GameManager_JFM>();
     }
 
     void Update()
     {
-        if (locked) return;
         if (cam == null) return;
 
         Vector3 world = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -53,16 +67,20 @@ public class DraggableItem2D : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 p = new Vector2(world.x, world.y);
-            if (col.OverlapPoint(p))
+            if (col != null && col.OverlapPoint(p))
             {
                 dragging = true;
+
+                // 记录抓取偏移，避免按下时物体瞬间跳到鼠标中心
+                dragOffset = transform.position - world;
+
                 if (co != null) StopCoroutine(co);
             }
         }
 
         if (dragging && Input.GetMouseButton(0))
         {
-            transform.position = world;
+            transform.position = world + dragOffset;
         }
 
         if (dragging && Input.GetMouseButtonUp(0))
@@ -70,7 +88,7 @@ public class DraggableItem2D : MonoBehaviour
             dragging = false;
             if (co != null) StopCoroutine(co);
 
-            // 用“中心点是否在气泡里”做判定（最稳）
+            // 用“物体中心点是否在气泡里”做判定（最稳）
             Vector2 itemCenter = col.bounds.center;
             bool inZone = (dropZoneCollider != null) && dropZoneCollider.OverlapPoint(itemCenter);
 
@@ -82,19 +100,16 @@ public class DraggableItem2D : MonoBehaviour
 
             // 在气泡里
             if (isCorrectItem)
-            {
                 co = StartCoroutine(SuccessSequence());
-            }
             else
-            {
                 co = StartCoroutine(SnapBack());
-            }
         }
     }
 
     IEnumerator SuccessSequence()
     {
-        locked = true; // 成功后锁定，避免又被拖
+        // 成功时先禁止再次抓取/判定，避免动画过程中又被拖
+        if (col != null) col.enabled = false;
 
         // 1) 吸到气泡中心
         if (bubbleCenter != null)
@@ -104,46 +119,60 @@ public class DraggableItem2D : MonoBehaviour
         yield return ScaleTo(startScale * popScale, popTime);
         yield return ScaleTo(startScale, returnTime);
 
-        // ⭐ 2.5) 触发气泡特效（星星上升）
+        // 2.5) 星星特效
         if (dropZoneFX != null) dropZoneFX.PlaySuccess();
 
-        if (sideBarUI != null) sideBarUI.SetFound(sideBarIndex, true);
-
-        // 3) 在气泡里淡出消失
-        yield return FadeTo(0f, fadeOutTime);
-
-        // 4) 在病人身上生成副本淡入（推荐：不移动原物体，避免逻辑乱）
-        if (patientAttachPoint != null)
+        // ✅ 新逻辑：由 GameManager 统一处理解锁 / UI / 过关箭头 / 病人替换
+        if (gameManager != null)
         {
-            GameObject placed = new GameObject(name + "_Placed");
-            placed.transform.position = patientAttachPoint.position;
-            placed.transform.localScale = startScale;
-
-            var placedSR = placed.AddComponent<SpriteRenderer>();
-            placedSR.sprite = sr.sprite;
-            placedSR.sortingLayerID = sr.sortingLayerID;
-            placedSR.sortingOrder = sr.sortingOrder + 1;
-
-            // 从透明淡入
-            Color c = placedSR.color;
-            c.a = 0f;
-            placedSR.color = c;
-
-            float t = 0f;
-            while (t < fadeInTime)
-            {
-                t += Time.deltaTime;
-                float a = Mathf.Clamp01(t / fadeInTime);
-                c.a = a;
-                placedSR.color = c;
-                yield return null;
-            }
-            c.a = 1f;
-            placedSR.color = c;
+            gameManager.RegisterCorrectItem(this);
+        }
+        else
+        {
+            // 兼容旧：如果你还在用 sideBarIndex 的版本（可选）
+            if (sideBarUI != null) sideBarUI.SetFound(sideBarIndex, true);
         }
 
-        // 5) 原拖拽物体隐藏（或 Destroy）
-        gameObject.SetActive(false);
+        // 3) 在气泡里淡出
+        yield return FadeTo(0f, fadeOutTime);
+
+        // 4) 病人身上显示/替换（生成副本）
+        if (gameManager != null)
+            gameManager.ShowOnPatient(this);
+        else
+            SpawnPlacedFallback();
+
+        // 5) 回到原位，恢复可见，继续可拖
+        ReturnHome();
+
+        if (col != null) col.enabled = true;
+    }
+
+    void ReturnHome()
+    {
+        transform.position = startPos;
+        transform.localScale = startScale;
+
+        if (sr != null)
+        {
+            Color c = sr.color;
+            c.a = 1f;
+            sr.color = c;
+        }
+    }
+
+    void SpawnPlacedFallback()
+    {
+        if (patientAttachPoint == null || sr == null) return;
+
+        GameObject placed = new GameObject(name + "_Placed");
+        placed.transform.position = patientAttachPoint.position;
+        placed.transform.localScale = startScale;
+
+        var placedSR = placed.AddComponent<SpriteRenderer>();
+        placedSR.sprite = sr.sprite;
+        placedSR.sortingLayerID = sr.sortingLayerID;
+        placedSR.sortingOrder = sr.sortingOrder + 1;
     }
 
     IEnumerator SnapBack()
@@ -208,8 +237,8 @@ public class DraggableItem2D : MonoBehaviour
         sr.color = to;
     }
 
-    [Header("SideBar UI")]
-    public SideBarUI sideBarUI;
-    public int sideBarIndex = 0;
-
+    // 给 GameManager / UI 用
+    public Sprite GetSprite() => sr != null ? sr.sprite : null;
+    public int GetSortingLayerID() => sr != null ? sr.sortingLayerID : 0;
+    public int GetSortingOrder() => sr != null ? sr.sortingOrder : 0;
 }
