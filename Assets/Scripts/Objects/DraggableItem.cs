@@ -61,13 +61,16 @@ public class DraggableItem2D : MonoBehaviour
     {
         if (cam == null) return;
 
+        // 如果当前物体被隐藏在架子上，就不要响应输入（更稳）
+        if (sr != null && !sr.enabled) return;
+
         Vector3 world = cam.ScreenToWorldPoint(Input.mousePosition);
         world.z = transform.position.z;
 
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 p = new Vector2(world.x, world.y);
-            if (col != null && col.OverlapPoint(p))
+            if (col != null && col.enabled && col.OverlapPoint(p))
             {
                 dragging = true;
 
@@ -122,7 +125,7 @@ public class DraggableItem2D : MonoBehaviour
         // 2.5) 星星特效
         if (dropZoneFX != null) dropZoneFX.PlaySuccess();
 
-        // ✅ 新逻辑：由 GameManager 统一处理解锁 / UI / 过关箭头 / 病人替换
+        // ✅ 新逻辑：由 GameManager 统一处理解锁 / UI / 过关箭头
         if (gameManager != null)
         {
             gameManager.RegisterCorrectItem(this);
@@ -133,21 +136,87 @@ public class DraggableItem2D : MonoBehaviour
             if (sideBarUI != null) sideBarUI.SetFound(sideBarIndex, true);
         }
 
-        // 3) 在气泡里淡出
+        // 3) 在气泡里淡出（让它看起来被使用）
         yield return FadeTo(0f, fadeOutTime);
 
-        // 4) 病人身上显示/替换（生成副本）
+        // 4) 病人身上显示/替换（同时会处理：架子隐藏 & 上一个物体回架子）
         if (gameManager != null)
             gameManager.ShowOnPatient(this);
         else
             SpawnPlacedFallback();
 
-        // 5) 回到原位，恢复可见，继续可拖
-        ReturnHome();
-
-        if (col != null) col.enabled = true;
+        // ✅ 不再 ReturnHome / 立刻显示（由 GameManager 决定什么时候回架子）
+        // 这里恢复透明度和缩放，防止下次回架子状态奇怪
+        ResetVisualState();
     }
 
+    void ResetVisualState()
+    {
+        transform.localScale = startScale;
+        if (sr != null)
+        {
+            Color c = sr.color;
+            c.a = 1f;
+            sr.color = c;
+        }
+        // collider 是否启用由 Hide/Show 控制，这里不强行开
+    }
+
+    // ---------- World Visibility Control (for swapping) ----------
+
+    // 成功装备到病人时：从架子消失（不可点）
+    public void HideInWorld()
+    {
+        dragging = false;
+
+        if (sr != null) sr.enabled = false;
+        if (col != null) col.enabled = false;
+    }
+
+    // 被新物体替换后：回到架子原位并可再次拖
+    public float reappearFadeTime = 0.18f; // 可调：回架子淡入时间
+
+    public void ShowInWorldAtHome()
+    {
+        ReturnHome();
+
+        if (sr != null)
+        {
+            sr.enabled = true;
+
+            Color c = sr.color;
+            c.a = 0f;          // 从透明开始
+            sr.color = c;
+        }
+
+        // 淡入过程中先不允许点击
+        if (col != null) col.enabled = false;
+
+        StartCoroutine(FadeInAtHome());
+    }
+
+    IEnumerator FadeInAtHome()
+    {
+        if (sr == null) yield break;
+
+        float t = 0f;
+        Color c = sr.color;
+
+        while (t < reappearFadeTime)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / reappearFadeTime);
+            c.a = p;
+            sr.color = c;
+            yield return null;
+        }
+
+        c.a = 1f;
+        sr.color = c;
+
+        // 淡入完成后才允许再次拖拽
+        if (col != null) col.enabled = true;
+    }
     void ReturnHome()
     {
         transform.position = startPos;
