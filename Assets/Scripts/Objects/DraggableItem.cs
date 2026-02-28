@@ -7,6 +7,10 @@ public class DraggableItem2D : MonoBehaviour
     [Header("Drag")]
     public float snapBackTime = 0.18f;
 
+    [Header("Render Priority (Drag on Top)")]
+    public int dragSortingBoost = 50;   // 拖拽时临时提高 sortingOrder，保证在最上层
+    private int originalSortingOrder;
+
     [Header("Drop Check")]
     public Collider2D dropZoneCollider;          // 拖入气泡的判定框
     public bool isCorrectItem = false;           // 正确物品勾 true
@@ -42,6 +46,10 @@ public class DraggableItem2D : MonoBehaviour
     private SpriteRenderer sr;
     private Coroutine co;
 
+    // ✅ 可选：如果物体上挂了 ItemDisplayScaler，就在“气泡/病人展示”时缩放
+    private Component displayScaler;
+    private float displayScaleMultiplier = 1f;
+
     public bool IsDragging => dragging;
 
     void Awake()
@@ -53,8 +61,22 @@ public class DraggableItem2D : MonoBehaviour
         startPos = transform.position;
         startScale = transform.localScale;
 
+        if (sr != null) originalSortingOrder = sr.sortingOrder;
+
         if (gameManager == null)
             gameManager = FindFirstObjectByType<GameManager_JFM>();
+
+        // 尝试读取你单独挂在路障上的缩放脚本：ItemDisplayScaler.displayScaleMultiplier
+        displayScaler = GetComponent("ItemDisplayScaler");
+        if (displayScaler != null)
+        {
+            var type = displayScaler.GetType();
+            var field = type.GetField("displayScaleMultiplier");
+            if (field != null && field.FieldType == typeof(float))
+            {
+                displayScaleMultiplier = Mathf.Max(0.01f, (float)field.GetValue(displayScaler));
+            }
+        }
     }
 
     void Update()
@@ -74,6 +96,9 @@ public class DraggableItem2D : MonoBehaviour
             {
                 dragging = true;
 
+                // ✅ 拖拽开始：抬到最上层
+                SetDragLayer(true);
+
                 // 记录抓取偏移，避免按下时物体瞬间跳到鼠标中心
                 dragOffset = transform.position - world;
 
@@ -89,6 +114,10 @@ public class DraggableItem2D : MonoBehaviour
         if (dragging && Input.GetMouseButtonUp(0))
         {
             dragging = false;
+
+            // ✅ 拖拽结束：恢复原层级（先恢复，后面成功/失败动画也会再保证一次）
+            SetDragLayer(false);
+
             if (co != null) StopCoroutine(co);
 
             // 用“物体中心点是否在气泡里”做判定（最稳）
@@ -114,13 +143,20 @@ public class DraggableItem2D : MonoBehaviour
         // 成功时先禁止再次抓取/判定，避免动画过程中又被拖
         if (col != null) col.enabled = false;
 
+        // ✅ 成功流程也确保层级恢复（避免被隐藏前还卡在高层级）
+        SetDragLayer(false);
+
         // 1) 吸到气泡中心
         if (bubbleCenter != null)
             yield return MoveTo(transform.position, bubbleCenter.position, snapToCenterTime);
 
-        // 2) Pop（放大再回弹）
-        yield return ScaleTo(startScale * popScale, popTime);
-        yield return ScaleTo(startScale, returnTime);
+        // ✅ 计算“展示用缩放”（只影响气泡/病人显示）
+        Vector3 displayBaseScale = startScale * displayScaleMultiplier;
+
+        // 2) Pop（放大再回弹）——用展示缩放做基准（路障会更小）
+        transform.localScale = displayBaseScale;
+        yield return ScaleTo(displayBaseScale * popScale, popTime);
+        yield return ScaleTo(displayBaseScale, returnTime);
 
         // 2.5) 星星特效
         if (dropZoneFX != null) dropZoneFX.PlaySuccess();
@@ -138,6 +174,10 @@ public class DraggableItem2D : MonoBehaviour
 
         // 3) 在气泡里淡出（让它看起来被使用）
         yield return FadeTo(0f, fadeOutTime);
+
+        // ✅ 关键：在生成病人展示副本前，确保物体 scale 是“展示缩放”
+        // 这样 GameManager 用 item.transform.localScale 生成 placed 时就是缩小版
+        transform.localScale = displayBaseScale;
 
         // 4) 病人身上显示/替换（同时会处理：架子隐藏 & 上一个物体回架子）
         if (gameManager != null)
@@ -162,12 +202,27 @@ public class DraggableItem2D : MonoBehaviour
         // collider 是否启用由 Hide/Show 控制，这里不强行开
     }
 
+    // ---------- Render Priority Helpers ----------
+
+    void SetDragLayer(bool draggingNow)
+    {
+        if (sr == null) return;
+
+        if (draggingNow)
+            sr.sortingOrder = originalSortingOrder + dragSortingBoost;
+        else
+            sr.sortingOrder = originalSortingOrder;
+    }
+
     // ---------- World Visibility Control (for swapping) ----------
 
     // 成功装备到病人时：从架子消失（不可点）
     public void HideInWorld()
     {
         dragging = false;
+
+        // ✅ 隐藏前也确保恢复层级，避免下一次显示时还在高层
+        SetDragLayer(false);
 
         if (sr != null) sr.enabled = false;
         if (col != null) col.enabled = false;
@@ -179,6 +234,9 @@ public class DraggableItem2D : MonoBehaviour
     public void ShowInWorldAtHome()
     {
         ReturnHome();
+
+        // ✅ 回架子时恢复原层级
+        SetDragLayer(false);
 
         if (sr != null)
         {
@@ -217,6 +275,7 @@ public class DraggableItem2D : MonoBehaviour
         // 淡入完成后才允许再次拖拽
         if (col != null) col.enabled = true;
     }
+
     void ReturnHome()
     {
         transform.position = startPos;
@@ -236,7 +295,9 @@ public class DraggableItem2D : MonoBehaviour
 
         GameObject placed = new GameObject(name + "_Placed");
         placed.transform.position = patientAttachPoint.position;
-        placed.transform.localScale = startScale;
+
+        // ✅ fallback 也用展示缩放
+        placed.transform.localScale = startScale * displayScaleMultiplier;
 
         var placedSR = placed.AddComponent<SpriteRenderer>();
         placedSR.sprite = sr.sprite;
@@ -250,6 +311,9 @@ public class DraggableItem2D : MonoBehaviour
         yield return FadeTo(1f, 0.05f);
         transform.localScale = startScale;
         yield return MoveTo(transform.position, startPos, snapBackTime);
+
+        // ✅ 失败结束也保险恢复层级
+        SetDragLayer(false);
     }
 
     IEnumerator MoveTo(Vector3 from, Vector3 to, float duration)
