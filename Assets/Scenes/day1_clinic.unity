@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickProbe2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 0}
@@ -646,6 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
@@ -1488,6 +1490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 1
   dropZoneFX: {fileID: 198785788}
@@ -2442,6 +2445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
@@ -7896,6 +7900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 1
   dropZoneFX: {fileID: 198785788}
@@ -7955,7 +7960,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 2.2, y: 3}
   m_EdgeRadius: 0
 --- !u!212 &847476474
 SpriteRenderer:
@@ -8648,6 +8653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
@@ -8707,7 +8713,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 1.6, y: 3}
   m_EdgeRadius: 0
 --- !u!1 &946604169
 GameObject:
@@ -9412,6 +9418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
@@ -16770,6 +16777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
@@ -17905,6 +17913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
   snapBackTime: 0.18
+  dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
   isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
