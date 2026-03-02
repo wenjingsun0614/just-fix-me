@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-
 [RequireComponent(typeof(Collider2D))]
 public class DraggableItem2D : MonoBehaviour
 {
@@ -82,6 +81,8 @@ public class DraggableItem2D : MonoBehaviour
     void Update()
     {
         if (cam == null) return;
+
+        if (!GameFlow_JFM.CanDrag) return;
 
         // 如果当前物体被隐藏在架子上，就不要响应输入（更稳）
         if (sr != null && !sr.enabled) return;
