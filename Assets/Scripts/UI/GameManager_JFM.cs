@@ -15,6 +15,9 @@ public class GameManager_JFM : MonoBehaviour
     public CanvasGroup resultPanel;      // 过渡/结算界面 Panel 的 CanvasGroup
     public float resultFadeTime = 0.25f;
 
+    [Header("Item Selection UI")]
+    public ItemSelectionPanelUI itemSelectionPanel;  // 最终物品选择面板
+
     [Header("Patient Attachment")]
     public Transform defaultAttachPoint; // 如果物品没填自己的挂点，就用这个
     public bool replaceOnPatient = true;
@@ -22,11 +25,17 @@ public class GameManager_JFM : MonoBehaviour
     // 记录：哪些正确物品已经“解锁过”
     private HashSet<int> unlockedIds = new HashSet<int>();
 
+    // 记录：已解锁的正确物品（给最终选择面板用）
+    private List<DraggableItem2D> unlockedItems = new List<DraggableItem2D>();
+
     // 病人身上当前显示的那个“副本”
     private GameObject currentPlaced;
 
-    // ✅ 当前“装备在病人身上”的物品（用于替换时让上一个回架子）
+    // 当前装备在病人身上的物品（用于替换时让上一个回架子）
     private DraggableItem2D currentEquippedItem;
+
+    // 最终确认选择的物品
+    private DraggableItem2D finalSelectedItem;
 
     // 过关状态
     private bool canFinish = false;
@@ -39,6 +48,9 @@ public class GameManager_JFM : MonoBehaviour
         HideCanvasGroupImmediate(resultPanel);
     }
 
+    /// <summary>
+    /// 注册正确物品：首次解锁时加入侧边栏和已解锁列表
+    /// </summary>
     public bool RegisterCorrectItem(DraggableItem2D item)
     {
         if (item == null) return false;
@@ -46,11 +58,19 @@ public class GameManager_JFM : MonoBehaviour
         int id = item.GetInstanceID();
         bool isNew = unlockedIds.Add(id);
 
-        if (isNew && sideBarUI != null)
+        if (isNew)
         {
-            sideBarUI.RevealNextWithIcon(item.GetSprite(), playAnim: true);
+            // ✅ 记进已解锁物品列表（给最终选择面板使用）
+            unlockedItems.Add(item);
+
+            // ✅ 解锁侧边栏下一个槽位
+            if (sideBarUI != null)
+            {
+                sideBarUI.RevealNextWithIcon(item.GetSprite(), playAnim: true);
+            }
         }
 
+        // ✅ 解锁任意一个就可以出现下一步箭头
         if (unlockedIds.Count >= 1)
             ShowNextArrow();
 
@@ -67,13 +87,13 @@ public class GameManager_JFM : MonoBehaviour
     {
         if (item == null) return;
 
-        // ✅ 替换：先让上一个装备回架子
+        // 替换：先让上一个装备回架子
         if (replaceOnPatient && currentEquippedItem != null && currentEquippedItem != item)
         {
             currentEquippedItem.ShowInWorldAtHome();
         }
 
-        // ✅ 当前装备：从架子消失
+        // 当前装备：从架子消失
         item.HideInWorld();
         currentEquippedItem = item;
 
@@ -99,6 +119,9 @@ public class GameManager_JFM : MonoBehaviour
         currentPlaced = placed;
     }
 
+    /// <summary>
+    /// 显示右下角下一步箭头
+    /// </summary>
     private void ShowNextArrow()
     {
         if (nextArrow == null) return;
@@ -110,6 +133,9 @@ public class GameManager_JFM : MonoBehaviour
         arrowCo = StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 1f, arrowFadeTime, true));
     }
 
+    /// <summary>
+    /// 点击右下角箭头：打开 ResultPanel
+    /// </summary>
     public void OnClickNextArrow()
     {
         if (!canFinish) return;
@@ -124,16 +150,57 @@ public class GameManager_JFM : MonoBehaviour
             StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 0f, 0.15f, false));
     }
 
+    /// <summary>
+    /// ResultPanel：继续探索
+    /// </summary>
     public void OnClickKeepExploring()
     {
         CloseResultPanel();
     }
 
+    /// <summary>
+    /// ResultPanel：进入下一天 → 打开物品选择面板
+    /// </summary>
     public void OnClickNextDay()
     {
-        Debug.Log("Next Day clicked (placeholder)");
+        if (itemSelectionPanel == null)
+        {
+            Debug.LogWarning("ItemSelectionPanelUI is not assigned on GameManager_JFM.");
+            return;
+        }
+
+        if (unlockedItems.Count == 0)
+        {
+            Debug.LogWarning("No unlocked items available for selection.");
+            return;
+        }
+
+        itemSelectionPanel.Open(unlockedItems, this);
     }
 
+    /// <summary>
+    /// 最终确认物品后调用
+    /// </summary>
+    public void SetFinalSelectedItem(DraggableItem2D item)
+    {
+        if (item == null) return;
+
+        finalSelectedItem = item;
+
+        Debug.Log("Final selected item: " + item.name);
+
+        // ✅ 这里先占位
+        // 以后你可以在这里：
+        // 1. 切到 day2_clinic
+        // 2. 切到新闻剧情页面
+        // 3. 保存玩家最终选择（PlayerPrefs / 静态数据 / ScriptableObject）
+
+        Debug.Log("TODO: Go to next day / news page here.");
+    }
+
+    /// <summary>
+    /// 关掉 ResultPanel：继续探索
+    /// </summary>
     public void CloseResultPanel()
     {
         if (resultPanel != null)

@@ -4,22 +4,34 @@ using UnityEngine.UI;
 
 public class SceneFadeIn : MonoBehaviour
 {
+    public static bool skipNextFadeIn = false;
+
     public Image fadeImage;
-    public float blackHoldTime = 0.5f; // 先保持纯黑多久
-    public float fadeTime = 0.8f;      // 再慢慢淡出
+    public float blackHoldTime = 0.5f;
+    public float fadeTime = 0.8f;
 
     void Awake()
     {
-        if (fadeImage != null)
-        {
-            Color c = fadeImage.color;
-            c.a = 1f; // ✅ 一进场先保证是纯黑
-            fadeImage.color = c;
-        }
+        if (fadeImage == null) return;
+
+        Color c = fadeImage.color;
+
+        if (skipNextFadeIn)
+            c.a = 0f;
+        else
+            c.a = 1f;
+
+        fadeImage.color = c;
     }
 
     void Start()
     {
+        if (skipNextFadeIn)
+        {
+            skipNextFadeIn = false;
+            return;
+        }
+
         StartCoroutine(FadeInRoutine());
     }
 
@@ -27,12 +39,12 @@ public class SceneFadeIn : MonoBehaviour
     {
         if (fadeImage == null) yield break;
 
-        Color c = fadeImage.color;
-
-        // ✅ 先保持黑屏一小会，避免“黑完马上跳”
+        // ✅ 先保持纯黑一小会
         yield return new WaitForSeconds(blackHoldTime);
 
+        Color c = fadeImage.color;
         float t = 0f;
+
         while (t < fadeTime)
         {
             t += Time.deltaTime;
