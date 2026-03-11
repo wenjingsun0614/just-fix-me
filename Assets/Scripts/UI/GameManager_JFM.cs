@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager_JFM : MonoBehaviour
 {
@@ -41,6 +42,12 @@ public class GameManager_JFM : MonoBehaviour
     private bool canFinish = false;
     private bool resultShown = false;
     private Coroutine arrowCo;
+
+    [Header("Scene Transition")]
+    public SceneFade sceneFade;
+    public string nextSceneName = "day2_clinic";
+
+
 
     void Start()
     {
@@ -212,13 +219,18 @@ public class GameManager_JFM : MonoBehaviour
 
         Debug.Log("Final selected item: " + item.name);
 
-        // ✅ 这里先占位
-        // 以后你可以在这里：
-        // 1. 切到 day2_clinic
-        // 2. 切到新闻剧情页面
-        // 3. 保存玩家最终选择（PlayerPrefs / 静态数据 / ScriptableObject）
+        // 如果你以后想记录第一关最终物品，可以先保留这一行
+        // GameProgress.day1SelectedItemName = item.name;
 
-        Debug.Log("TODO: Go to next day / news page here.");
+        if (sceneFade != null && !string.IsNullOrEmpty(nextSceneName))
+        {
+            Time.timeScale = 1f; // 防止 UI / pause 状态影响切场景
+            sceneFade.FadeToScene(nextSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("SceneFade or nextSceneName is missing on GameManager_JFM.");
+        }
     }
 
     /// <summary>

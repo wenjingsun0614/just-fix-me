@@ -133,9 +133,27 @@ public class DraggableItem2D : MonoBehaviour
 
             // 在气泡里
             if (isCorrectItem)
+            {
+                // ✅ 如果是真云，成功时先停止自动漂浮，避免它把位置拉回窗边
+                CloudDriftInArea cloud = GetComponent<CloudDriftInArea>();
+                if (cloud != null)
+                {
+                    cloud.StopFloating();
+                }
+
                 co = StartCoroutine(SuccessSequence());
+            }
             else
+            {
+                BalloonInflationItem balloon = GetComponent<BalloonInflationItem>();
+                if (balloon != null && !balloon.HasCompletedInflation())
+                {
+                    balloon.TriggerMiniGame();
+                    return;
+                }
+
                 co = StartCoroutine(SnapBack());
+            }
         }
     }
 
@@ -232,27 +250,50 @@ public class DraggableItem2D : MonoBehaviour
     // 被新物体替换后：回到架子原位并可再次拖
     public float reappearFadeTime = 0.18f; // 可调：回架子淡入时间
 
+    public void TriggerSuccessAfterMiniGame()
+    {
+        if (co != null) StopCoroutine(co);
+        co = StartCoroutine(SuccessSequence());
+    }
+
     public void ShowInWorldAtHome()
     {
         ReturnHome();
 
-        // ✅ 回架子时恢复原层级
-        SetDragLayer(false);
+        // ✅ 如果是真云，回到窗户后恢复 mask
+        CloudDragMaskSwitch cloudMask = GetComponent<CloudDragMaskSwitch>();
+        if (cloudMask != null)
+        {
+            cloudMask.RestoreMask();
+        }
+
+        // ✅ 如果是真云，回到窗户后恢复自动漂浮
+        CloudDriftInArea cloudDrift = GetComponent<CloudDriftInArea>();
+        if (cloudDrift != null)
+        {
+            cloudDrift.ResumeFloating();
+        }
+
+        BalloonInflationItem balloon = GetComponent<BalloonInflationItem>();
+        if (balloon != null)
+        {
+            balloon.ApplyCompletedShelfPoseIfNeeded();
+        }
 
         if (sr != null)
         {
             sr.enabled = true;
 
             Color c = sr.color;
-            c.a = 0f;          // 从透明开始
+            c.a = 0f;
             sr.color = c;
         }
 
-        // 淡入过程中先不允许点击
         if (col != null) col.enabled = false;
 
         StartCoroutine(FadeInAtHome());
     }
+
 
     IEnumerator FadeInAtHome()
     {
@@ -308,13 +349,16 @@ public class DraggableItem2D : MonoBehaviour
 
     IEnumerator SnapBack()
     {
-        // 失败：回原位 + 复原透明度/缩放
         yield return FadeTo(1f, 0.05f);
         transform.localScale = startScale;
         yield return MoveTo(transform.position, startPos, snapBackTime);
 
-        // ✅ 失败结束也保险恢复层级
-        SetDragLayer(false);
+        // ✅ 如果是真云，弹回原位后恢复自动漂浮
+        CloudDriftInArea cloud = GetComponent<CloudDriftInArea>();
+        if (cloud != null)
+        {
+            cloud.ResumeFloating();
+        }
     }
 
     IEnumerator MoveTo(Vector3 from, Vector3 to, float duration)

@@ -97,8 +97,19 @@ public class ItemSelectionPanelUI : MonoBehaviour
 
         DraggableItem2D currentItem = items[currentIndex];
 
+        Sprite displaySprite = currentItem.GetSprite();
+
+        // 如果这个物体有 OrganizerSpecialItem，就优先用它指定的 icon
+        OrganizerSpecialItem special = currentItem.GetComponent<OrganizerSpecialItem>();
+        if (special != null)
+        {
+            Sprite specialIcon = special.GetSideBarIcon();
+            if (specialIcon != null)
+                displaySprite = specialIcon;
+        }
+
         if (itemDisplayImage != null)
-            itemDisplayImage.sprite = currentItem.GetSprite();
+            itemDisplayImage.sprite = displaySprite;
 
         if (countText != null)
             countText.text = $"{currentIndex + 1} / {items.Count}";
