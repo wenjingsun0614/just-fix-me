@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8da476daa25807f4abe2139e2a089a25
+guid: 448025282cf58f547a81b389bbbb8a13
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -255167383455267363
-    second: Balloon_0
+      213: -5518291071452072467
+    second: Organizer_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Balloon_0
+      name: Organizer_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 82
-        width: 268
-        height: 119
+        x: 0
+        y: 48
+        width: 298
+        height: 170
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd502eedd96757cf0800000000000000
-      internalID: -255167383455267363
+      spriteID: de5b3e6f1871b63b0800000000000000
+      internalID: -5518291071452072467
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Balloon_0: -255167383455267363
+      Organizer_0: -5518291071452072467
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

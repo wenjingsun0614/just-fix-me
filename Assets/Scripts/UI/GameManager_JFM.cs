@@ -63,10 +63,20 @@ public class GameManager_JFM : MonoBehaviour
             // ✅ 记进已解锁物品列表（给最终选择面板使用）
             unlockedItems.Add(item);
 
+            // ✅ 默认用物体自己的 sprite
+            Sprite iconSprite = item.GetSprite();
+
+            // ✅ 如果这个物体有 OrganizerSpecialItem，就用它指定的侧边栏 icon
+            OrganizerSpecialItem special = item.GetComponent<OrganizerSpecialItem>();
+            if (special != null)
+            {
+                iconSprite = special.GetSideBarIcon();
+            }
+
             // ✅ 解锁侧边栏下一个槽位
             if (sideBarUI != null)
             {
-                sideBarUI.RevealNextWithIcon(item.GetSprite(), playAnim: true);
+                sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
             }
         }
 
@@ -106,15 +116,28 @@ public class GameManager_JFM : MonoBehaviour
             currentPlaced = null;
         }
 
-        GameObject placed = new GameObject(item.name + "_Placed");
-        placed.transform.position = attach.position;
-        placed.transform.rotation = attach.rotation;
-        placed.transform.localScale = item.transform.localScale;
+        GameObject placed = null;
 
-        var placedSR = placed.AddComponent<SpriteRenderer>();
-        placedSR.sprite = item.GetSprite();
-        placedSR.sortingLayerID = item.GetSortingLayerID();
-        placedSR.sortingOrder = item.GetSortingOrder() + 1;
+        // ✅ 如果这是 Organizer 这种特殊物品，并且设置了展示 prefab
+        OrganizerSpecialItem special = item.GetComponent<OrganizerSpecialItem>();
+        if (special != null && special.GetPatientDisplayPrefab() != null)
+        {
+            placed = Instantiate(special.GetPatientDisplayPrefab(), attach.position, attach.rotation);
+            placed.transform.localScale = item.transform.localScale;
+        }
+        else
+        {
+            // 默认逻辑：普通物品仍然只复制 root sprite
+            placed = new GameObject(item.name + "_Placed");
+            placed.transform.position = attach.position;
+            placed.transform.rotation = attach.rotation;
+            placed.transform.localScale = item.transform.localScale;
+
+            var placedSR = placed.AddComponent<SpriteRenderer>();
+            placedSR.sprite = item.GetSprite();
+            placedSR.sortingLayerID = item.GetSortingLayerID();
+            placedSR.sortingOrder = item.GetSortingOrder() + 1;
+        }
 
         currentPlaced = placed;
     }
