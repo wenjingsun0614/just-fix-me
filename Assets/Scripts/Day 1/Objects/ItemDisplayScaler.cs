@@ -1,21 +1,30 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DraggableItem2D))]
-public class ItemDisplayScaler : MonoBehaviour
+public class HangingBalloonFloat : MonoBehaviour
 {
-    [Header("Display Scale Multiplier")]
-    [Tooltip("用于气泡内和病人身上显示时的缩放倍率")]
-    public float displayScaleMultiplier = 0.7f;
+    [Header("Position Float")]
+    public float floatAmplitudeY = 0.08f;
+    public float floatSpeedY = 1.2f;
 
-    private DraggableItem2D drag;
+    [Header("Sway Rotation")]
+    public float swayAngle = 4f;
+    public float swaySpeed = 1f;
 
-    void Awake()
+    private Vector3 startLocalPos;
+    private Quaternion startLocalRot;
+
+    void Start()
     {
-        drag = GetComponent<DraggableItem2D>();
+        startLocalPos = transform.localPosition;
+        startLocalRot = transform.localRotation;
     }
 
-    public float GetDisplayScaleMultiplier()
+    void Update()
     {
-        return displayScaleMultiplier;
+        float offsetY = Mathf.Sin(Time.time * floatSpeedY) * floatAmplitudeY;
+        float angleZ = Mathf.Sin(Time.time * swaySpeed) * swayAngle;
+
+        transform.localPosition = startLocalPos + new Vector3(0f, offsetY, 0f);
+        transform.localRotation = startLocalRot * Quaternion.Euler(0f, 0f, angleZ);
     }
 }
