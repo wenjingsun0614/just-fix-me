@@ -220,26 +220,45 @@ public class GameManager_JFM : MonoBehaviour
 
         finalSelectedItem = item;
 
-        // ✅ 根据当前关卡记录不同选择
+        // 1) Record selected item by day
         if (currentDay == 1)
         {
             GameProgress_JFM.day1SelectedItemName = item.name;
+            GameProgress_JFM.currentNewsDay = 1;
+            GameProgress_JFM.nextSceneAfterNews = "day2_clinic";
             Debug.Log("Day 1 selected item: " + item.name);
         }
         else if (currentDay == 2)
         {
             GameProgress_JFM.day2SelectedItemName = item.name;
+            GameProgress_JFM.currentNewsDay = 2;
+            GameProgress_JFM.nextSceneAfterNews = "day3_clinic";
             Debug.Log("Day 2 selected item: " + item.name);
         }
+        else if (currentDay == 3)
+        {
+            GameProgress_JFM.day3SelectedItemName = item.name;
+            GameProgress_JFM.currentNewsDay = 3;
+            GameProgress_JFM.nextSceneAfterNews = "day4_clinic";
+            Debug.Log("Day 3 selected item: " + item.name);
+        }
+        else if (currentDay == 4)
+        {
+            GameProgress_JFM.day4SelectedItemName = item.name;
+            GameProgress_JFM.currentNewsDay = 4;
+            GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
+            Debug.Log("Day 4 selected item: " + item.name);
+        }
 
-        if (sceneFade != null && !string.IsNullOrEmpty(nextSceneName))
+        // 2) Always go to the shared NewsScene first
+        if (sceneFade != null)
         {
             Time.timeScale = 1f;
-            sceneFade.FadeToScene(nextSceneName);
+            sceneFade.FadeToScene("news_scenes");
         }
         else
         {
-            Debug.LogWarning("SceneFade or nextSceneName is missing on GameManager_JFM.");
+            Debug.LogWarning("SceneFade is missing on GameManager_JFM.");
         }
     }
 

@@ -6,6 +6,8 @@ public class LightningRandom : MonoBehaviour
     public float minDelay = 5f;
     public float maxDelay = 12f;
 
+    public DarknessHoleController darknessController;
+
     Animator anim;
 
     void Start()
@@ -20,14 +22,22 @@ public class LightningRandom : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
 
-            anim.SetTrigger("Flash");
+            TriggerLightning();
 
             // Å¼¶ûË«ÉÁ
             if (Random.value < 0.35f)
             {
                 yield return new WaitForSeconds(0.2f);
-                anim.SetTrigger("Flash");
+                TriggerLightning();
             }
         }
+    }
+
+    void TriggerLightning()
+    {
+        anim.SetTrigger("Flash");
+
+        if (darknessController != null)
+            darknessController.TriggerLightning();
     }
 }

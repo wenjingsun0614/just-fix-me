@@ -13,8 +13,8 @@ public class NewsSceneController : MonoBehaviour
     public RectTransform continueArrow;
     public CanvasGroup continueArrowCanvasGroup;
 
-    [Header("Scene Flow")]
-    public string nextSceneName = "day3_clinic";
+    [Header("Fallback Scene Flow")]
+    public string fallbackNextSceneName = "day4_clinic";
 
     [Header("Optional News Images")]
     public Sprite defaultNewsSprite;
@@ -30,9 +30,9 @@ public class NewsSceneController : MonoBehaviour
     public float arrowFloatAmount = 3f;
 
     [Header("Arrow Position")]
-    [Tooltip("箭头距离末尾文字的水平偏移，负值更近")]
+    [Tooltip("Horizontal offset from the end of the sentence. Negative = closer.")]
     public float arrowOffsetX = -2f;
-    [Tooltip("箭头相对末尾文字的垂直偏移")]
+    [Tooltip("Vertical offset from the end of the sentence.")]
     public float arrowOffsetY = -2f;
 
     private List<string> currentLines = new List<string>();
@@ -74,11 +74,52 @@ public class NewsSceneController : MonoBehaviour
     {
         currentLines.Clear();
 
-        string day1 = GameProgress_JFM.day1SelectedItemName;
-        string day2 = GameProgress_JFM.day2SelectedItemName;
+        int newsDay = GameProgress_JFM.currentNewsDay;
 
         if (tvScreenImage != null && defaultNewsSprite != null)
             tvScreenImage.sprite = defaultNewsSprite;
+
+        switch (newsDay)
+        {
+            case 1:
+                SetupDay1News();
+                break;
+
+            case 2:
+                SetupDay2News();
+                break;
+
+            case 3:
+                SetupDay3News();
+                break;
+
+            case 4:
+                SetupDay4News();
+                break;
+
+            default:
+                SetupFallbackNews();
+                break;
+        }
+    }
+
+    void SetupDay1News()
+    {
+        string item = GameProgress_JFM.day1SelectedItemName;
+
+        currentLines.Add("Tonight's special report: a curious treatment case has drawn local attention.");
+
+        if (!string.IsNullOrEmpty(item))
+            currentLines.Add("Clinic records suggest the key item involved was: " + item + ".");
+
+        currentLines.Add("Witnesses describe the procedure as unusual, but surprisingly effective.");
+        currentLines.Add("The mysterious clinic is expected to reopen tomorrow.");
+    }
+
+    void SetupDay2News()
+    {
+        string day1 = GameProgress_JFM.day1SelectedItemName;
+        string day2 = GameProgress_JFM.day2SelectedItemName;
 
         currentLines.Add("Tonight's special report: unusual treatment methods continue to draw public attention.");
 
@@ -92,9 +133,43 @@ public class NewsSceneController : MonoBehaviour
         currentLines.Add("Authorities are expected to investigate further developments tomorrow.");
     }
 
+    void SetupDay3News()
+    {
+        string item = GameProgress_JFM.day3SelectedItemName;
+
+        currentLines.Add("Breaking news: the clinic has reported another strange but successful day.");
+
+        if (!string.IsNullOrEmpty(item))
+            currentLines.Add("Today's treatment log highlighted the use of: " + item + ".");
+
+        currentLines.Add("Staff members declined formal comment, though the room appeared much tidier than before.");
+        currentLines.Add("Patients continue to leave the clinic in better condition than expected.");
+        currentLines.Add("More updates will follow as the investigation continues.");
+    }
+
+    void SetupDay4News()
+    {
+        string item = GameProgress_JFM.day4SelectedItemName;
+
+        currentLines.Add("Late-night update: the clinic's reputation continues to spread across town.");
+
+        if (!string.IsNullOrEmpty(item))
+            currentLines.Add("Sources say today's key intervention involved: " + item + ".");
+
+        currentLines.Add("Experts remain puzzled by the clinic's methods, but outcomes are difficult to ignore.");
+        currentLines.Add("Residents are already speculating about what tomorrow may bring.");
+    }
+
+    void SetupFallbackNews()
+    {
+        currentLines.Add("Tonight's report is currently unavailable.");
+        currentLines.Add("Please stand by for further updates.");
+    }
+
     void ShowCurrentLine()
     {
         if (dialogueText == null) return;
+        if (currentLines.Count == 0) return;
 
         StopTypingOnly();
 
@@ -135,8 +210,12 @@ public class NewsSceneController : MonoBehaviour
     {
         StopTypingOnly();
 
-        if (!string.IsNullOrEmpty(nextSceneName))
-            SceneManager.LoadScene(nextSceneName);
+        string targetScene = GameProgress_JFM.nextSceneAfterNews;
+
+        if (string.IsNullOrEmpty(targetScene))
+            targetScene = fallbackNextSceneName;
+
+        SceneManager.LoadScene(targetScene);
     }
 
     IEnumerator TypeLine(string line)
