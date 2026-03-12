@@ -22,6 +22,10 @@ public class PausePanelUI : MonoBehaviour
     public float minOverlayAlpha = 0f;
     public float maxOverlayAlpha = 0.45f;
 
+    [Header("Disable Interaction While Pause Is Open")]
+    [Tooltip("These objects stay visible, but their Button / Collider / Collider2D / MonoBehaviour scripts will be disabled while pause is open.")]
+    public GameObject[] pauseDisabledObjects;
+
     private bool isOpen = false;
 
     void Start()
@@ -74,7 +78,10 @@ public class PausePanelUI : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        // ✅ 告诉下一次进入场景时，跳过“黑->透明”的开场淡入
+        // 恢复被 pause 禁用的交互，避免切场景前状态残留
+        SetPauseInteractionsEnabled(true);
+
+        // 告诉下一次进入场景时，跳过“黑->透明”的开场淡入
         SceneFadeIn.skipNextFadeIn = true;
 
         if (sceneFade != null)
@@ -84,6 +91,9 @@ public class PausePanelUI : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
+
+        // 恢复被 pause 禁用的交互，避免切场景前状态残留
+        SetPauseInteractionsEnabled(true);
 
         // 回主菜单一般不需要跳过主菜单自己的显示逻辑
         if (sceneFade != null)
@@ -125,5 +135,37 @@ public class PausePanelUI : MonoBehaviour
         panelGroup.blocksRaycasts = isOpen;
 
         Time.timeScale = isOpen ? 0f : 1f;
+
+        // Pause 打开时禁用互动；关闭时恢复
+        SetPauseInteractionsEnabled(!isOpen);
+    }
+
+    void SetPauseInteractionsEnabled(bool enabled)
+    {
+        if (pauseDisabledObjects == null) return;
+
+        foreach (GameObject obj in pauseDisabledObjects)
+        {
+            if (obj == null) continue;
+
+            Button btn = obj.GetComponent<Button>();
+            if (btn != null)
+                btn.interactable = enabled;
+
+            Collider col = obj.GetComponent<Collider>();
+            if (col != null)
+                col.enabled = enabled;
+
+            Collider2D col2 = obj.GetComponent<Collider2D>();
+            if (col2 != null)
+                col2.enabled = enabled;
+
+            MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour script in scripts)
+            {
+                if (script != null && script != this)
+                    script.enabled = enabled;
+            }
+        }
     }
 }
