@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager_JFM : MonoBehaviour
 {
+    [Header("Day Info")]
+    public int currentDay = 1;
+
     [Header("UI")]
     public SideBarUI sideBarUI;
 
@@ -217,14 +220,21 @@ public class GameManager_JFM : MonoBehaviour
 
         finalSelectedItem = item;
 
-        Debug.Log("Final selected item: " + item.name);
-
-        // 如果你以后想记录第一关最终物品，可以先保留这一行
-        // GameProgress.day1SelectedItemName = item.name;
+        // ✅ 根据当前关卡记录不同选择
+        if (currentDay == 1)
+        {
+            GameProgress_JFM.day1SelectedItemName = item.name;
+            Debug.Log("Day 1 selected item: " + item.name);
+        }
+        else if (currentDay == 2)
+        {
+            GameProgress_JFM.day2SelectedItemName = item.name;
+            Debug.Log("Day 2 selected item: " + item.name);
+        }
 
         if (sceneFade != null && !string.IsNullOrEmpty(nextSceneName))
         {
-            Time.timeScale = 1f; // 防止 UI / pause 状态影响切场景
+            Time.timeScale = 1f;
             sceneFade.FadeToScene(nextSceneName);
         }
         else
