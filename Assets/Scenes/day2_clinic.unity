@@ -2341,7 +2341,7 @@ MonoBehaviour:
   interactionObjects:
   - {fileID: 252168660}
   - {fileID: 863688921}
-  introAnimationDuration: 5
+  introAnimationDuration: 6
   delayBeforeDialogue: 0.5
   typeSpeed: 0.03
   fadeDuration: 0.2
@@ -2354,7 +2354,7 @@ MonoBehaviour:
   - speaker: 0
     text: The barber not only cut my hair but may also cut my voter approval ratings.
   - speaker: 1
-    text: "Don't worry, I'll fix it! And you\u2019ll fix the situation\uFF01\n"
+    text: "Don't worry, I'll fix it! And you\u2019ll fix the situation!\n"
 --- !u!4 &272483926
 Transform:
   m_ObjectHideFlags: 0
@@ -3997,7 +3997,7 @@ Animator:
   m_GameObject: {fileID: 490316672}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 622a4b527171c224bb900d4a975f6bac, type: 2}
+  m_Controller: {fileID: 9100000, guid: c140effbf3da95b40b872680a511832f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4056,12 +4056,12 @@ SpriteRenderer:
   m_SortingLayerID: -1849320503
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3810915155286920159, guid: 36823844bc857584a83064b3ec85988f, type: 3}
+  m_Sprite: {fileID: -5967711707808390449, guid: 6b0ddf41fa3a7eb4697a19f2db704f5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.91, y: 8.813002}
+  m_Size: {x: 6.6899996, y: 9.853356}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4076,7 +4076,7 @@ Transform:
   m_GameObject: {fileID: 490316672}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.36, y: -0.88, z: 0}
+  m_LocalPosition: {x: -9.25, y: -1.44, z: 0}
   m_LocalScale: {x: 0.46074596, y: 0.46074596, z: 0.46074596}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8198,7 +8198,7 @@ Transform:
   m_GameObject: {fileID: 1072443124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.22, y: -0.88, z: 0}
+  m_LocalPosition: {x: -7.22, y: -1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8574,7 +8574,7 @@ Transform:
   m_GameObject: {fileID: 1165701259}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.36, y: -0.88, z: 0}
+  m_LocalPosition: {x: -12.63, y: -1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

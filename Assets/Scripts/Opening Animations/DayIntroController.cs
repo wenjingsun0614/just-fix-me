@@ -33,6 +33,9 @@ public class DayIntroController : MonoBehaviour
     public GameObject speechBubbleZone;
     public GameObject sideBar;
 
+    [Header("Special Character")]
+    public HorsePatientEasterEgg horsePatientEasterEgg;
+
     [Header("Disable Interaction During Intro")]
     [Tooltip("Drag objects here. They stay visible, but their Button / Collider / Collider2D will be disabled during intro.")]
     public GameObject[] interactionObjects;
@@ -72,6 +75,13 @@ public class DayIntroController : MonoBehaviour
 
         if (sideBar != null)
             sideBar.SetActive(false);
+
+        // 开场默认锁拖拽
+        GameFlow_JFM.LockDrag();
+
+        // 马病人彩蛋拖拽也默认关闭
+        if (horsePatientEasterEgg != null)
+            horsePatientEasterEgg.DisableDragging();
 
         DisableInteractions();
 
@@ -335,6 +345,13 @@ public class DayIntroController : MonoBehaviour
             sideBar.SetActive(true);
 
         EnableInteractions();
+
+        // 对话结束后，才允许全局拖拽
+        GameFlow_JFM.UnlockDrag();
+
+        // 对话结束后，马病人才开始可拖
+        if (horsePatientEasterEgg != null)
+            horsePatientEasterEgg.EnableDraggingAtCurrentPosition();
     }
 
     void DisableInteractions()
