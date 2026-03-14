@@ -2244,6 +2244,7 @@ GameObject:
   - component: {fileID: 264284829}
   - component: {fileID: 264284828}
   - component: {fileID: 264284827}
+  - component: {fileID: 264284830}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -2399,6 +2400,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &264284830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264284824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c8cd62ca9d73d48a0300bd96d0f1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDisplayScaler
+  displayScale: 0.5
 --- !u!1 &288895404
 GameObject:
   m_ObjectHideFlags: 0
@@ -10245,6 +10259,8 @@ MonoBehaviour:
   replaceOnPatient: 1
   sceneFade: {fileID: 602992300}
   nextSceneName: day2_clinic
+  ferrariOverrideActive: 0
+  ferrariOverrideResultName: FerrariHorse
 --- !u!4 &705920271
 Transform:
   m_ObjectHideFlags: 0

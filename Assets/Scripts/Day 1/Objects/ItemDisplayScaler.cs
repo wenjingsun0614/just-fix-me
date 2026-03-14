@@ -1,30 +1,25 @@
 using UnityEngine;
 
-public class HangingBalloonFloat : MonoBehaviour
+public class ItemDisplayScaler : MonoBehaviour
 {
-    [Header("Position Float")]
-    public float floatAmplitudeY = 0.08f;
-    public float floatSpeedY = 1.2f;
+    [Header("Display Scale")]
+    [Tooltip("显示时的缩放，例如 0.5 表示缩小一半")]
+    public float displayScale = 0.5f;
 
-    [Header("Sway Rotation")]
-    public float swayAngle = 4f;
-    public float swaySpeed = 1f;
-
-    private Vector3 startLocalPos;
-    private Quaternion startLocalRot;
-
-    void Start()
+    void OnEnable()
     {
-        startLocalPos = transform.localPosition;
-        startLocalRot = transform.localRotation;
+        ApplyScale();
     }
 
-    void Update()
+    public void ApplyScale()
     {
-        float offsetY = Mathf.Sin(Time.time * floatSpeedY) * floatAmplitudeY;
-        float angleZ = Mathf.Sin(Time.time * swaySpeed) * swayAngle;
+        transform.localScale = Vector3.one * displayScale;
+    }
 
-        transform.localPosition = startLocalPos + new Vector3(0f, offsetY, 0f);
-        transform.localRotation = startLocalRot * Quaternion.Euler(0f, 0f, angleZ);
+    // 如果你在代码里生成物体，也可以手动调用
+    public void SetScale(float scale)
+    {
+        displayScale = scale;
+        ApplyScale();
     }
 }
