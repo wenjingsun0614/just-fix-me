@@ -18627,7 +18627,7 @@ MonoBehaviour:
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
-  isCorrectItem: 1
+  isCorrectItem: 0
   dropZoneFX: {fileID: 198785788}
   bubbleCenter: {fileID: 627905886}
   patientAttachPoint: {fileID: 0}
@@ -18808,7 +18808,7 @@ MonoBehaviour:
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
-  isCorrectItem: 0
+  isCorrectItem: 1
   dropZoneFX: {fileID: 198785788}
   bubbleCenter: {fileID: 627905886}
   patientAttachPoint: {fileID: 0}
