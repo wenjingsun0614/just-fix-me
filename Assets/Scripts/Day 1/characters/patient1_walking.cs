@@ -20,7 +20,7 @@ public class PatientEntranceOnce : MonoBehaviour
     [Header("Playback")]
     public bool playOnStart = true;
 
-    private static bool playedThisRun = false;
+    private bool playedThisRun = false;
     private Coroutine co;
 
     void Awake()

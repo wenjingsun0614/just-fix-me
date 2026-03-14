@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 305626863}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2516,6 +2516,7 @@ GameObject:
   - component: {fileID: 264284825}
   - component: {fileID: 264284829}
   - component: {fileID: 264284828}
+  - component: {fileID: 264284830}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -2642,6 +2643,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &264284830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264284824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  snapBackTime: 0.18
+  dragSortingBoost: 50
+  dropZoneCollider: {fileID: 0}
+  isCorrectItem: 0
+  dropZoneFX: {fileID: 0}
+  bubbleCenter: {fileID: 0}
+  patientAttachPoint: {fileID: 0}
+  snapToCenterTime: 0.1
+  popScale: 1.15
+  popTime: 0.08
+  returnTime: 0.1
+  fadeOutTime: 0.12
+  fadeInTime: 0.18
+  gameManager: {fileID: 0}
+  sideBarUI: {fileID: 0}
+  sideBarIndex: 0
+  reappearFadeTime: 0.18
 --- !u!1 &288895404
 GameObject:
   m_ObjectHideFlags: 0
@@ -6146,7 +6176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PausePanelUI
   panelGroup: {fileID: 793888648}
   sceneFade: {fileID: 602992300}
-  currentLevelSceneName: day3_clinic
+  currentLevelSceneName: day6_clinic
   mainMenuSceneName: main_menu
   volumeSlider: {fileID: 185231533}
   brightnessSlider: {fileID: 204950459}
