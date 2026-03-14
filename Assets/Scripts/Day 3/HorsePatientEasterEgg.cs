@@ -19,6 +19,7 @@ public class HorsePatientEasterEgg : MonoBehaviour
 
     [Header("Doctor Reaction")]
     public GameObject doctorQuestionBubble;
+    public CanvasGroup doctorQuestionCanvasGroup;
     public float questionBubbleDuration = 0.8f;
 
     public GameObject doctorReactionBubble;
@@ -33,6 +34,11 @@ public class HorsePatientEasterEgg : MonoBehaviour
     public float typeSpeed = 0.03f;
     public float delayBetweenLines = 0.15f;
 
+    [Header("Question Pop FX")]
+    public float questionPopDuration = 0.18f;
+    public Vector3 questionStartScale = new Vector3(0.7f, 0.7f, 1f);
+    public Vector3 questionOvershootScale = new Vector3(1.12f, 1.12f, 1f);
+
     [Header("Pennant Visual")]
     public SpriteRenderer pennantSpriteRenderer;
     public Sprite pennantNormalSprite;
@@ -42,25 +48,32 @@ public class HorsePatientEasterEgg : MonoBehaviour
     public GameObject ferrariFlashFX;
     public Transform ferrariFlashSpawnPoint;
 
+    [Header("Special Result")]
+    public string specialResultName = "FerrariHorse";
+
     [Header("Optional Global Lock")]
     public bool disableAllDraggingAfterEasterEgg = true;
 
+    [Header("Optional GameManager")]
+    public GameManager_JFM gameManager;
+
     private Camera cam;
     private Collider2D col;
+    private SpriteRenderer horseSpriteRenderer;
+    private Animator horseAnimator;
+
     private Vector3 dragOffset;
     private Vector3 homePos;
-    private DraggableItem2D draggableItem;
 
     private bool isDragging = false;
     private bool easterEggTriggered = false;
-    private bool isTyping = false;
-    private Coroutine typingCoroutine;
 
     void Awake()
     {
         cam = Camera.main;
         col = GetComponent<Collider2D>();
-        draggableItem = GetComponent<DraggableItem2D>();
+        horseSpriteRenderer = GetComponent<SpriteRenderer>();
+        horseAnimator = GetComponent<Animator>();
     }
 
     void Start()
@@ -79,8 +92,13 @@ public class HorsePatientEasterEgg : MonoBehaviour
         if (continueButton != null)
             continueButton.SetActive(false);
 
+        if (doctorQuestionCanvasGroup != null)
+            doctorQuestionCanvasGroup.alpha = 0f;
+
         if (pennantSpriteRenderer != null && pennantNormalSprite != null)
             pennantSpriteRenderer.sprite = pennantNormalSprite;
+
+        draggingEnabled = false;
     }
 
     void Update()
@@ -96,7 +114,7 @@ public class HorsePatientEasterEgg : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 p = new Vector2(world.x, world.y);
-            if (col.OverlapPoint(p))
+            if (col.enabled && col.OverlapPoint(p))
             {
                 isDragging = true;
                 dragOffset = transform.position - world;
@@ -126,7 +144,7 @@ public class HorsePatientEasterEgg : MonoBehaviour
             }
             else
             {
-                StopCoroutineSafe(ref typingCoroutine);
+                StopAllCoroutines();
                 StartCoroutine(SnapBackRoutine());
             }
         }
@@ -137,10 +155,10 @@ public class HorsePatientEasterEgg : MonoBehaviour
         homePos = transform.position;
         draggingEnabled = true;
 
-        if (draggableItem != null)
-            draggableItem.SetHomePosition(transform.position);
+        if (col != null)
+            col.enabled = true;
 
-        Debug.Log("Horse drag enabled at final pos: " + transform.position);
+        enabled = true;
     }
 
     public void DisableDragging()
@@ -158,31 +176,41 @@ public class HorsePatientEasterEgg : MonoBehaviour
         isDragging = false;
 
         if (disableAllDraggingAfterEasterEgg)
-        {
             GameFlow_JFM.LockDrag();
-        }
 
-        // 关掉正常 puzzle 路线
         if (speechBubbleZone != null)
             speechBubbleZone.SetActive(false);
 
-        // 锦旗换图
         if (pennantSpriteRenderer != null && pennantHorseSprite != null)
             pennantSpriteRenderer.sprite = pennantHorseSprite;
 
-        // 锦旗位置闪光
-        if (ferrariFlashFX != null)
-        {
-            Vector3 fxPos = ferrariFlashSpawnPoint != null ? ferrariFlashSpawnPoint.position : transform.position;
-            Instantiate(ferrariFlashFX, fxPos, Quaternion.identity);
-        }
+        PlayFerrariFlash();
 
-        // 马消失，表现为“被吸进法拉利彩蛋里了”
-        gameObject.SetActive(false);
+        if (horseSpriteRenderer != null)
+            horseSpriteRenderer.enabled = false;
 
-        // 弹出法拉利视窗
+        if (col != null)
+            col.enabled = false;
+
+        if (horseAnimator != null)
+            horseAnimator.enabled = false;
+
         if (ferrariPopupPanel != null)
             ferrariPopupPanel.SetActive(true);
+    }
+
+    void PlayFerrariFlash()
+    {
+        if (ferrariFlashFX == null) return;
+
+        Vector3 fxPos = ferrariFlashSpawnPoint != null ? ferrariFlashSpawnPoint.position : transform.position;
+        GameObject fx = Instantiate(ferrariFlashFX, fxPos, Quaternion.identity);
+
+        ParticleSystem[] systems = fx.GetComponentsInChildren<ParticleSystem>(true);
+        foreach (var ps in systems)
+        {
+            ps.Play();
+        }
     }
 
     public void CloseFerrariPopup()
@@ -196,20 +224,16 @@ public class HorsePatientEasterEgg : MonoBehaviour
 
     IEnumerator DoctorReactionSequence()
     {
-        // 1. 先冒问号
-        if (doctorQuestionBubble != null)
-            doctorQuestionBubble.SetActive(true);
+        yield return StartCoroutine(ShowQuestionBubblePop());
 
         yield return new WaitForSeconds(questionBubbleDuration);
 
         if (doctorQuestionBubble != null)
             doctorQuestionBubble.SetActive(false);
 
-        // 2. 再显示正式对话气泡
         if (doctorReactionBubble != null)
             doctorReactionBubble.SetActive(true);
 
-        // 第一行
         if (doctorReactionText != null)
             yield return StartCoroutine(TypeText(doctorReactionText, doctorLine1));
 
@@ -217,26 +241,76 @@ public class HorsePatientEasterEgg : MonoBehaviour
 
         yield return new WaitForSeconds(delayBetweenLines);
 
-        // 第二行
         if (doctorReactionText != null)
             yield return StartCoroutine(TypeText(doctorReactionText, doctorLine2));
 
         yield return StartCoroutine(WaitForAdvanceInput());
 
-        // 3. 气泡消失
         if (doctorReactionBubble != null)
             doctorReactionBubble.SetActive(false);
 
-        // 4. 只给继续下一关
+        // 关键：激活 Ferrari override，覆盖普通选择逻辑
+        if (gameManager != null)
+            gameManager.ActivateFerrariOverride(specialResultName);
+
         if (continueButton != null)
             continueButton.SetActive(true);
+    }
+
+    IEnumerator ShowQuestionBubblePop()
+    {
+        if (doctorQuestionBubble == null) yield break;
+
+        doctorQuestionBubble.SetActive(true);
+
+        RectTransform rt = doctorQuestionBubble.GetComponent<RectTransform>();
+        if (rt != null)
+            rt.localScale = questionStartScale;
+
+        if (doctorQuestionCanvasGroup != null)
+            doctorQuestionCanvasGroup.alpha = 0f;
+
+        float t = 0f;
+        while (t < questionPopDuration)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / questionPopDuration);
+            float e = 1f - Mathf.Pow(1f - p, 3f);
+
+            if (doctorQuestionCanvasGroup != null)
+                doctorQuestionCanvasGroup.alpha = Mathf.Lerp(0f, 1f, e);
+
+            if (rt != null)
+            {
+                Vector3 scale;
+                if (p < 0.7f)
+                {
+                    float sub = p / 0.7f;
+                    scale = Vector3.Lerp(questionStartScale, questionOvershootScale, sub);
+                }
+                else
+                {
+                    float sub = (p - 0.7f) / 0.3f;
+                    scale = Vector3.Lerp(questionOvershootScale, Vector3.one, sub);
+                }
+
+                rt.localScale = scale;
+            }
+
+            yield return null;
+        }
+
+        if (doctorQuestionCanvasGroup != null)
+            doctorQuestionCanvasGroup.alpha = 1f;
+
+        if (rt != null)
+            rt.localScale = Vector3.one;
     }
 
     IEnumerator TypeText(TMP_Text targetText, string fullText)
     {
         if (targetText == null) yield break;
 
-        isTyping = true;
         targetText.text = "";
 
         foreach (char c in fullText)
@@ -244,9 +318,6 @@ public class HorsePatientEasterEgg : MonoBehaviour
             targetText.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
-
-        isTyping = false;
-        typingCoroutine = null;
     }
 
     IEnumerator WaitForAdvanceInput()
@@ -276,14 +347,5 @@ public class HorsePatientEasterEgg : MonoBehaviour
         }
 
         transform.position = to;
-    }
-
-    void StopCoroutineSafe(ref Coroutine routine)
-    {
-        if (routine != null)
-        {
-            StopCoroutine(routine);
-            routine = null;
-        }
     }
 }

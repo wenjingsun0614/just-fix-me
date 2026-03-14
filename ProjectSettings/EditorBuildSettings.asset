@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/day5_clinic.unity
     guid: 35ee7feb81612f54bbf5c2daf32bbd50
   - enabled: 1
+    path: Assets/Scenes/day6_clinic.unity
+    guid: e7eb69e70fbee9e42be810a50b8868d4
+  - enabled: 1
     path: Assets/Scenes/news_scenes.unity
     guid: 17cc6ee34eb6aaa47be9fc47b701144a
   m_configObjects:

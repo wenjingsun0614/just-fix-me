@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager_JFM : MonoBehaviour
 {
@@ -12,36 +11,27 @@ public class GameManager_JFM : MonoBehaviour
     public SideBarUI sideBarUI;
 
     [Header("Next Arrow UI")]
-    public CanvasGroup nextArrow;        // 右下角箭头按钮上的 CanvasGroup
+    public CanvasGroup nextArrow;
     public float arrowFadeTime = 0.25f;
 
     [Header("Result UI")]
-    public CanvasGroup resultPanel;      // 过渡/结算界面 Panel 的 CanvasGroup
+    public CanvasGroup resultPanel;
     public float resultFadeTime = 0.25f;
 
     [Header("Item Selection UI")]
-    public ItemSelectionPanelUI itemSelectionPanel;  // 最终物品选择面板
+    public ItemSelectionPanelUI itemSelectionPanel;
 
     [Header("Patient Attachment")]
-    public Transform defaultAttachPoint; // 如果物品没填自己的挂点，就用这个
+    public Transform defaultAttachPoint;
     public bool replaceOnPatient = true;
 
-    // 记录：哪些正确物品已经“解锁过”
     private HashSet<int> unlockedIds = new HashSet<int>();
-
-    // 记录：已解锁的正确物品（给最终选择面板用）
     private List<DraggableItem2D> unlockedItems = new List<DraggableItem2D>();
 
-    // 病人身上当前显示的那个“副本”
     private GameObject currentPlaced;
-
-    // 当前装备在病人身上的物品（用于替换时让上一个回架子）
     private DraggableItem2D currentEquippedItem;
-
-    // 最终确认选择的物品
     private DraggableItem2D finalSelectedItem;
 
-    // 过关状态
     private bool canFinish = false;
     private bool resultShown = false;
     private Coroutine arrowCo;
@@ -50,7 +40,9 @@ public class GameManager_JFM : MonoBehaviour
     public SceneFade sceneFade;
     public string nextSceneName = "day2_clinic";
 
-
+    [Header("Special Override")]
+    public bool ferrariOverrideActive = false;
+    public string ferrariOverrideResultName = "FerrariHorse";
 
     void Start()
     {
@@ -58,9 +50,7 @@ public class GameManager_JFM : MonoBehaviour
         HideCanvasGroupImmediate(resultPanel);
     }
 
-    /// <summary>
-    /// 注册正确物品：首次解锁时加入侧边栏和已解锁列表
-    /// </summary>
+    // 原本普通拖拽物品用这个
     public bool RegisterCorrectItem(DraggableItem2D item)
     {
         if (item == null) return false;
@@ -70,50 +60,69 @@ public class GameManager_JFM : MonoBehaviour
 
         if (isNew)
         {
-            // ✅ 记进已解锁物品列表（给最终选择面板使用）
             unlockedItems.Add(item);
 
-            // ✅ 默认用物体自己的 sprite
             Sprite iconSprite = item.GetSprite();
 
-            // ✅ 如果这个物体有 OrganizerSpecialItem，就用它指定的侧边栏 icon
             OrganizerSpecialItem special = item.GetComponent<OrganizerSpecialItem>();
             if (special != null)
             {
                 iconSprite = special.GetSideBarIcon();
             }
 
-            // ✅ 解锁侧边栏下一个槽位
             if (sideBarUI != null)
             {
                 sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
             }
         }
 
-        // ✅ 解锁任意一个就可以出现下一步箭头
         if (unlockedIds.Count >= 1)
             ShowNextArrow();
 
         return isNew;
     }
 
-    /// <summary>
-    /// 在病人身上显示/替换物品展示副本
-    /// 同时实现：
-    /// - 当前物品从架子消失
-    /// - 上一个装备的物品回到架子原位并可再次拖
-    /// </summary>
+    // 给 Day6 这种“不是拖拽成功，但想当作一个已解锁物品”用
+    public bool RegisterSpecialItem(DraggableItem2D item, bool showNextArrow = true)
+    {
+        if (item == null) return false;
+
+        int id = item.GetInstanceID();
+        bool isNew = unlockedIds.Add(id);
+
+        if (isNew)
+        {
+            unlockedItems.Add(item);
+
+            Sprite iconSprite = item.GetSprite();
+
+            OrganizerSpecialItem special = item.GetComponent<OrganizerSpecialItem>();
+            if (special != null)
+            {
+                iconSprite = special.GetSideBarIcon();
+            }
+
+            if (sideBarUI != null)
+            {
+                sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
+            }
+        }
+
+        if (showNextArrow && unlockedIds.Count >= 1)
+            ForceShowNextArrow();
+
+        return isNew;
+    }
+
     public void ShowOnPatient(DraggableItem2D item)
     {
         if (item == null) return;
 
-        // 替换：先让上一个装备回架子
         if (replaceOnPatient && currentEquippedItem != null && currentEquippedItem != item)
         {
             currentEquippedItem.ShowInWorldAtHome();
         }
 
-        // 当前装备：从架子消失
         item.HideInWorld();
         currentEquippedItem = item;
 
@@ -128,7 +137,6 @@ public class GameManager_JFM : MonoBehaviour
 
         GameObject placed = null;
 
-        // ✅ 如果这是 Organizer 这种特殊物品，并且设置了展示 prefab
         OrganizerSpecialItem special = item.GetComponent<OrganizerSpecialItem>();
         if (special != null && special.GetPatientDisplayPrefab() != null)
         {
@@ -137,7 +145,6 @@ public class GameManager_JFM : MonoBehaviour
         }
         else
         {
-            // 默认逻辑：普通物品仍然只复制 root sprite
             placed = new GameObject(item.name + "_Placed");
             placed.transform.position = attach.position;
             placed.transform.rotation = attach.rotation;
@@ -152,9 +159,6 @@ public class GameManager_JFM : MonoBehaviour
         currentPlaced = placed;
     }
 
-    /// <summary>
-    /// 显示右下角下一步箭头
-    /// </summary>
     private void ShowNextArrow()
     {
         if (nextArrow == null) return;
@@ -166,13 +170,35 @@ public class GameManager_JFM : MonoBehaviour
         arrowCo = StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 1f, arrowFadeTime, true));
     }
 
-    /// <summary>
-    /// 点击右下角箭头：打开 ResultPanel
-    /// </summary>
+    public void ForceShowNextArrow()
+    {
+        if (nextArrow == null) return;
+
+        canFinish = true;
+        resultShown = false;
+
+        if (arrowCo != null) StopCoroutine(arrowCo);
+        arrowCo = StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 1f, arrowFadeTime, true));
+    }
+
+    public void ActivateFerrariOverride(string resultName = "FerrariHorse")
+    {
+        ferrariOverrideActive = true;
+        ferrariOverrideResultName = resultName;
+        ForceShowNextArrow();
+    }
+
     public void OnClickNextArrow()
     {
         if (!canFinish) return;
         if (resultShown) return;
+
+        // Ferrari 彩蛋模式：不再开 ResultPanel，直接结算进新闻
+        if (ferrariOverrideActive)
+        {
+            CompleteDayWithSpecialResult(ferrariOverrideResultName);
+            return;
+        }
 
         resultShown = true;
 
@@ -183,19 +209,20 @@ public class GameManager_JFM : MonoBehaviour
             StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 0f, 0.15f, false));
     }
 
-    /// <summary>
-    /// ResultPanel：继续探索
-    /// </summary>
     public void OnClickKeepExploring()
     {
         CloseResultPanel();
     }
 
-    /// <summary>
-    /// ResultPanel：进入下一天 → 打开物品选择面板
-    /// </summary>
     public void OnClickNextDay()
     {
+        // Ferrari 彩蛋模式：不再开 ItemSelectionPanel，直接结算进新闻
+        if (ferrariOverrideActive)
+        {
+            CompleteDayWithSpecialResult(ferrariOverrideResultName);
+            return;
+        }
+
         if (itemSelectionPanel == null)
         {
             Debug.LogWarning("ItemSelectionPanelUI is not assigned on GameManager_JFM.");
@@ -211,16 +238,12 @@ public class GameManager_JFM : MonoBehaviour
         itemSelectionPanel.Open(unlockedItems, this);
     }
 
-    /// <summary>
-    /// 最终确认物品后调用
-    /// </summary>
     public void SetFinalSelectedItem(DraggableItem2D item)
     {
         if (item == null) return;
 
         finalSelectedItem = item;
 
-        // 1) Record selected item by day
         if (currentDay == 1)
         {
             GameProgress_JFM.day1SelectedItemName = item.name;
@@ -249,8 +272,21 @@ public class GameManager_JFM : MonoBehaviour
             GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
             Debug.Log("Day 4 selected item: " + item.name);
         }
+        else if (currentDay == 5)
+        {
+            GameProgress_JFM.day5SelectedItemName = item.name;
+            GameProgress_JFM.currentNewsDay = 5;
+            GameProgress_JFM.nextSceneAfterNews = "day6_clinic";
+            Debug.Log("Day 5 selected item: " + item.name);
+        }
+        else if (currentDay == 6)
+        {
+            GameProgress_JFM.day6SelectedItemName = item.name;
+            GameProgress_JFM.currentNewsDay = 6;
+            GameProgress_JFM.nextSceneAfterNews = "day7_clinic";
+            Debug.Log("Day 6 selected item: " + item.name);
+        }
 
-        // 2) Always go to the shared NewsScene first
         if (sceneFade != null)
         {
             Time.timeScale = 1f;
@@ -262,9 +298,64 @@ public class GameManager_JFM : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 关掉 ResultPanel：继续探索
-    /// </summary>
+    public void CompleteDayWithSpecialResult(string resultName)
+    {
+        if (string.IsNullOrEmpty(resultName))
+        {
+            Debug.LogWarning("Special result name is empty.");
+            return;
+        }
+
+        if (currentDay == 1)
+        {
+            GameProgress_JFM.day1SelectedItemName = resultName;
+            GameProgress_JFM.currentNewsDay = 1;
+            GameProgress_JFM.nextSceneAfterNews = "day2_clinic";
+        }
+        else if (currentDay == 2)
+        {
+            GameProgress_JFM.day2SelectedItemName = resultName;
+            GameProgress_JFM.currentNewsDay = 2;
+            GameProgress_JFM.nextSceneAfterNews = "day3_clinic";
+        }
+        else if (currentDay == 3)
+        {
+            GameProgress_JFM.day3SelectedItemName = resultName;
+            GameProgress_JFM.currentNewsDay = 3;
+            GameProgress_JFM.nextSceneAfterNews = "day4_clinic";
+        }
+        else if (currentDay == 4)
+        {
+            GameProgress_JFM.day4SelectedItemName = resultName;
+            GameProgress_JFM.currentNewsDay = 4;
+            GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
+        }
+        else if (currentDay == 5)
+        {
+            GameProgress_JFM.day5SelectedItemName = resultName;
+            GameProgress_JFM.currentNewsDay = 5;
+            GameProgress_JFM.nextSceneAfterNews = "day6_clinic";
+        }
+        else if (currentDay == 6)
+        {
+            GameProgress_JFM.day6SelectedItemName = resultName;
+            GameProgress_JFM.currentNewsDay = 6;
+            GameProgress_JFM.nextSceneAfterNews = "day7_clinic";
+        }
+
+        Debug.Log("Special result recorded: " + resultName);
+
+        if (sceneFade != null)
+        {
+            Time.timeScale = 1f;
+            sceneFade.FadeToScene("news_scenes");
+        }
+        else
+        {
+            Debug.LogWarning("SceneFade is missing on GameManager_JFM.");
+        }
+    }
+
     public void CloseResultPanel()
     {
         if (resultPanel != null)
@@ -275,8 +366,6 @@ public class GameManager_JFM : MonoBehaviour
         if (nextArrow != null && canFinish)
             StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 1f, 0.15f, true));
     }
-
-    // ----------------- Helpers -----------------
 
     private void HideCanvasGroupImmediate(CanvasGroup g)
     {

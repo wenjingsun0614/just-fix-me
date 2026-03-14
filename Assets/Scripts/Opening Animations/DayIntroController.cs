@@ -37,7 +37,7 @@ public class DayIntroController : MonoBehaviour
     public HorsePatientEasterEgg horsePatientEasterEgg;
 
     [Header("Disable Interaction During Intro")]
-    [Tooltip("Drag objects here. They stay visible, but their Button / Collider / Collider2D will be disabled during intro.")]
+    [Tooltip("只拖环境互动对象，比如证书、左上角设置按钮。不要把马对象拖进来。")]
     public GameObject[] interactionObjects;
 
     [Header("Intro Timing")]
@@ -79,7 +79,7 @@ public class DayIntroController : MonoBehaviour
         // 开场默认锁拖拽
         GameFlow_JFM.LockDrag();
 
-        // 马病人彩蛋拖拽也默认关闭
+        // 马病人彩蛋拖拽默认关闭
         if (horsePatientEasterEgg != null)
             horsePatientEasterEgg.DisableDragging();
 
@@ -349,7 +349,7 @@ public class DayIntroController : MonoBehaviour
         // 对话结束后，才允许全局拖拽
         GameFlow_JFM.UnlockDrag();
 
-        // 对话结束后，马病人才开始可拖
+        // 对话结束后，马病人才开始可拖，并把当前位置记成 home
         if (horsePatientEasterEgg != null)
             horsePatientEasterEgg.EnableDraggingAtCurrentPosition();
     }
@@ -373,13 +373,6 @@ public class DayIntroController : MonoBehaviour
             Collider2D col2 = obj.GetComponent<Collider2D>();
             if (col2 != null)
                 col2.enabled = false;
-
-            MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-            foreach (MonoBehaviour script in scripts)
-            {
-                if (script != null && script != this)
-                    script.enabled = false;
-            }
         }
     }
 
@@ -402,13 +395,6 @@ public class DayIntroController : MonoBehaviour
             Collider2D col2 = obj.GetComponent<Collider2D>();
             if (col2 != null)
                 col2.enabled = true;
-
-            MonoBehaviour[] scripts = obj.GetComponents<MonoBehaviour>();
-            foreach (MonoBehaviour script in scripts)
-            {
-                if (script != null && script != this)
-                    script.enabled = true;
-            }
         }
     }
 }

@@ -97,6 +97,14 @@ public class NewsSceneController : MonoBehaviour
                 SetupDay4News();
                 break;
 
+            case 5:
+                SetupDay5News();
+                break;
+
+            case 6:
+                SetupDay6News();
+                break;
+
             default:
                 SetupFallbackNews();
                 break;
@@ -158,6 +166,54 @@ public class NewsSceneController : MonoBehaviour
 
         currentLines.Add("Experts remain puzzled by the clinic's methods, but outcomes are difficult to ignore.");
         currentLines.Add("Residents are already speculating about what tomorrow may bring.");
+    }
+
+    void SetupDay5News()
+    {
+        string item = GameProgress_JFM.day5SelectedItemName;
+
+        currentLines.Add("Tonight's clinic report: another unusual case has ended with unexpectedly positive results.");
+
+        if (!string.IsNullOrEmpty(item))
+            currentLines.Add("Reporters say today's most talked-about treatment involved: " + item + ".");
+
+        currentLines.Add("Residents remain confused, amused, and increasingly impressed by the clinic's success rate.");
+        currentLines.Add("With each passing day, the clinic seems to grow stranger—and somehow more effective.");
+    }
+
+    void SetupDay6News()
+    {
+        string item = GameProgress_JFM.day6SelectedItemName;
+
+        currentLines.Add("Late-night bulletin: today's clinic case has sparked a fresh wave of bizarre rumors.");
+
+        if (string.IsNullOrEmpty(item))
+        {
+            currentLines.Add("Records from the clinic were incomplete, leaving the public with more questions than answers.");
+            currentLines.Add("Even so, witnesses insist the patient left in much better condition than before.");
+            currentLines.Add("Tomorrow's developments are being watched closely.");
+            return;
+        }
+
+        if (item == "LowBrightness")
+        {
+            currentLines.Add("According to clinic sources, the breakthrough came only after the room was dimmed to an unusually low brightness.");
+            currentLines.Add("Experts are divided on whether this was a treatment method, a visual strategy, or simply an alarming electricity bill decision.");
+            currentLines.Add("Despite the confusion, the patient reportedly responded well, and the clinic has refused to comment further.");
+            return;
+        }
+
+        if (item == "FerrariHorse")
+        {
+            currentLines.Add("Witnesses describe a highly questionable sequence involving a horse, a Ferrari-themed display, and a complete breakdown of professional procedure.");
+            currentLines.Add("Authorities have declined to explain how the case was still officially recorded as a success.");
+            currentLines.Add("Residents remain unsettled, though some have called it the clinic's boldest treatment yet.");
+            return;
+        }
+
+        currentLines.Add("Clinic records suggest the key item involved was: " + item + ".");
+        currentLines.Add("Observers once again described the method as deeply unusual, but difficult to argue with.");
+        currentLines.Add("As the clinic continues to attract attention, tomorrow's case is already the subject of speculation.");
     }
 
     void SetupFallbackNews()

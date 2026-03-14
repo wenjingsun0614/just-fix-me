@@ -5,6 +5,8 @@ public static class GameProgress_JFM
     public static string day2SelectedItemName;
     public static string day3SelectedItemName;
     public static string day4SelectedItemName;
+    public static string day5SelectedItemName;
+    public static string day6SelectedItemName;
 
     // Which day's news should NewsScene display?
     public static int currentNewsDay = 0;
@@ -19,6 +21,8 @@ public static class GameProgress_JFM
         day2SelectedItemName = "";
         day3SelectedItemName = "";
         day4SelectedItemName = "";
+        day5SelectedItemName = "";
+        day6SelectedItemName = "";
 
         currentNewsDay = 0;
         nextSceneAfterNews = "";
