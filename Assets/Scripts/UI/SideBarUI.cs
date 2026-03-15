@@ -189,6 +189,7 @@ public class SideBarUI : MonoBehaviour
             yield return null;
         }
 
+
         if (s.bgOn != null) s.bgOn.rectTransform.localScale = bgScale;
         if (s.itemIcon != null) s.itemIcon.rectTransform.localScale = itemScale;
     }

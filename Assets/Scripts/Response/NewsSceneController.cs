@@ -116,10 +116,6 @@ public class NewsSceneController : MonoBehaviour
         string item = GameProgress_JFM.day1SelectedItemName;
 
         currentLines.Add("Tonight's special report: a curious treatment case has drawn local attention.");
-
-        if (!string.IsNullOrEmpty(item))
-            currentLines.Add("Clinic records suggest the key item involved was: " + item + ".");
-
         currentLines.Add("Witnesses describe the procedure as unusual, but surprisingly effective.");
         currentLines.Add("The mysterious clinic is expected to reopen tomorrow.");
     }
@@ -131,14 +127,27 @@ public class NewsSceneController : MonoBehaviour
 
         currentLines.Add("Tonight's special report: unusual treatment methods continue to draw public attention.");
 
-        if (!string.IsNullOrEmpty(day1))
-            currentLines.Add("Earlier reports linked the first incident to: " + day1 + ".");
-
-        if (!string.IsNullOrEmpty(day2))
-            currentLines.Add("A second case has now been associated with: " + day2 + ".");
-
-        currentLines.Add("Public opinion remains divided as more cases emerge.");
-        currentLines.Add("Authorities are expected to investigate further developments tomorrow.");
+        if (day1 == "cone")
+        {
+            currentLines.Add("In a surprising turn at today’s ceremony, ");
+            currentLines.Add("the hero Mr. Rhino appeared with an ice cream cone as a horn decoration.");
+            currentLines.Add("Mr. Fox vowed to pay for the Rhino family’s ice cream supply forever.");
+            currentLines.Add("We have witnessed the sweetest victory.");
+        }
+       else if (day1 == "BirthdayCap")
+        {
+            currentLines.Add("Today’s ceremony turned into a special birthday celebration ");
+            currentLines.Add("as Mr. Rhino appeared wearing a birthday hat.");
+            currentLines.Add("Mr. Fox considered today as the symbol of his own rebirth day.");
+            currentLines.Add("Mr. Fox shed tears of gratitude, triggering a massive sobbing from a Crocodile guest.");
+        }
+        else if (day1 == "Barrier")
+        {
+            currentLines.Add("At the ceremony, Mr. Rhino appeared with a road cone marked STAFF,");
+            currentLines.Add("announcing his plan to become a lifeguard to help those in need. ");
+            currentLines.Add("Inspired by this idea, Mr. Fox donated a massive fund to establish and operate a new rescue team.");
+         }  
+       
     }
 
     void SetupDay3News()
