@@ -5191,7 +5191,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.435, y: 0.593, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 734864532}
@@ -5211,7 +5211,7 @@ MonoBehaviour:
   area: {fileID: 590195941}
   cloudPrefab: {fileID: 8801188103923095867, guid: 1b29233dde4c6b945be17b176d431c53, type: 3}
   cloudCount: 2
-  scaleRange: {x: 0.6, y: 1.1}
+  scaleRange: {x: 1.2, y: 2.2}
   horizontalAmplitudeRange: {x: 0.15, y: 0.45}
   horizontalSpeedRange: {x: 0.25, y: 0.7}
   floatAmplitudeRange: {x: 0.02, y: 0.05}
