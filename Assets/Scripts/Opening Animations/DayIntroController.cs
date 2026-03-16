@@ -36,6 +36,9 @@ public class DayIntroController : MonoBehaviour
     [Header("Day1 Tutorial Hint (optional)")]
     public Day1HoverTutorialHint tutorialHint;
 
+    [Header("Final Day Fix Button (optional)")]
+    public ShowFixButtonAfterIntro fixButtonController;
+
     [Header("Special Character")]
     public HorsePatientEasterEgg horsePatientEasterEgg;
 
@@ -119,6 +122,7 @@ public class DayIntroController : MonoBehaviour
 
         currentLineIndex = 0;
         dialogueActive = true;
+        currentSpeaker = null;
 
         if (transitionCoroutine != null)
             StopCoroutine(transitionCoroutine);
@@ -208,16 +212,22 @@ public class DayIntroController : MonoBehaviour
     {
         if (newSpeaker == Speaker.Patient)
         {
-            yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 1f, 0f));
-            if (doctorBubble != null) doctorBubble.SetActive(false);
+            if (doctorBubble != null && (doctorBubbleImage != null || doctorText != null))
+            {
+                yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 1f, 0f));
+                doctorBubble.SetActive(false);
+            }
 
             if (patientBubble != null) patientBubble.SetActive(true);
             yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 0f, 1f));
         }
         else
         {
-            yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 1f, 0f));
-            if (patientBubble != null) patientBubble.SetActive(false);
+            if (patientBubble != null && (patientBubbleImage != null || patientText != null))
+            {
+                yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 1f, 0f));
+                patientBubble.SetActive(false);
+            }
 
             if (doctorBubble != null) doctorBubble.SetActive(true);
             yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 0f, 1f));
@@ -325,13 +335,19 @@ public class DayIntroController : MonoBehaviour
     {
         if (currentSpeaker == Speaker.Patient)
         {
-            yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 1f, 0f));
-            if (patientBubble != null) patientBubble.SetActive(false);
+            if (patientBubble != null && (patientBubbleImage != null || patientText != null))
+            {
+                yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 1f, 0f));
+                patientBubble.SetActive(false);
+            }
         }
         else if (currentSpeaker == Speaker.Doctor)
         {
-            yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 1f, 0f));
-            if (doctorBubble != null) doctorBubble.SetActive(false);
+            if (doctorBubble != null && (doctorBubbleImage != null || doctorText != null))
+            {
+                yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 1f, 0f));
+                doctorBubble.SetActive(false);
+            }
         }
 
         FinishIntro();
@@ -355,6 +371,10 @@ public class DayIntroController : MonoBehaviour
         // 对话结束后启用 Day1 hover 教程提示
         if (tutorialHint != null)
             tutorialHint.EnableTutorial();
+
+        // 对话结束后显示 Day8 的 FIX ME 按钮
+        if (fixButtonController != null)
+            fixButtonController.ShowFixButton();
 
         // 对话结束后，马病人才开始可拖，并把当前位置记成 home
         if (horsePatientEasterEgg != null)
