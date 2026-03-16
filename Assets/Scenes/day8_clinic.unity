@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46b25cf56388ab4d85b4cb93ce17f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager_JFM
-  currentDay: 7
+  currentDay: 8
   sideBarUI: {fileID: 0}
   nextArrow: {fileID: 0}
   arrowFadeTime: 0.2
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   defaultAttachPoint: {fileID: 0}
   replaceOnPatient: 1
   sceneFade: {fileID: 602992300}
-  nextSceneName: day7_clinic
+  nextSceneName: 
   ferrariOverrideActive: 0
   ferrariOverrideResultName: 
 --- !u!4 &705920271

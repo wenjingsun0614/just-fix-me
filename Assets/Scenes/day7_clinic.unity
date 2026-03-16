@@ -1729,6 +1729,7 @@ MonoBehaviour:
   speechBubbleZone: {fileID: 198785783}
   sideBar: {fileID: 875253074}
   tutorialHint: {fileID: 0}
+  fixButtonController: {fileID: 0}
   horsePatientEasterEgg: {fileID: 0}
   interactionObjects:
   - {fileID: 863688921}
@@ -11077,7 +11078,7 @@ MonoBehaviour:
   defaultAttachPoint: {fileID: 0}
   replaceOnPatient: 1
   sceneFade: {fileID: 602992300}
-  nextSceneName: day7_clinic
+  nextSceneName: day8_clinic
   ferrariOverrideActive: 0
   ferrariOverrideResultName: 
 --- !u!4 &705920271
