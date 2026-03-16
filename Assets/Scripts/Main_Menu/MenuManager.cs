@@ -19,6 +19,30 @@ public class MenuManager : MonoBehaviour
         sceneFade.FadeToScene("day2_clinic");
     }
 
+    public void StartDAY3()
+    {
+        sceneFade.FadeToScene("day3_clinic");
+    }
+
+    public void StartDAY4()
+    {
+        sceneFade.FadeToScene("day4_clinic");
+    }
+
+    public void StartDAY5()
+    {
+        sceneFade.FadeToScene("day5_clinic");
+    }
+
+    public void StartDAY6()
+    {
+        sceneFade.FadeToScene("day6_clinic");
+    }
+
+    public void StartDAY7()
+    {
+        sceneFade.FadeToScene("day7_clinic");
+    }
     public void ContinueGame()
     {
         Debug.Log("Continue clicked (not implemented yet)");
