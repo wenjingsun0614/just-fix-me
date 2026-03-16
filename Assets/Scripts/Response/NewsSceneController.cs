@@ -115,9 +115,10 @@ public class NewsSceneController : MonoBehaviour
     {
         string item = GameProgress_JFM.day1SelectedItemName;
 
-        currentLines.Add("Tonight's special report: a curious treatment case has drawn local attention.");
-        currentLines.Add("Witnesses describe the procedure as unusual, but surprisingly effective.");
-        currentLines.Add("The mysterious clinic is expected to reopen tomorrow.");
+        currentLines.Add("With transportation expected to be disrupted for some time, ");
+        currentLines.Add("Dr. Random’s clinic is currently the only one open in our forest.");
+        currentLines.Add("Whether you are struggling with physical health issues or psychological distress, ");
+        currentLines.Add("turning to Dr. Random is your best option.");
     }
 
     void SetupDay2News()
