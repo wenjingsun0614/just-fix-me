@@ -410,6 +410,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!1 &53604796
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,6 +5941,7 @@ MonoBehaviour:
   doctorText: {fileID: 1946198148}
   speechBubbleZone: {fileID: 198785783}
   sideBar: {fileID: 875253074}
+  tutorialHint: {fileID: 0}
   horsePatientEasterEgg: {fileID: 0}
   interactionObjects:
   - {fileID: 863688921}
@@ -7078,6 +7080,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!1 &288895404
 GameObject:
   m_ObjectHideFlags: 0
@@ -8043,6 +8046,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &419434322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9402,6 +9406,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &559300941
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9856,6 +9861,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &604911792
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10331,7 +10337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10896,6 +10902,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &847476473
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11773,6 +11780,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &916092810
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11977,6 +11985,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &918980797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12518,7 +12527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13500,6 +13509,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &1207847227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18503,6 +18513,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &1214033609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18818,6 +18829,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &1237957583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19805,6 +19817,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &1277549233
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20043,7 +20056,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -20417,6 +20430,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &1332759410
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27798,6 +27812,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &1832238470
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28505,7 +28520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New T
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -29382,6 +29397,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &2022296932
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29686,6 +29702,7 @@ MonoBehaviour:
   sideBarUI: {fileID: 0}
   sideBarIndex: 0
   reappearFadeTime: 0.18
+  tutorialHint: {fileID: 0}
 --- !u!61 &2144651801
 BoxCollider2D:
   m_ObjectHideFlags: 0
