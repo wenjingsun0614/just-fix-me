@@ -33,6 +33,9 @@ public class DayIntroController : MonoBehaviour
     public GameObject speechBubbleZone;
     public GameObject sideBar;
 
+    [Header("Day1 Tutorial Hint (optional)")]
+    public Day1HoverTutorialHint tutorialHint;
+
     [Header("Special Character")]
     public HorsePatientEasterEgg horsePatientEasterEgg;
 
@@ -348,6 +351,10 @@ public class DayIntroController : MonoBehaviour
 
         // 对话结束后，才允许全局拖拽
         GameFlow_JFM.UnlockDrag();
+
+        // 对话结束后启用 Day1 hover 教程提示
+        if (tutorialHint != null)
+            tutorialHint.EnableTutorial();
 
         // 对话结束后，马病人才开始可拖，并把当前位置记成 home
         if (horsePatientEasterEgg != null)
