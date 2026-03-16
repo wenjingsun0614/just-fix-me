@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: c39ebf7779443a54ea7dec41600631a9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 906668427266282361
+    second: crocodile_idle_0
+  - first:
+      213: 7604008582560928389
+    second: crocodile_idle_1
+  - first:
+      213: 3393717464234513350
+    second: crocodile_idle_2
+  - first:
+      213: -1976105039129097770
+    second: crocodile_idle_3
+  - first:
+      213: -4005563531309422257
+    second: crocodile_idle_4
+  - first:
+      213: 5734702647149674085
+    second: crocodile_idle_5
+  - first:
+      213: 4944164739930521411
+    second: crocodile_idle_6
+  - first:
+      213: -5951346557885152541
+    second: crocodile_idle_7
+  - first:
+      213: 3786780248316447121
+    second: crocodile_idle_8
+  - first:
+      213: 791427777188890579
+    second: crocodile_idle_9
+  - first:
+      213: 6218423705034577137
+    second: crocodile_idle_10
+  - first:
+      213: -8378438872923923015
+    second: crocodile_idle_11
+  - first:
+      213: 3425533517719766976
+    second: crocodile_idle_12
+  - first:
+      213: 6362566105096611767
+    second: crocodile_idle_13
+  - first:
+      213: -5514081335923429855
+    second: crocodile_idle_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 320
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: crocodile_idle_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 2510
+        height: 3600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 973d4408122259c00800000000000000
+      internalID: 906668427266282361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_1
+      rect:
+        serializedVersion: 2
+        x: 2165
+        y: 3250
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 582d090a48dd68960800000000000000
+      internalID: 7604008582560928389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3dcb39d08e81f20800000000000000
+      internalID: 3393717464234513350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_3
+      rect:
+        serializedVersion: 2
+        x: 2133
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d9c9dfcfe67394e0800000000000000
+      internalID: -1976105039129097770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_4
+      rect:
+        serializedVersion: 2
+        x: 2192
+        y: 2952
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49ea0fc0316968c0800000000000000
+      internalID: -4005563531309422257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_5
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e39df7ca1c59f40800000000000000
+      internalID: 5734702647149674085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_6
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34ff19ab2a33d9440800000000000000
+      internalID: 4944164739930521411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_7
+      rect:
+        serializedVersion: 2
+        x: 2369
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e2030256d1986da0800000000000000
+      internalID: -5951346557885152541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_8
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1990e5792985d8430800000000000000
+      internalID: 3786780248316447121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_9
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 2470
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d788b4ce57bbfa00800000000000000
+      internalID: 791427777188890579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_10
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 245
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f45471c9674c4650800000000000000
+      internalID: 6218423705034577137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_11
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bd9b076c3ec9bb80800000000000000
+      internalID: -8378438872923923015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_12
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c781e9c590f98f20800000000000000
+      internalID: 3425533517719766976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_13
+      rect:
+        serializedVersion: 2
+        x: 1995
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b7693a89206c4850800000000000000
+      internalID: 6362566105096611767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crocodile_idle_14
+      rect:
+        serializedVersion: 2
+        x: 2446
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12e2ca56d3c0a73b0800000000000000
+      internalID: -5514081335923429855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      crocodile_idle_0: 906668427266282361
+      crocodile_idle_1: 7604008582560928389
+      crocodile_idle_10: 6218423705034577137
+      crocodile_idle_11: -8378438872923923015
+      crocodile_idle_12: 3425533517719766976
+      crocodile_idle_13: 6362566105096611767
+      crocodile_idle_14: -5514081335923429855
+      crocodile_idle_2: 3393717464234513350
+      crocodile_idle_3: -1976105039129097770
+      crocodile_idle_4: -4005563531309422257
+      crocodile_idle_5: 5734702647149674085
+      crocodile_idle_6: 4944164739930521411
+      crocodile_idle_7: -5951346557885152541
+      crocodile_idle_8: 3786780248316447121
+      crocodile_idle_9: 791427777188890579
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
