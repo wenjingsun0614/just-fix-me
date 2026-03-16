@@ -153,77 +153,135 @@ public class NewsSceneController : MonoBehaviour
 
     void SetupDay3News()
     {
-        string item = GameProgress_JFM.day3SelectedItemName;
+        string day2 = GameProgress_JFM.day2SelectedItemName;
+        string day3 = GameProgress_JFM.day3SelectedItemName;
 
-        currentLines.Add("Breaking news: the clinic has reported another strange but successful day.");
+        if (day2 == "Cloud_01")
+        {
+            currentLines.Add("The winner of the new Lion King election has sparked widespread discussion ");
+            currentLines.Add("due to his incredibly fluffy mane. ");
+            currentLines.Add("When asked for his key, he replied with a smile: “Back to nature”. ");
+            currentLines.Add("Being softer and real is also why he has gained so much support.");
+        }
 
-        if (!string.IsNullOrEmpty(item))
-            currentLines.Add("Today's treatment log highlighted the use of: " + item + ".");
+        else if (day2 == "Balloon")
+        {
+            currentLines.Add("A terrifying explosion shook the Lion King election, but fortunately, no one was hurt. ");
+            currentLines.Add("The candidate who remained remarkably calm on stage won. ");
+            currentLines.Add("His mane appeared thinner than the others, ");
+            currentLines.Add("voters believe it’s because he spends more time worrying for others.");
+        }
 
-        currentLines.Add("Staff members declined formal comment, though the room appeared much tidier than before.");
-        currentLines.Add("Patients continue to leave the clinic in better condition than expected.");
-        currentLines.Add("More updates will follow as the investigation continues.");
+        else if (day2 == "Broom")
+        {
+        
+        }
+
+        currentLines.Add("Attention: Due to power shortages, ");
+        currentLines.Add("some areas might experience temporary darkness tomorrow. Don't panic. ");
+        currentLines.Add("Get your candles or flashlights ready. ");
+        currentLines.Add("Inviting your firefly friends for a party is also a good choice.");
     }
 
     void SetupDay4News()
     {
-        string item = GameProgress_JFM.day4SelectedItemName;
+        string day3 = GameProgress_JFM.day3SelectedItemName;
+        string day4 = GameProgress_JFM.day4SelectedItemName;
 
-        currentLines.Add("Late-night update: the clinic's reputation continues to spread across town.");
+        if (day3 == "keyboard")
+        {
+            currentLines.Add("Miss Dark Horse has stunned the forest,");
+            currentLines.Add("performing Flight of the Bumblebee through tap dance.");
+            currentLines.Add("The Grand Theater announced a special deal: successfully mimic four bars to win a free ticket.");
+            currentLines.Add("As the video goes viral, the streets are filled with fans practicing their footwork.");
+        }
 
-        if (!string.IsNullOrEmpty(item))
-            currentLines.Add("Sources say today's key intervention involved: " + item + ".");
+        else if (day3 == "Organizer")
+        {
+            currentLines.Add("Miss Dark Horse, a new NPC at the amusement park’s kid zone, ");
+            currentLines.Add("is believed to be magical. She juggles the gashapon handed over by kids with ease. ");
+            currentLines.Add("Followers on the internet hope the traffic gets back to normal quickly ");
+            currentLines.Add("so they can revisit their childhood.");
+        }
 
-        currentLines.Add("Experts remain puzzled by the clinic's methods, but outcomes are difficult to ignore.");
-        currentLines.Add("Residents are already speculating about what tomorrow may bring.");
+        else if (day3 == "FerrariEasterEgg")
+        {
+            currentLines.Add("After a period of struggle, Team F secured a legendary P1 and P2 finish,");
+            currentLines.Add("proving that their glory never faded. ");
+            currentLines.Add("Fans had prayed for better engines and good luck for their perfect drivers,");
+            currentLines.Add("and they gained half of what they asked for.");
+            currentLines.Add("The team now believes this turnaround is related to their new model and new logo:");
+            currentLines.Add("“MUST BE THE DARK HORSE!”");
+        }
     }
 
     void SetupDay5News()
     {
-        string item = GameProgress_JFM.day5SelectedItemName;
+        string day4 = GameProgress_JFM.day4SelectedItemName;
+        string day5 = GameProgress_JFM.day5SelectedItemName;
 
-        currentLines.Add("Tonight's clinic report: another unusual case has ended with unexpectedly positive results.");
+        if (day5 == "Balloon_inflated")
+        {
+            currentLines.Add("Despite Mr. Seagull's technical precision,");
+            currentLines.Add("fans think he needs to take better care of his vocal folds. ");
+            currentLines.Add("“Last time he sounded like a bull, and this time, he was more like a mouse or an alien.”");
+            currentLines.Add("Some are even threatening to shout for a refund ");
+            currentLines.Add("if he keeps mimicking other animals during his performances.");
+        }
 
-        if (!string.IsNullOrEmpty(item))
-            currentLines.Add("Reporters say today's most talked-about treatment involved: " + item + ".");
+        else if (day5 == "lamp_0")
+        {
+            currentLines.Add("Fans were shocked when Mr. Seagull appeared on stage ");
+            currentLines.Add("singing through a megaphone instead of his professional mic. ");
+            currentLines.Add("Fans are accusing the management of withholding a fan-customized microphone. ");
+            currentLines.Add("The hashtag #FreeTheMic is now trending.");
+        }
 
-        currentLines.Add("Residents remain confused, amused, and increasingly impressed by the clinic's success rate.");
-        currentLines.Add("With each passing day, the clinic seems to grow stranger—and somehow more effective.");
+        else if (day5 == "tie")
+        {
+        }
+
+        currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
+        currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+        currentLines.Add("the motivations behind remain a mystery.");
+
+
     }
 
     void SetupDay6News()
     {
-        string item = GameProgress_JFM.day6SelectedItemName;
+        string day5 = GameProgress_JFM.day5SelectedItemName;
+        string day6 = GameProgress_JFM.day6SelectedItemName;
 
-        currentLines.Add("Late-night bulletin: today's clinic case has sparked a fresh wave of bizarre rumors.");
-
-        if (string.IsNullOrEmpty(item))
+        if (day6 == "GumballJar")
         {
-            currentLines.Add("Records from the clinic were incomplete, leaving the public with more questions than answers.");
-            currentLines.Add("Even so, witnesses insist the patient left in much better condition than before.");
-            currentLines.Add("Tomorrow's developments are being watched closely.");
-            return;
+            currentLines.Add("Miss Chameleon has nearly succeeded in constructing her own hot air balloon.");
+            currentLines.Add("The secret behind it is her exceptionally long tongue,");
+            currentLines.Add("which helps her blow incredibly large, durable bubbles. ");
+            currentLines.Add("Miss Chameleon plans to conduct her maiden flight as soon as the weather clears.");
         }
 
-        if (item == "LowBrightness")
+        else if (day6 == "LowBrightness")
         {
-            currentLines.Add("According to clinic sources, the breakthrough came only after the room was dimmed to an unusually low brightness.");
-            currentLines.Add("Experts are divided on whether this was a treatment method, a visual strategy, or simply an alarming electricity bill decision.");
-            currentLines.Add("Despite the confusion, the patient reportedly responded well, and the clinic has refused to comment further.");
-            return;
+            currentLines.Add("Multiple forest residents claim they lost their sight for several hours today.");
+            currentLines.Add("It was initially mistaken for an unusually early sunset,");
+            currentLines.Add("as residents suddenly found themselves plunged into total darkness in the mid-afternoon. ");
+            currentLines.Add("Coupled with the recent non-stop rain, many wonder:");
+            currentLines.Add("Is our climate becoming London-style?");
+
         }
 
-        if (item == "FerrariHorse")
+        else if (day6 == "telescope")
         {
-            currentLines.Add("Witnesses describe a highly questionable sequence involving a horse, a Ferrari-themed display, and a complete breakdown of professional procedure.");
-            currentLines.Add("Authorities have declined to explain how the case was still officially recorded as a success.");
-            currentLines.Add("Residents remain unsettled, though some have called it the clinic's boldest treatment yet.");
-            return;
         }
 
-        currentLines.Add("Clinic records suggest the key item involved was: " + item + ".");
-        currentLines.Add("Observers once again described the method as deeply unusual, but difficult to argue with.");
-        currentLines.Add("As the clinic continues to attract attention, tomorrow's case is already the subject of speculation.");
+        currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+        currentLines.Add("with many claiming “this is true music”. ");
+        currentLines.Add("One viral comment states, “This song saved my life. ");
+        currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+        currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
+
+
     }
 
     void SetupFallbackNews()
