@@ -38,6 +38,9 @@ public class DraggableItem2D : MonoBehaviour
     [Header("Reappear")]
     public float reappearFadeTime = 0.18f;
 
+    [Header("Day1 Tutorial Hint (optional)")]
+    public Day1HoverTutorialHint tutorialHint;
+
     private Vector3 startPos;
     private Vector3 homePos;
     private Vector3 startScale;
@@ -95,14 +98,33 @@ public class DraggableItem2D : MonoBehaviour
         Vector3 world = cam.ScreenToWorldPoint(Input.mousePosition);
         world.z = transform.position.z;
 
+        Vector2 p = new Vector2(world.x, world.y);
+
+        bool isHoveringThisItem = false;
+        if (col != null && col.enabled)
+        {
+            isHoveringThisItem = col.OverlapPoint(p);
+        }
+
+        // 对话结束后，第一次 hover 任意可拖物体时显示提示
+        if (!dragging && isHoveringThisItem && tutorialHint != null && tutorialHint.CanShowOnHover())
+        {
+            tutorialHint.ShowHint();
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
-            Vector2 p = new Vector2(world.x, world.y);
             if (col != null && col.enabled && col.OverlapPoint(p))
             {
                 dragging = true;
                 SetDragLayer(true);
                 dragOffset = transform.position - world;
+
+                // 玩家真正开始拖动后，提示立刻消失且不再出现
+                if (tutorialHint != null)
+                {
+                    tutorialHint.DismissPermanently();
+                }
 
                 if (co != null) StopCoroutine(co);
             }
