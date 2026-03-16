@@ -14,6 +14,23 @@ public class MenuManager : MonoBehaviour
         sceneFade.FadeToScene("day1_clinic");
     }
 
+    public class ButtonController : MonoBehaviour
+    {
+        public GameObject DAY2Button;
+
+        void Update()
+        {
+            if (!string.IsNullOrEmpty(GameProgress_JFM.day1SelectedItemName))
+            {
+                DAY2Button.SetActive(true);   // ÏÔÊ¾°´Å¥
+            }
+            else
+            {
+                DAY2Button.SetActive(false);  // Òþ²Ø°´Å¥
+            }
+        }
+    }
+
     public void StartDAY2()
     {
         sceneFade.FadeToScene("day2_clinic");

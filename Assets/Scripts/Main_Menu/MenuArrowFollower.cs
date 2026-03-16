@@ -4,7 +4,7 @@ public class MenuArrowFollower : MonoBehaviour
 {
     public RectTransform arrowRect;
     public RectTransform defaultTarget;
-    public Vector2 offset = new Vector2(-60f, 0f);
+    public Vector2 offset = new Vector2(-90f, 0f);
 
     void Start()
     {
