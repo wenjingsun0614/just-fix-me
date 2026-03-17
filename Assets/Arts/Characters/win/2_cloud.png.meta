@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: d898196a597becb4da03b84c6736decc
+guid: 25837c0bcdf52a04990230bd5a04615d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8805117551040240973
-    second: 1birth_0
+      213: 165735869045348735
+    second: 2_cloud_0
+  - first:
+      213: 3191448794525238577
+    second: 2_cloud_1
+  - first:
+      213: 8852984009792215472
+    second: 2_cloud_2
+  - first:
+      213: 7251328128380607509
+    second: 2_cloud_3
+  - first:
+      213: -1781031403862182860
+    second: 2_cloud_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1birth_0
+      name: 2_cloud_0
       rect:
         serializedVersion: 2
-        x: 658
-        y: 307
-        width: 1403
-        height: 3079
+        x: 300
+        y: 397
+        width: 1494
+        height: 3069
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d4d9f4bd2cf023a70800000000000000
-      internalID: 8805117551040240973
+      spriteID: f791df015efcc4200800000000000000
+      internalID: 165735869045348735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2_cloud_1
+      rect:
+        serializedVersion: 2
+        x: 1985
+        y: 3036
+        width: 49
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 135868405cd4a4c20800000000000000
+      internalID: 3191448794525238577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2_cloud_2
+      rect:
+        serializedVersion: 2
+        x: 1944
+        y: 2988
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b9d0e14d0e1cda70800000000000000
+      internalID: 8852984009792215472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2_cloud_3
+      rect:
+        serializedVersion: 2
+        x: 2107
+        y: 2952
+        width: 11
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c9ce97384e1a460800000000000000
+      internalID: 7251328128380607509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2_cloud_4
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 2848
+        width: 70
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434bafedf518847e0800000000000000
+      internalID: -1781031403862182860
       vertices: []
       indices: 
       edges: []
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1birth_0: 8805117551040240973
+      2_cloud_0: 165735869045348735
+      2_cloud_1: 3191448794525238577
+      2_cloud_2: 8852984009792215472
+      2_cloud_3: 7251328128380607509
+      2_cloud_4: -1781031403862182860
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

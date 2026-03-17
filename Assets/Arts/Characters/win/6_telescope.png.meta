@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a457b736af3d355468591f071661ea69
+guid: ff9836a1f6ea32b41957163be26853b3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6577670970867900391
-    second: 1cone_0
+      213: 7369129276098301182
+    second: 6_telescope_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1cone_0
+      name: 6_telescope_0
       rect:
         serializedVersion: 2
-        x: 658
-        y: 307
-        width: 1403
-        height: 3079
+        x: 595
+        y: 832
+        width: 828
+        height: 1933
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7efdaf3e5e4984b50800000000000000
-      internalID: 6577670970867900391
+      spriteID: efc45c58808644660800000000000000
+      internalID: 7369129276098301182
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1cone_0: 6577670970867900391
+      6_telescope_0: 7369129276098301182
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

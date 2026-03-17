@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 93461fc3cc49ba24c90e8ad60086ad54
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1955617799672163863
+    second: 4_cone2_0
+  - first:
+      213: 5733618719478259731
+    second: 4_cone2_1
+  - first:
+      213: -4808595038083391774
+    second: 4_cone2_2
+  - first:
+      213: -2224873572872121537
+    second: 4_cone2_3
+  - first:
+      213: -8990927087390054062
+    second: 4_cone2_4
+  - first:
+      213: -159949488799090079
+    second: 4_cone2_5
+  - first:
+      213: 4940704253296662759
+    second: 4_cone2_6
+  - first:
+      213: 7161992752482649704
+    second: 4_cone2_7
+  - first:
+      213: 3081852843923233023
+    second: 4_cone2_8
+  - first:
+      213: 1663213970614506657
+    second: 4_cone2_9
+  - first:
+      213: -1481287974898090369
+    second: 4_cone2_10
+  - first:
+      213: 8749147448739673966
+    second: 4_cone2_11
+  - first:
+      213: -6959311270677468466
+    second: 4_cone2_12
+  - first:
+      213: -957889248063089337
+    second: 4_cone2_13
+  - first:
+      213: -2705856875670729363
+    second: 4_cone2_14
+  - first:
+      213: 4462598929918814019
+    second: 4_cone2_15
+  - first:
+      213: -7011350772025104475
+    second: 4_cone2_16
+  - first:
+      213: 4235620662462759669
+    second: 4_cone2_17
+  - first:
+      213: -8800684832960662663
+    second: 4_cone2_18
+  - first:
+      213: -465056211428244737
+    second: 4_cone2_19
+  - first:
+      213: -783510123085587719
+    second: 4_cone2_20
+  - first:
+      213: -4240454642396332018
+    second: 4_cone2_21
+  - first:
+      213: 7677410124380137243
+    second: 4_cone2_22
+  - first:
+      213: -2854580220336146099
+    second: 4_cone2_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 4_cone2_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 2510
+        height: 3577
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71ee3e90700c32b10800000000000000
+      internalID: 1955617799672163863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_1
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 3175
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 310280ce8d7e19f40800000000000000
+      internalID: 5733618719478259731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_2
+      rect:
+        serializedVersion: 2
+        x: 1954
+        y: 3175
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee55563a40744db0800000000000000
+      internalID: -4808595038083391774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_3
+      rect:
+        serializedVersion: 2
+        x: 2139
+        y: 2228
+        width: 416
+        height: 1188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f339dcaf549af11e0800000000000000
+      internalID: -2224873572872121537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_4
+      rect:
+        serializedVersion: 2
+        x: 2218
+        y: 3121
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259ada2337fc93380800000000000000
+      internalID: -8990927087390054062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_5
+      rect:
+        serializedVersion: 2
+        x: 2295
+        y: 3122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16aff1299ceb7cdf0800000000000000
+      internalID: -159949488799090079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_6
+      rect:
+        serializedVersion: 2
+        x: 2511
+        y: 3122
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e852066758e09440800000000000000
+      internalID: 4940704253296662759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_7
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 3068
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86686a76672846360800000000000000
+      internalID: 7161992752482649704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_8
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 3068
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8521c45d0f4ca20800000000000000
+      internalID: 3081852843923233023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_9
+      rect:
+        serializedVersion: 2
+        x: 2067
+        y: 3068
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a4d1ff4b4ce41710800000000000000
+      internalID: 1663213970614506657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_10
+      rect:
+        serializedVersion: 2
+        x: 2165
+        y: 3068
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7e342e5f68617be0800000000000000
+      internalID: -1481287974898090369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_11
+      rect:
+        serializedVersion: 2
+        x: 1932
+        y: 2916
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e67b4a9ef373b6970800000000000000
+      internalID: 8749147448739673966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_12
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 2916
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecaa5e5754f8b6f90800000000000000
+      internalID: -6959311270677468466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_13
+      rect:
+        serializedVersion: 2
+        x: 2023
+        y: 2901
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7459803ddc4e4b2f0800000000000000
+      internalID: -957889248063089337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_14
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2849
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6d0990028dd27ad0800000000000000
+      internalID: -2705856875670729363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_15
+      rect:
+        serializedVersion: 2
+        x: 1963
+        y: 2835
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34769d835165eed30800000000000000
+      internalID: 4462598929918814019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_16
+      rect:
+        serializedVersion: 2
+        x: 1985
+        y: 2835
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a768cdde9da2be90800000000000000
+      internalID: -7011350772025104475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_17
+      rect:
+        serializedVersion: 2
+        x: 2030
+        y: 2835
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f2c56d1d82f7ca30800000000000000
+      internalID: 4235620662462759669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_18
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 2771
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 973363fb5cfadd580800000000000000
+      internalID: -8800684832960662663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_19
+      rect:
+        serializedVersion: 2
+        x: 1996
+        y: 2771
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff20b35f6d9cb89f0800000000000000
+      internalID: -465056211428244737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_20
+      rect:
+        serializedVersion: 2
+        x: 2035
+        y: 2771
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa9f8bb1b96025f0800000000000000
+      internalID: -783510123085587719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_21
+      rect:
+        serializedVersion: 2
+        x: 2133
+        y: 2771
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e008fc938f0e625c0800000000000000
+      internalID: -4240454642396332018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_22
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 2288
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b176aaad4d3ab8a60800000000000000
+      internalID: 7677410124380137243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 4_cone2_23
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 0
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d49f100f96e7268d0800000000000000
+      internalID: -2854580220336146099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      4_cone2_0: 1955617799672163863
+      4_cone2_1: 5733618719478259731
+      4_cone2_10: -1481287974898090369
+      4_cone2_11: 8749147448739673966
+      4_cone2_12: -6959311270677468466
+      4_cone2_13: -957889248063089337
+      4_cone2_14: -2705856875670729363
+      4_cone2_15: 4462598929918814019
+      4_cone2_16: -7011350772025104475
+      4_cone2_17: 4235620662462759669
+      4_cone2_18: -8800684832960662663
+      4_cone2_19: -465056211428244737
+      4_cone2_2: -4808595038083391774
+      4_cone2_20: -783510123085587719
+      4_cone2_21: -4240454642396332018
+      4_cone2_22: 7677410124380137243
+      4_cone2_23: -2854580220336146099
+      4_cone2_3: -2224873572872121537
+      4_cone2_4: -8990927087390054062
+      4_cone2_5: -159949488799090079
+      4_cone2_6: 4940704253296662759
+      4_cone2_7: 7161992752482649704
+      4_cone2_8: 3081852843923233023
+      4_cone2_9: 1663213970614506657
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
