@@ -520,6 +520,7 @@ MonoBehaviour:
   speechBubbleZone: {fileID: 198785783}
   sideBar: {fileID: 875253074}
   tutorialHint: {fileID: 1598285000}
+  fixButtonController: {fileID: 0}
   horsePatientEasterEgg: {fileID: 0}
   interactionObjects:
   - {fileID: 863688921}
@@ -11971,8 +11972,8 @@ Transform:
   m_GameObject: {fileID: 988819708}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.03997788, w: 0.9992006}
-  m_LocalPosition: {x: -489, y: -336.79, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.45, z: 0.4287}
+  m_LocalPosition: {x: -489.1, y: -337.2, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.4287}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1954503062}
