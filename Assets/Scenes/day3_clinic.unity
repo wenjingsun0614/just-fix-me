@@ -6983,6 +6983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenPanelOnClick
   panelToOpen: {fileID: 627436379}
+  introController: {fileID: 0}
 --- !u!61 &252168664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -22521,10 +22522,11 @@ MonoBehaviour:
   fadeDuration: 0.2
   dialogueLines:
   - speaker: 0
-    text: 'I worked very hard to become an all-rounder, but still didn''t get the
-      chance to perform on stage.
+    text: 'I worked very hard to become an all-rounder,
 
 '
+  - speaker: 0
+    text: but still didn't get the chance to perform on stage.
   - speaker: 0
     text: "I hate average now, and I\u2019m tired of being ignored by the spotlight.
       I want to be special.\n"

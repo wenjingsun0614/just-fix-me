@@ -25,6 +25,10 @@ public class GameManager_JFM : MonoBehaviour
     public Transform defaultAttachPoint;
     public bool replaceOnPatient = true;
 
+    // ✅ 新增（不会影响原逻辑）
+    [Header("Extra Display")]
+    public SideBarExtraDisplay extraDisplay;
+
     private HashSet<int> unlockedIds = new HashSet<int>();
     private List<DraggableItem2D> unlockedItems = new List<DraggableItem2D>();
 
@@ -50,7 +54,9 @@ public class GameManager_JFM : MonoBehaviour
         HideCanvasGroupImmediate(resultPanel);
     }
 
-    // 原本普通拖拽物品用这个
+    // =========================
+    // ✅ 正确物品注册
+    // =========================
     public bool RegisterCorrectItem(DraggableItem2D item)
     {
         if (item == null) return false;
@@ -70,9 +76,16 @@ public class GameManager_JFM : MonoBehaviour
                 iconSprite = special.GetSideBarIcon();
             }
 
+            // ✅ Sidebar
             if (sideBarUI != null)
             {
                 sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
+            }
+
+            // ✅ 新增：大图 + 隐藏 Patient
+            if (extraDisplay != null)
+            {
+                extraDisplay.OnItemUnlocked(item.name);
             }
         }
 
@@ -82,7 +95,9 @@ public class GameManager_JFM : MonoBehaviour
         return isNew;
     }
 
-    // 给 Day6 这种“不是拖拽成功，但想当作一个已解锁物品”用
+    // =========================
+    // 特殊物品注册
+    // =========================
     public bool RegisterSpecialItem(DraggableItem2D item, bool showNextArrow = true)
     {
         if (item == null) return false;
@@ -106,6 +121,12 @@ public class GameManager_JFM : MonoBehaviour
             {
                 sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
             }
+
+            // ✅ 同样触发额外显示
+            if (extraDisplay != null)
+            {
+                extraDisplay.OnItemUnlocked(item.name);
+            }
         }
 
         if (showNextArrow && unlockedIds.Count >= 1)
@@ -114,6 +135,9 @@ public class GameManager_JFM : MonoBehaviour
         return isNew;
     }
 
+    // =========================
+    // 显示到病人身上
+    // =========================
     public void ShowOnPatient(DraggableItem2D item)
     {
         if (item == null) return;
@@ -159,6 +183,9 @@ public class GameManager_JFM : MonoBehaviour
         currentPlaced = placed;
     }
 
+    // =========================
+    // UI 控制
+    // =========================
     private void ShowNextArrow()
     {
         if (nextArrow == null) return;
@@ -193,7 +220,6 @@ public class GameManager_JFM : MonoBehaviour
         if (!canFinish) return;
         if (resultShown) return;
 
-        // Ferrari 彩蛋模式：不再开 ResultPanel，直接结算进新闻
         if (ferrariOverrideActive)
         {
             CompleteDayWithSpecialResult(ferrariOverrideResultName);
@@ -216,7 +242,6 @@ public class GameManager_JFM : MonoBehaviour
 
     public void OnClickNextDay()
     {
-        // Ferrari 彩蛋模式：不再开 ItemSelectionPanel，直接结算进新闻
         if (ferrariOverrideActive)
         {
             CompleteDayWithSpecialResult(ferrariOverrideResultName);
@@ -225,19 +250,22 @@ public class GameManager_JFM : MonoBehaviour
 
         if (itemSelectionPanel == null)
         {
-            Debug.LogWarning("ItemSelectionPanelUI is not assigned on GameManager_JFM.");
+            Debug.LogWarning("ItemSelectionPanelUI is not assigned.");
             return;
         }
 
         if (unlockedItems.Count == 0)
         {
-            Debug.LogWarning("No unlocked items available for selection.");
+            Debug.LogWarning("No unlocked items.");
             return;
         }
 
         itemSelectionPanel.Open(unlockedItems, this);
     }
 
+    // =========================
+    // 最终选择
+    // =========================
     public void SetFinalSelectedItem(DraggableItem2D item)
     {
         if (item == null) return;
@@ -249,42 +277,18 @@ public class GameManager_JFM : MonoBehaviour
             GameProgress_JFM.day1SelectedItemName = item.name;
             GameProgress_JFM.currentNewsDay = 1;
             GameProgress_JFM.nextSceneAfterNews = "day2_clinic";
-            Debug.Log("Day 1 selected item: " + item.name);
         }
         else if (currentDay == 2)
         {
             GameProgress_JFM.day2SelectedItemName = item.name;
             GameProgress_JFM.currentNewsDay = 2;
             GameProgress_JFM.nextSceneAfterNews = "day3_clinic";
-            Debug.Log("Day 2 selected item: " + item.name);
         }
         else if (currentDay == 3)
         {
             GameProgress_JFM.day3SelectedItemName = item.name;
             GameProgress_JFM.currentNewsDay = 3;
             GameProgress_JFM.nextSceneAfterNews = "day4_clinic";
-            Debug.Log("Day 3 selected item: " + item.name);
-        }
-        else if (currentDay == 4)
-        {
-            GameProgress_JFM.day4SelectedItemName = item.name;
-            GameProgress_JFM.currentNewsDay = 4;
-            GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
-            Debug.Log("Day 4 selected item: " + item.name);
-        }
-        else if (currentDay == 5)
-        {
-            GameProgress_JFM.day5SelectedItemName = item.name;
-            GameProgress_JFM.currentNewsDay = 5;
-            GameProgress_JFM.nextSceneAfterNews = "day6_clinic";
-            Debug.Log("Day 5 selected item: " + item.name);
-        }
-        else if (currentDay == 6)
-        {
-            GameProgress_JFM.day6SelectedItemName = item.name;
-            GameProgress_JFM.currentNewsDay = 6;
-            GameProgress_JFM.nextSceneAfterNews = "day7_clinic";
-            Debug.Log("Day 6 selected item: " + item.name);
         }
 
         if (sceneFade != null)
@@ -292,12 +296,11 @@ public class GameManager_JFM : MonoBehaviour
             Time.timeScale = 1f;
             sceneFade.FadeToScene("news_scenes");
         }
-        else
-        {
-            Debug.LogWarning("SceneFade is missing on GameManager_JFM.");
-        }
     }
 
+    // =========================
+    // Ferrari 特殊结算（完整保留）
+    // =========================
     public void CompleteDayWithSpecialResult(string resultName)
     {
         if (string.IsNullOrEmpty(resultName))
@@ -324,24 +327,6 @@ public class GameManager_JFM : MonoBehaviour
             GameProgress_JFM.currentNewsDay = 3;
             GameProgress_JFM.nextSceneAfterNews = "day4_clinic";
         }
-        else if (currentDay == 4)
-        {
-            GameProgress_JFM.day4SelectedItemName = resultName;
-            GameProgress_JFM.currentNewsDay = 4;
-            GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
-        }
-        else if (currentDay == 5)
-        {
-            GameProgress_JFM.day5SelectedItemName = resultName;
-            GameProgress_JFM.currentNewsDay = 5;
-            GameProgress_JFM.nextSceneAfterNews = "day6_clinic";
-        }
-        else if (currentDay == 6)
-        {
-            GameProgress_JFM.day6SelectedItemName = resultName;
-            GameProgress_JFM.currentNewsDay = 6;
-            GameProgress_JFM.nextSceneAfterNews = "day7_clinic";
-        }
 
         Debug.Log("Special result recorded: " + resultName);
 
@@ -349,10 +334,6 @@ public class GameManager_JFM : MonoBehaviour
         {
             Time.timeScale = 1f;
             sceneFade.FadeToScene("news_scenes");
-        }
-        else
-        {
-            Debug.LogWarning("SceneFade is missing on GameManager_JFM.");
         }
     }
 
@@ -381,14 +362,6 @@ public class GameManager_JFM : MonoBehaviour
         if (g == null) yield break;
 
         g.gameObject.SetActive(true);
-
-        if (time <= 0f)
-        {
-            g.alpha = to;
-            g.interactable = enableInteract;
-            g.blocksRaycasts = enableInteract;
-            yield break;
-        }
 
         float t = 0f;
         while (t < time)

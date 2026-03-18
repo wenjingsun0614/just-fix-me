@@ -371,8 +371,16 @@ MonoBehaviour:
   dialogueText: {fileID: 2076585370}
   continueArrow: {fileID: 768873642}
   continueArrowCanvasGroup: {fileID: 768873639}
-  nextSceneName: day3_clinic
+  fallbackNextSceneName: day4_clinic
   defaultNewsSprite: {fileID: 0}
+  doctorSprite: {fileID: 0}
+  coneSprite: {fileID: 0}
+  birthdayCapSprite: {fileID: 0}
+  barrierSprite: {fileID: 0}
+  cloudSprite: {fileID: 0}
+  balloonSprite: {fileID: 0}
+  broomSprite: {fileID: 0}
+  reportSprite: {fileID: 0}
   typeSpeed: 0.03
   arrowFadeSpeed: 2.2
   arrowFloatSpeed: 2
@@ -541,6 +549,7 @@ GameObject:
   - component: {fileID: 818239327}
   - component: {fileID: 818239329}
   - component: {fileID: 818239328}
+  - component: {fileID: 818239330}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -564,8 +573,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.1817, y: 10.1213}
-  m_SizeDelta: {x: 2002.685, y: 1039.5767}
+  m_AnchoredPosition: {x: 14.5351, y: 50.2536}
+  m_SizeDelta: {x: 1040.31, y: 567.7925}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818239328
 MonoBehaviour:
@@ -587,7 +596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4655ab9a514125c4e841d52d19e880d2, type: 3}
+  m_Sprite: {fileID: -6550532838708472360, guid: 2141c4f843079fc41998ace85482e2ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -605,6 +614,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818239326}
   m_CullTransparentMesh: 1
+--- !u!114 &818239330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818239326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427dd31a8dc7458458c1919deddba1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewsSceneController
+  tvScreenImage: {fileID: 818239328}
+  dialogueText: {fileID: 0}
+  continueArrow: {fileID: 0}
+  continueArrowCanvasGroup: {fileID: 0}
+  fallbackNextSceneName: day4_clinic
+  defaultNewsSprite: {fileID: 0}
+  doctorSprite: {fileID: -6550532838708472360, guid: 2141c4f843079fc41998ace85482e2ff, type: 3}
+  coneSprite: {fileID: -599253286527479169, guid: c3d81318f7c6383438096023602113b5, type: 3}
+  birthdayCapSprite: {fileID: -7898469590970236737, guid: 63bd288d70d39504aaecd209e8402b36, type: 3}
+  barrierSprite: {fileID: 174107075974772819, guid: 6697126d3cf98cd4fa5689dedd22a03d, type: 3}
+  cloudSprite: {fileID: -980842693474631958, guid: c14a7e915bdeead43be5c26a92423d6d, type: 3}
+  balloonSprite: {fileID: -5635714540128689419, guid: caa42549b5104654a8754e943fe16e75, type: 3}
+  broomSprite: {fileID: -6769702176870385060, guid: 8f9c7ec6f719d8b429ba5a1140a8f89e, type: 3}
+  reportSprite: {fileID: -6769702176870385060, guid: 8f9c7ec6f719d8b429ba5a1140a8f89e, type: 3}
+  typeSpeed: 0.03
+  arrowFadeSpeed: 2.2
+  arrowFloatSpeed: 2
+  arrowMinAlpha: 0.3
+  arrowMaxAlpha: 1
+  arrowFloatAmount: 3
+  arrowOffsetX: -2
+  arrowOffsetY: -2
 --- !u!1 &1041930606
 GameObject:
   m_ObjectHideFlags: 0

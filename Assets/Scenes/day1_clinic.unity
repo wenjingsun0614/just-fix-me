@@ -8871,6 +8871,7 @@ GameObject:
   - component: {fileID: 490316674}
   - component: {fileID: 490316673}
   - component: {fileID: 490316676}
+  - component: {fileID: 490316677}
   m_Layer: 0
   m_Name: Patient1
   m_TagString: Untagged
@@ -8994,6 +8995,21 @@ MonoBehaviour:
   animator: {fileID: 0}
   walkingBool: Walking
   playOnStart: 1
+--- !u!114 &490316677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490316672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4281493780b31864ea2b0da56ee944ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideBarExtraDisplay
+  entries: []
+  patient1: {fileID: 0}
+  fadeTime: 0.3
 --- !u!1 &514085810
 GameObject:
   m_ObjectHideFlags: 0
@@ -10477,6 +10493,7 @@ MonoBehaviour:
   itemSelectionPanel: {fileID: 1366360859}
   defaultAttachPoint: {fileID: 537603652}
   replaceOnPatient: 1
+  extraDisplay: {fileID: 0}
   sceneFade: {fileID: 602992300}
   nextSceneName: day2_clinic
   ferrariOverrideActive: 0
@@ -14399,6 +14416,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1285651585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285651587}
+  - component: {fileID: 1285651586}
+  m_Layer: 0
+  m_Name: SideBarExtraDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1285651586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285651585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4281493780b31864ea2b0da56ee944ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SideBarExtraDisplay
+  entries: []
+  patient1: {fileID: 0}
+  fadeTime: 0.3
+--- !u!4 &1285651587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285651585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.0748, y: -0.05071, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1305872701
 GameObject:
   m_ObjectHideFlags: 0
@@ -23891,3 +23955,4 @@ SceneRoots:
   - {fileID: 38609646}
   - {fileID: 1598285001}
   - {fileID: 1756650413}
+  - {fileID: 1285651587}

@@ -17,7 +17,21 @@ public class NewsSceneController : MonoBehaviour
     public string fallbackNextSceneName = "day4_clinic";
 
     [Header("Optional News Images")]
+
+    [Header("Default Image")]
     public Sprite defaultNewsSprite;
+
+    [Header("Branch Images - Day2 News")]
+    public Sprite doctorSprite;
+    public Sprite coneSprite;
+    public Sprite birthdayCapSprite;
+    public Sprite barrierSprite;
+
+    [Header("Branch Images - Day3 News")]
+    public Sprite cloudSprite;
+    public Sprite balloonSprite;
+    public Sprite broomSprite;
+    public Sprite reportSprite;
 
     [Header("Typewriter")]
     public float typeSpeed = 0.03f;
@@ -30,9 +44,7 @@ public class NewsSceneController : MonoBehaviour
     public float arrowFloatAmount = 3f;
 
     [Header("Arrow Position")]
-    [Tooltip("Horizontal offset from the end of the sentence. Negative = closer.")]
     public float arrowOffsetX = -2f;
-    [Tooltip("Vertical offset from the end of the sentence.")]
     public float arrowOffsetY = -2f;
 
     private List<string> currentLines = new List<string>();
@@ -70,29 +82,37 @@ public class NewsSceneController : MonoBehaviour
         }
     }
 
+    // ⭐⭐⭐ 新增：统一换图方法
+    void SetNewsImage(Sprite sprite)
+    {
+        if (tvScreenImage == null) return;
+
+        if (sprite != null)
+            tvScreenImage.sprite = sprite;
+        else if (defaultNewsSprite != null)
+            tvScreenImage.sprite = defaultNewsSprite;
+    }
+
     void SetupBranchContent()
     {
         currentLines.Clear();
 
         int newsDay = GameProgress_JFM.currentNewsDay;
 
-        if (tvScreenImage != null && defaultNewsSprite != null)
-            tvScreenImage.sprite = defaultNewsSprite;
+        // 默认图
+        SetNewsImage(defaultNewsSprite);
 
         switch (newsDay)
         {
             case 1:
                 SetupDay1News();
                 break;
-
             case 2:
                 SetupDay2News();
                 break;
-
             case 3:
                 SetupDay3News();
                 break;
-
             case 4:
                 SetupDay4News();
                 break;
@@ -113,8 +133,7 @@ public class NewsSceneController : MonoBehaviour
 
     void SetupDay1News()
     {
-        string item = GameProgress_JFM.day1SelectedItemName;
-
+        SetNewsImage(doctorSprite);
         currentLines.Add("With transportation expected to be disrupted for some time, ");
         currentLines.Add("Dr. Random’s clinic is currently the only one open in our forest.");
         currentLines.Add("Whether you are struggling with physical health issues or psychological distress, ");
@@ -124,19 +143,23 @@ public class NewsSceneController : MonoBehaviour
     void SetupDay2News()
     {
         string day1 = GameProgress_JFM.day1SelectedItemName;
-        string day2 = GameProgress_JFM.day2SelectedItemName;
 
         currentLines.Add("Tonight's special report: unusual treatment methods continue to draw public attention.");
 
-        if (day1 == "cone")
+        if (day1 == "Cone")
         {
+            SetNewsImage(coneSprite);
+            
             currentLines.Add("In a surprising turn at today’s ceremony, ");
             currentLines.Add("the hero Mr. Rhino appeared with an ice cream cone as a horn decoration.");
             currentLines.Add("Mr. Fox vowed to pay for the Rhino family’s ice cream supply forever.");
             currentLines.Add("We have witnessed the sweetest victory.");
         }
-       else if (day1 == "BirthdayCap")
+
+        else if (day1 == "BirthdayCap")
         {
+            SetNewsImage(birthdayCapSprite);
+
             currentLines.Add("Today’s ceremony turned into a special birthday celebration ");
             currentLines.Add("as Mr. Rhino appeared wearing a birthday hat.");
             currentLines.Add("Mr. Fox considered today as the symbol of his own rebirth day.");
@@ -144,11 +167,12 @@ public class NewsSceneController : MonoBehaviour
         }
         else if (day1 == "Barrier")
         {
-            currentLines.Add("At the ceremony, Mr. Rhino appeared with a road cone marked STAFF,");
+            SetNewsImage(barrierSprite);
+
+            currentLines.Add("At the ceremony, Mr. Rhino appeared with a barrier marked STAFF,");
             currentLines.Add("announcing his plan to become a lifeguard to help those in need. ");
             currentLines.Add("Inspired by this idea, Mr. Fox donated a massive fund to establish and operate a new rescue team.");
-         }  
-       
+        }
     }
 
     void SetupDay3News()
@@ -156,31 +180,46 @@ public class NewsSceneController : MonoBehaviour
         string day2 = GameProgress_JFM.day2SelectedItemName;
         string day3 = GameProgress_JFM.day3SelectedItemName;
 
+        // ⭐ Day2 结果影响图片
         if (day2 == "Cloud_01")
         {
+            SetNewsImage(cloudSprite);
             currentLines.Add("The winner of the new Lion King election has sparked widespread discussion ");
             currentLines.Add("due to his incredibly fluffy mane. ");
             currentLines.Add("When asked for his key, he replied with a smile: “Back to nature”. ");
             currentLines.Add("Being softer and real is also why he has gained so much support.");
+
+            currentLines.Add("Attention: Due to power shortages, ");
+            currentLines.Add("some areas might experience temporary darkness tomorrow. Don't panic. ");
+            currentLines.Add("Get your candles or flashlights ready. ");
+            currentLines.Add("Inviting your firefly friends for a party is also a good choice.");
         }
 
         else if (day2 == "Balloon")
         {
+            SetNewsImage(balloonSprite);
             currentLines.Add("A terrifying explosion shook the Lion King election, but fortunately, no one was hurt. ");
             currentLines.Add("The candidate who remained remarkably calm on stage won. ");
             currentLines.Add("His mane appeared thinner than the others, ");
             currentLines.Add("voters believe it’s because he spends more time worrying for others.");
+
+            currentLines.Add("Attention: Due to power shortages, ");
+            currentLines.Add("some areas might experience temporary darkness tomorrow. Don't panic. ");
+            currentLines.Add("Get your candles or flashlights ready. ");
+            currentLines.Add("Inviting your firefly friends for a party is also a good choice.");
         }
 
+        
         else if (day2 == "Broom")
         {
-        
+            SetNewsImage(broomSprite);
+            currentLines.Add("Attention: Due to power shortages, ");
+            currentLines.Add("some areas might experience temporary darkness tomorrow. Don't panic. ");
+            currentLines.Add("Get your candles or flashlights ready. ");
+            currentLines.Add("Inviting your firefly friends for a party is also a good choice.");
         }
-
-        currentLines.Add("Attention: Due to power shortages, ");
-        currentLines.Add("some areas might experience temporary darkness tomorrow. Don't panic. ");
-        currentLines.Add("Get your candles or flashlights ready. ");
-        currentLines.Add("Inviting your firefly friends for a party is also a good choice.");
+        
+        
     }
 
     void SetupDay4News()
