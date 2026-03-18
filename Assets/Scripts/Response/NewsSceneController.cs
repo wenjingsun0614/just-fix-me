@@ -33,6 +33,21 @@ public class NewsSceneController : MonoBehaviour
     public Sprite broomSprite;
     public Sprite reportSprite;
 
+    [Header("Branch Images - Day4 News")]
+    public Sprite FerrariSprite;
+    public Sprite organizerSprite;
+    public Sprite keyboardSprite;
+
+    [Header("Branch Images - Day5 News")]
+    public Sprite BallonSprite;
+    public Sprite LampSprite;
+    public Sprite TieSprite;
+
+    [Header("Branch Images - Day6 News")]
+    public Sprite TelescopeSprite;
+    public Sprite lowBrightnessSprite;
+    public Sprite GumSprite;
+
     [Header("Typewriter")]
     public float typeSpeed = 0.03f;
 
@@ -225,10 +240,10 @@ public class NewsSceneController : MonoBehaviour
     void SetupDay4News()
     {
         string day3 = GameProgress_JFM.day3SelectedItemName;
-        string day4 = GameProgress_JFM.day4SelectedItemName;
 
         if (day3 == "keyboard")
         {
+            SetNewsImage(keyboardSprite);
             currentLines.Add("Miss Dark Horse has stunned the forest,");
             currentLines.Add("performing Flight of the Bumblebee through tap dance.");
             currentLines.Add("The Grand Theater announced a special deal: successfully mimic four bars to win a free ticket.");
@@ -237,6 +252,7 @@ public class NewsSceneController : MonoBehaviour
 
         else if (day3 == "Organizer")
         {
+            SetNewsImage(organizerSprite);
             currentLines.Add("Miss Dark Horse, a new NPC at the amusement park’s kid zone, ");
             currentLines.Add("is believed to be magical. She juggles the gashapon handed over by kids with ease. ");
             currentLines.Add("Followers on the internet hope the traffic gets back to normal quickly ");
@@ -245,6 +261,7 @@ public class NewsSceneController : MonoBehaviour
 
         else if (day3 == "FerrariEasterEgg")
         {
+            SetNewsImage(FerrariSprite);
             currentLines.Add("After a period of struggle, Team F secured a legendary P1 and P2 finish,");
             currentLines.Add("proving that their glory never faded. ");
             currentLines.Add("Fans had prayed for better engines and good luck for their perfect drivers,");
@@ -261,28 +278,38 @@ public class NewsSceneController : MonoBehaviour
 
         if (day5 == "Balloon_inflated")
         {
+            SetNewsImage(BallonSprite);
             currentLines.Add("Despite Mr. Seagull's technical precision,");
             currentLines.Add("fans think he needs to take better care of his vocal folds. ");
             currentLines.Add("“Last time he sounded like a bull, and this time, he was more like a mouse or an alien.”");
             currentLines.Add("Some are even threatening to shout for a refund ");
             currentLines.Add("if he keeps mimicking other animals during his performances.");
+
+            currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
+            currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+            currentLines.Add("the motivations behind remain a mystery.");
         }
 
         else if (day5 == "lamp_0")
         {
+            SetNewsImage(LampSprite);
             currentLines.Add("Fans were shocked when Mr. Seagull appeared on stage ");
             currentLines.Add("singing through a megaphone instead of his professional mic. ");
             currentLines.Add("Fans are accusing the management of withholding a fan-customized microphone. ");
             currentLines.Add("The hashtag #FreeTheMic is now trending.");
+
+            currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
+            currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+            currentLines.Add("the motivations behind remain a mystery.");
         }
 
         else if (day5 == "tie")
         {
+            SetNewsImage(TieSprite);
+            currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
+            currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+            currentLines.Add("the motivations behind remain a mystery.");
         }
-
-        currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
-        currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
-        currentLines.Add("the motivations behind remain a mystery.");
 
 
     }
@@ -294,6 +321,7 @@ public class NewsSceneController : MonoBehaviour
 
         if (day6 == "GumballJar")
         {
+            SetNewsImage(GumSprite);
             currentLines.Add("Miss Chameleon has nearly succeeded in constructing her own hot air balloon.");
             currentLines.Add("The secret behind it is her exceptionally long tongue,");
             currentLines.Add("which helps her blow incredibly large, durable bubbles. ");
@@ -302,6 +330,7 @@ public class NewsSceneController : MonoBehaviour
 
         else if (day6 == "LowBrightness")
         {
+            SetNewsImage(lowBrightnessSprite);
             currentLines.Add("Multiple forest residents claim they lost their sight for several hours today.");
             currentLines.Add("It was initially mistaken for an unusually early sunset,");
             currentLines.Add("as residents suddenly found themselves plunged into total darkness in the mid-afternoon. ");
@@ -312,6 +341,7 @@ public class NewsSceneController : MonoBehaviour
 
         else if (day6 == "telescope")
         {
+            SetNewsImage(TelescopeSprite);
         }
 
         currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
