@@ -1,4 +1,4 @@
-using TMPro;
+Ôªøusing TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -33,27 +33,16 @@ public class DayIntroController : MonoBehaviour
     public GameObject speechBubbleZone;
     public GameObject sideBar;
 
-    [Header("Day1 Tutorial Hint (optional)")]
+    [Header("Others")]
     public Day1HoverTutorialHint tutorialHint;
-
-    [Header("Final Day Fix Button (optional)")]
     public ShowFixButtonAfterIntro fixButtonController;
-
-    [Header("Special Character")]
     public HorsePatientEasterEgg horsePatientEasterEgg;
-
-    [Header("Disable Interaction During Intro")]
-    [Tooltip("÷ªÕœª∑æ≥ª•∂Ø∂‘œÛ£¨±»»Á÷§ È°¢◊Û…œΩ«…Ë÷√∞¥≈•°£≤ª“™∞—¬Ì∂‘œÛÕœΩ¯¿¥°£")]
     public GameObject[] interactionObjects;
 
-    [Header("Intro Timing")]
+    [Header("Timing")]
     public float introAnimationDuration = 2f;
     public float delayBeforeDialogue = 0.2f;
-
-    [Header("Typewriter")]
     public float typeSpeed = 0.03f;
-
-    [Header("Fade")]
     public float fadeDuration = 0.2f;
 
     [Header("Dialogue")]
@@ -63,6 +52,10 @@ public class DayIntroController : MonoBehaviour
     private bool dialogueActive = false;
     private bool introFinished = false;
     private bool isTyping = false;
+    private bool isTransitioning = false;
+
+    // ÁÇπÂáª
+    private bool pendingClick = false;
 
     private Coroutine typingCoroutine;
     private Coroutine transitionCoroutine;
@@ -70,24 +63,19 @@ public class DayIntroController : MonoBehaviour
 
     void Start()
     {
-        if (patientBubble != null) patientBubble.SetActive(false);
-        if (doctorBubble != null) doctorBubble.SetActive(false);
+        SafeClearAllText();
+
+        if (patientBubble) patientBubble.SetActive(false);
+        if (doctorBubble) doctorBubble.SetActive(false);
 
         SetBubbleAlpha(patientBubbleImage, patientText, 0f);
         SetBubbleAlpha(doctorBubbleImage, doctorText, 0f);
 
-        if (speechBubbleZone != null)
-            speechBubbleZone.SetActive(false);
+        if (speechBubbleZone) speechBubbleZone.SetActive(false);
+        if (sideBar) sideBar.SetActive(false);
 
-        if (sideBar != null)
-            sideBar.SetActive(false);
-
-        // ø™≥°ƒ¨»œÀ¯Õœ◊ß
         GameFlow_JFM.LockDrag();
-
-        // ¬Ì≤°»À≤ µ∞Õœ◊ßƒ¨»œπÿ±’
-        if (horsePatientEasterEgg != null)
-            horsePatientEasterEgg.DisableDragging();
+        if (horsePatientEasterEgg) horsePatientEasterEgg.DisableDragging();
 
         DisableInteractions();
 
@@ -100,6 +88,13 @@ public class DayIntroController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
+            // Ê≠£Âú®ËøáÊ∏°ÂàôÁºìÂ≠òÁÇπÂáª
+            if (isTransitioning)
+            {
+                pendingClick = true;
+                return;
+            }
+
             OnDialogueClick();
         }
     }
@@ -108,7 +103,6 @@ public class DayIntroController : MonoBehaviour
     {
         yield return new WaitForSeconds(introAnimationDuration);
         yield return new WaitForSeconds(delayBeforeDialogue);
-
         StartDialogue();
     }
 
@@ -120,20 +114,18 @@ public class DayIntroController : MonoBehaviour
             return;
         }
 
+        SafeClearAllText();
+
         currentLineIndex = 0;
         dialogueActive = true;
         currentSpeaker = null;
-
-        if (transitionCoroutine != null)
-            StopCoroutine(transitionCoroutine);
 
         transitionCoroutine = StartCoroutine(ShowCurrentLineRoutine());
     }
 
     void OnDialogueClick()
     {
-        if (dialogueLines == null || currentLineIndex >= dialogueLines.Length)
-            return;
+        if (isTransitioning) return;
 
         if (isTyping)
         {
@@ -149,206 +141,150 @@ public class DayIntroController : MonoBehaviour
             return;
         }
 
-        if (transitionCoroutine != null)
-            StopCoroutine(transitionCoroutine);
-
         transitionCoroutine = StartCoroutine(ShowCurrentLineRoutine());
     }
 
     IEnumerator ShowCurrentLineRoutine()
     {
+        isTransitioning = true;
+
         DialogueLine line = dialogueLines[currentLineIndex];
 
+        // ÊèêÂâçÊ∏ÖÁ©∫
+        SafeClearAllText();
+
+        // Âº∫Âà∂ UI Âà∑Êñ∞
+        Canvas.ForceUpdateCanvases();
+
+        // Speaker ÂàáÊç¢
         if (currentSpeaker == null)
         {
             yield return StartCoroutine(FadeInSpeaker(line.speaker));
-            currentSpeaker = line.speaker;
         }
         else if (currentSpeaker.Value != line.speaker)
         {
             yield return StartCoroutine(SwitchSpeaker(line.speaker));
-            currentSpeaker = line.speaker;
         }
+
+        currentSpeaker = line.speaker;
 
         if (typingCoroutine != null)
-        {
             StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
 
-        if (line.speaker == Speaker.Patient)
+        // ÂºÄÂßãÊâìÂ≠ó
+        TMP_Text target = (line.speaker == Speaker.Patient) ? patientText : doctorText;
+        typingCoroutine = StartCoroutine(TypeText(target, line.text));
+
+        isTransitioning = false;
+
+        // Â¶ÇÊûúÁÇπËøáËá™Âä®ÊâßË°å
+        if (pendingClick)
         {
-            if (patientText != null)
-            {
-                patientText.text = "";
-                typingCoroutine = StartCoroutine(TypeText(patientText, line.text));
-            }
-        }
-        else
-        {
-            if (doctorText != null)
-            {
-                doctorText.text = "";
-                typingCoroutine = StartCoroutine(TypeText(doctorText, line.text));
-            }
+            pendingClick = false;
+            OnDialogueClick();
         }
     }
 
     IEnumerator FadeInSpeaker(Speaker speaker)
     {
-        if (speaker == Speaker.Patient)
-        {
-            if (patientBubble != null) patientBubble.SetActive(true);
-            yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 0f, 1f));
-        }
-        else
-        {
-            if (doctorBubble != null) doctorBubble.SetActive(true);
-            yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 0f, 1f));
-        }
+        GameObject bubble = (speaker == Speaker.Patient) ? patientBubble : doctorBubble;
+        Image img = (speaker == Speaker.Patient) ? patientBubbleImage : doctorBubbleImage;
+        TMP_Text txt = (speaker == Speaker.Patient) ? patientText : doctorText;
+
+        if (bubble) bubble.SetActive(true);
+        yield return StartCoroutine(FadeBubble(img, txt, 0f, 1f));
     }
 
     IEnumerator SwitchSpeaker(Speaker newSpeaker)
     {
-        if (newSpeaker == Speaker.Patient)
-        {
-            if (doctorBubble != null && (doctorBubbleImage != null || doctorText != null))
-            {
-                yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 1f, 0f));
-                doctorBubble.SetActive(false);
-            }
+        GameObject hideBubble = (newSpeaker == Speaker.Patient) ? doctorBubble : patientBubble;
+        Image hideImg = (newSpeaker == Speaker.Patient) ? doctorBubbleImage : patientBubbleImage;
+        TMP_Text hideTxt = (newSpeaker == Speaker.Patient) ? doctorText : patientText;
 
-            if (patientBubble != null) patientBubble.SetActive(true);
-            yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 0f, 1f));
-        }
-        else
-        {
-            if (patientBubble != null && (patientBubbleImage != null || patientText != null))
-            {
-                yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 1f, 0f));
-                patientBubble.SetActive(false);
-            }
+        GameObject showBubble = (newSpeaker == Speaker.Patient) ? patientBubble : doctorBubble;
+        Image showImg = (newSpeaker == Speaker.Patient) ? patientBubbleImage : doctorBubbleImage;
+        TMP_Text showTxt = (newSpeaker == Speaker.Patient) ? patientText : doctorText;
 
-            if (doctorBubble != null) doctorBubble.SetActive(true);
-            yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 0f, 1f));
+        if (hideBubble)
+        {
+            yield return StartCoroutine(FadeBubble(hideImg, hideTxt, 1f, 0f));
+            hideBubble.SetActive(false);
         }
+
+        if (showBubble) showBubble.SetActive(true);
+        yield return StartCoroutine(FadeBubble(showImg, showTxt, 0f, 1f));
     }
 
-    IEnumerator FadeBubble(Image bubbleImage, TMP_Text bubbleText, float from, float to)
+    IEnumerator FadeBubble(Image img, TMP_Text txt, float from, float to)
     {
         float t = 0f;
-
-        SetBubbleAlpha(bubbleImage, bubbleText, from);
 
         while (t < fadeDuration)
         {
             t += Time.deltaTime;
             float a = Mathf.Lerp(from, to, t / fadeDuration);
-            SetBubbleAlpha(bubbleImage, bubbleText, a);
+            SetBubbleAlpha(img, txt, a);
             yield return null;
         }
 
-        SetBubbleAlpha(bubbleImage, bubbleText, to);
+        SetBubbleAlpha(img, txt, to);
     }
 
-    void SetBubbleAlpha(Image bubbleImage, TMP_Text bubbleText, float alpha)
+    void SetBubbleAlpha(Image img, TMP_Text txt, float alpha)
     {
-        if (bubbleImage != null)
+        if (img)
         {
-            Color c = bubbleImage.color;
+            Color c = img.color;
             c.a = alpha;
-            bubbleImage.color = c;
+            img.color = c;
         }
 
-        if (bubbleText != null)
+        if (txt)
         {
-            Color c = bubbleText.color;
+            Color c = txt.color;
             c.a = alpha;
-            bubbleText.color = c;
+            txt.color = c;
         }
     }
 
-    IEnumerator TypeText(TMP_Text targetText, string fullText)
+    IEnumerator TypeText(TMP_Text target, string fullText)
     {
-        if (targetText == null) yield break;
-
         isTyping = true;
-        targetText.text = "";
+        target.text = "";
 
         foreach (char c in fullText)
         {
-            targetText.text += c;
+            target.text += c;
             yield return new WaitForSeconds(typeSpeed);
         }
 
         isTyping = false;
-        typingCoroutine = null;
     }
 
     void CompleteCurrentLineInstantly()
     {
-        if (dialogueLines == null || currentLineIndex >= dialogueLines.Length)
-            return;
-
         if (typingCoroutine != null)
-        {
             StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
 
         DialogueLine line = dialogueLines[currentLineIndex];
+        TMP_Text target = (line.speaker == Speaker.Patient) ? patientText : doctorText;
 
-        if (line.speaker == Speaker.Patient)
-        {
-            if (patientText != null)
-                patientText.text = line.text;
-        }
-        else
-        {
-            if (doctorText != null)
-                doctorText.text = line.text;
-        }
-
+        target.text = line.text;
         isTyping = false;
     }
 
     void EndDialogue()
     {
         dialogueActive = false;
-
-        if (typingCoroutine != null)
-        {
-            StopCoroutine(typingCoroutine);
-            typingCoroutine = null;
-        }
-
-        if (transitionCoroutine != null)
-        {
-            StopCoroutine(transitionCoroutine);
-            transitionCoroutine = null;
-        }
-
         StartCoroutine(EndDialogueRoutine());
     }
 
     IEnumerator EndDialogueRoutine()
     {
-        if (currentSpeaker == Speaker.Patient)
-        {
-            if (patientBubble != null && (patientBubbleImage != null || patientText != null))
-            {
-                yield return StartCoroutine(FadeBubble(patientBubbleImage, patientText, 1f, 0f));
-                patientBubble.SetActive(false);
-            }
-        }
-        else if (currentSpeaker == Speaker.Doctor)
-        {
-            if (doctorBubble != null && (doctorBubbleImage != null || doctorText != null))
-            {
-                yield return StartCoroutine(FadeBubble(doctorBubbleImage, doctorText, 1f, 0f));
-                doctorBubble.SetActive(false);
-            }
-        }
+        yield return new WaitForSeconds(0.05f);
+
+        if (patientBubble) patientBubble.SetActive(false);
+        if (doctorBubble) doctorBubble.SetActive(false);
 
         FinishIntro();
     }
@@ -357,71 +293,59 @@ public class DayIntroController : MonoBehaviour
     {
         introFinished = true;
 
-        if (speechBubbleZone != null)
-            speechBubbleZone.SetActive(true);
-
-        if (sideBar != null)
-            sideBar.SetActive(true);
+        if (speechBubbleZone) speechBubbleZone.SetActive(true);
+        if (sideBar) sideBar.SetActive(true);
 
         EnableInteractions();
-
-        // ∂‘ª∞Ω· ¯∫Û£¨≤≈‘ –Ì»´æ÷Õœ◊ß
         GameFlow_JFM.UnlockDrag();
 
-        // ∂‘ª∞Ω· ¯∫Û∆Ù”√ Day1 hover ΩÃ≥ÃÃ· æ
-        if (tutorialHint != null)
-            tutorialHint.EnableTutorial();
+        if (tutorialHint) tutorialHint.EnableTutorial();
+        if (fixButtonController) fixButtonController.ShowFixButton();
+        if (horsePatientEasterEgg) horsePatientEasterEgg.EnableDraggingAtCurrentPosition();
+    }
 
-        // ∂‘ª∞Ω· ¯∫Ûœ‘ æ Day8 µƒ FIX ME ∞¥≈•
-        if (fixButtonController != null)
-            fixButtonController.ShowFixButton();
-
-        // ∂‘ª∞Ω· ¯∫Û£¨¬Ì≤°»À≤≈ø™ ºø…Õœ£¨≤¢∞—µ±«∞Œª÷√º«≥… home
-        if (horsePatientEasterEgg != null)
-            horsePatientEasterEgg.EnableDraggingAtCurrentPosition();
+    void SafeClearAllText()
+    {
+        if (patientText) patientText.text = "";
+        if (doctorText) doctorText.text = "";
     }
 
     void DisableInteractions()
     {
-        if (interactionObjects == null) return;
-
-        foreach (GameObject obj in interactionObjects)
+        foreach (var obj in interactionObjects)
         {
-            if (obj == null) continue;
+            if (!obj) continue;
 
-            Button btn = obj.GetComponent<Button>();
-            if (btn != null)
-                btn.interactable = false;
+            var btn = obj.GetComponent<Button>();
+            if (btn) btn.interactable = false;
 
-            Collider col = obj.GetComponent<Collider>();
-            if (col != null)
-                col.enabled = false;
+            var col = obj.GetComponent<Collider>();
+            if (col) col.enabled = false;
 
-            Collider2D col2 = obj.GetComponent<Collider2D>();
-            if (col2 != null)
-                col2.enabled = false;
+            var col2 = obj.GetComponent<Collider2D>();
+            if (col2) col2.enabled = false;
         }
     }
 
     void EnableInteractions()
     {
-        if (interactionObjects == null) return;
-
-        foreach (GameObject obj in interactionObjects)
+        foreach (var obj in interactionObjects)
         {
-            if (obj == null) continue;
+            if (!obj) continue;
 
-            Button btn = obj.GetComponent<Button>();
-            if (btn != null)
-                btn.interactable = true;
+            var btn = obj.GetComponent<Button>();
+            if (btn) btn.interactable = true;
 
-            Collider col = obj.GetComponent<Collider>();
-            if (col != null)
-                col.enabled = true;
+            var col = obj.GetComponent<Collider>();
+            if (col) col.enabled = true;
 
-            Collider2D col2 = obj.GetComponent<Collider2D>();
-            if (col2 != null)
-                col2.enabled = true;
+            var col2 = obj.GetComponent<Collider2D>();
+            if (col2) col2.enabled = true;
         }
+    }
+
+    public bool IsIntroFinished()
+    {
+        return introFinished;
     }
 }
