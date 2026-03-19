@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: 84797d606a0ac724db2a64566050eb20
+guid: b78d054a9409f0e4b95567d9bca8fe74
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2867412021650493721
-    second: IceTray 1_0
-  - first:
-      213: 4358427044325957743
-    second: IceTray 1_1
-  - first:
-      213: 3864692299628386278
-    second: IceTray 1_2
-  - first:
-      213: -3411918608893103854
-    second: IceTray 1_3
-  - first:
-      213: -8394197557034548865
-    second: IceTray 1_4
+      213: 6022054039049829646
+    second: IceTray_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IceTray 1_0
+      name: IceTray_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 12
+        x: 64
+        y: 23
         width: 170
-        height: 230
+        height: 235
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,96 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 911992f9a081bc720800000000000000
-      internalID: 2867412021650493721
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IceTray 1_1
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 236
-        width: 21
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f60218c0e4e3c7c30800000000000000
-      internalID: 4358427044325957743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IceTray 1_2
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 228
-        width: 21
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e79985ab2522a530800000000000000
-      internalID: 3864692299628386278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IceTray 1_3
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 223
-        width: 9
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 211b1623a1e66a0d0800000000000000
-      internalID: -3411918608893103854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IceTray 1_4
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 194
-        width: 7
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f710186dbc1d18b80800000000000000
-      internalID: -8394197557034548865
+      spriteID: e0d75c70e32a29350800000000000000
+      internalID: 6022054039049829646
       vertices: []
       indices: 
       edges: []
@@ -248,11 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IceTray 1_0: 2867412021650493721
-      IceTray 1_1: 4358427044325957743
-      IceTray 1_2: 3864692299628386278
-      IceTray 1_3: -3411918608893103854
-      IceTray 1_4: -8394197557034548865
+      IceTray_0: 6022054039049829646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
