@@ -4,7 +4,7 @@ using UnityEngine;
 public class FinalAchievementButtons : MonoBehaviour
 {
     [Header("Scene")]
-    public SceneFade sceneFade;
+    public SimpleSceneFader_JFM specialFader;
     public string nextSceneName = "day8_clinic";
 
     [Header("Arrow UI")]
@@ -47,13 +47,13 @@ public class FinalAchievementButtons : MonoBehaviour
         isTransitioning = true;
         Time.timeScale = 1f;
 
-        if (sceneFade != null)
+        if (specialFader != null)
         {
-            sceneFade.FadeToScene(nextSceneName);
+            specialFader.FadeToScene(nextSceneName);
         }
         else
         {
-            Debug.LogWarning("FinalAchievementButtons: sceneFade is not assigned.");
+            Debug.LogWarning("FinalAchievementButtons: specialFader is not assigned.");
         }
     }
 
