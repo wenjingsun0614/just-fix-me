@@ -68,6 +68,9 @@ public class NewsSceneController : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
     private bool sceneReady = false;
+    private bool isTransitioning = false; // 锁
+    private bool pendingClick = false;    // 缓存点击
+    private bool isExiting = false;       // 防止重复切场景
 
     private Vector2 arrowBasePos;
 
@@ -87,6 +90,12 @@ public class NewsSceneController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
+            if (isTransitioning)
+            {
+                pendingClick = true; // 打字时缓存点击
+                return;
+            }
+
             HandleClick();
         }
 
@@ -364,6 +373,8 @@ public class NewsSceneController : MonoBehaviour
         if (dialogueText == null) return;
         if (currentLines.Count == 0) return;
 
+        isTransitioning = true; //加锁
+
         StopTypingOnly();
 
         if (continueArrow != null)
@@ -401,6 +412,10 @@ public class NewsSceneController : MonoBehaviour
 
     void GoToNextScene()
     {
+        if (isExiting) return; // 防连点
+
+        isExiting = true;
+
         StopTypingOnly();
 
         string targetScene = GameProgress_JFM.nextSceneAfterNews;
@@ -423,7 +438,17 @@ public class NewsSceneController : MonoBehaviour
         }
 
         isTyping = false;
+
         ShowArrow();
+
+        isTransitioning = false; // 解锁
+
+        //如果期间玩家点过则自动继续
+        if (pendingClick)
+        {
+            pendingClick = false;
+            HandleClick();
+        }
     }
 
     void ShowArrow()
