@@ -4051,6 +4051,8 @@ MonoBehaviour:
     stateSprite: {fileID: 3079436399677435504, guid: 914bb0bdd08358c43969e36fc00d5836, type: 3}
   - itemName: lamp_0
     stateSprite: {fileID: 7194906051545903973, guid: a3c7e0aef39dbd046891335fe1f414d3, type: 3}
+  - itemName: Balloon_inflated
+    stateSprite: {fileID: -5060259699714436470, guid: 2382fae819dfb3248afed091df37774a, type: 3}
   fadeDuration: 0.15
   bounceScale: 1.06
   bounceDuration: 0.16

@@ -8775,11 +8775,11 @@ MonoBehaviour:
     stateSprite: {fileID: 7369129276098301182, guid: ff9836a1f6ea32b41957163be26853b3, type: 3}
   - itemName: LowBrightness
     stateSprite: {fileID: -1250030833752170082, guid: 555cd2448087c1a4e8d2434bade4ae99, type: 3}
-  fadeDuration: 0.12
-  bounceScale: 1.08
-  bounceDuration: 0.12
+  fadeDuration: 0.15
+  bounceScale: 1.06
+  bounceDuration: 0.15
   disableAnimatorWhenSwap: 1
-  swapParticle: {fileID: 0}
+  swapParticle: {fileID: 7027985}
 --- !u!1 &514085810
 GameObject:
   m_ObjectHideFlags: 0

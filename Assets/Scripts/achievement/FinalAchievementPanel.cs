@@ -24,29 +24,6 @@ public class FinalAchievementPanel : MonoBehaviour
     [Header("Achievement Text")]
     public TMP_Text achievementText;
 
-    [Header("Achievement Key Sprites")]
-    public Sprite birthdayHatSprite;
-    public Sprite balloonSprite;
-    public Sprite bubbleGumSprite;
-
-    public Sprite cloudSprite;
-    public Sprite brightnessSprite;
-    public Sprite muteSprite;
-
-    public Sprite roadblockSprite;
-    public Sprite broomSprite;
-
-    public Sprite iceCreamConeSprite;
-
-    public Sprite oceanBallSprite;
-    public Sprite hornSprite;
-
-    public Sprite pianoSprite;
-    public Sprite iceCubeTraySprite;
-
-    public Sprite ferrariSprite;
-    public Sprite binocularsSprite;
-
     [Header("Animation")]
     public float imageFadeDuration = 0.35f;
     public float delayBetweenImages = 0.12f;
@@ -168,12 +145,13 @@ public class FinalAchievementPanel : MonoBehaviour
 
         if (unlocked.Count == 0)
         {
-            finalText = prefix + "Perfectlty Average: you missed every trait.";
+            finalText = prefix + "Perfectly Average\nyou perfectly missed every trait.";
         }
         else
         {
             finalText = prefix + string.Join("\n\n", unlocked);
         }
+  
 
         achievementText.text = "";
         yield return TypeText(finalText);
@@ -210,58 +188,65 @@ public class FinalAchievementPanel : MonoBehaviour
     {
         unlocked.Clear();
 
-        Sprite d1 = GameProgress_JFM.day1SelectedSprite;
-        Sprite d2 = GameProgress_JFM.day2SelectedSprite;
-        Sprite d3 = GameProgress_JFM.day3SelectedSprite;
-        Sprite d4 = GameProgress_JFM.day4SelectedSprite;
-        Sprite d5 = GameProgress_JFM.day5SelectedSprite;
-        Sprite d6 = GameProgress_JFM.day6SelectedSprite;
-        Sprite d7 = GameProgress_JFM.day7SelectedSprite;
+        string d1 = GameProgress_JFM.day1SelectedItemName;
+        string d2 = GameProgress_JFM.day2SelectedItemName;
+        string d3 = GameProgress_JFM.day3SelectedItemName;
+        string d4 = GameProgress_JFM.day4SelectedItemName;
+        string d5 = GameProgress_JFM.day5SelectedItemName;
+        string d6 = GameProgress_JFM.day6SelectedItemName;
+        string d7 = GameProgress_JFM.day7SelectedItemName;
 
-        if (d1 == birthdayHatSprite &&
-            (d2 == balloonSprite || d5 == balloonSprite) &&
-            d6 == bubbleGumSprite)
+        // 1. Birthday
+        if (d1 == "BirthdayCap" &&
+            (d2 == "Balloon" || d5 == "Balloon_inflated") &&
+            d6 == "GumballJar")
         {
             unlocked.Add("Always be ready to celebrate a birthday.");
         }
 
-        else if (d2 == cloudSprite &&
-            d6 == brightnessSprite &&
-            d7 == muteSprite)
+        // 2. God Mode
+        if (d2 == "Cloud_01" &&
+            d6 == "LowBrightness" &&
+            d7 == "crocodile_menu")
         {
-            unlocked.Add("God Mode.");
+            unlocked.Add("God Mode");
         }
 
-        else if ((d1 == roadblockSprite || d7 == roadblockSprite) &&
-            d2 == broomSprite)
+        // 3. Yellow Sponge
+        if ((d1 == "Barrier" || d7 == "Barrier") &&
+            d2 == "Broom")
         {
             unlocked.Add("As hardworking as a yellow sponge!");
         }
 
-        else if (d1 == iceCreamConeSprite &&
-            d6 == bubbleGumSprite)
+        // 4. Sweet Tooth
+        if (d1 == "Cone" &&
+            d6 == "GumballJar")
         {
-            unlocked.Add("Even Doctors Visit the Dentist!");
+            unlocked.Add("Even Doctors Visit the Dentist");
         }
 
-        else if (d2 == balloonSprite &&
-            d3 == oceanBallSprite &&
-            d5 == hornSprite)
+        // 5. Secret Circus
+        if (d2 == "Balloon" &&
+            d3 == "Organizer" &&
+            d5 == "lamp_0")
         {
-            unlocked.Add("Secret Circus.");
+            unlocked.Add("Secret Circus");
         }
 
-        else if (d3 == pianoSprite &&
-            d4 == iceCubeTraySprite)
+        // 6. Square and Proper
+        if (d3 == "keyboard" &&
+            d4 == "IceTray")
         {
-            unlocked.Add("Square and Proper.");
+            unlocked.Add("Square and Proper");
         }
 
-        else if (d3 == ferrariSprite &&
-            d5 == hornSprite &&
-            d6 == binocularsSprite)
+        // 7. F1 fans
+        if (d3 == "FerrariEasterEgg" &&
+            d5 == "lamp_0" &&
+            d6 == "telescope")
         {
-            unlocked.Add("Potential F1 racing fans.");
+            unlocked.Add("Potential F1 racing fans");
         }
     }
 }
