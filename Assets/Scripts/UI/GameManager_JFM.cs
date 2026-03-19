@@ -25,7 +25,6 @@ public class GameManager_JFM : MonoBehaviour
     public Transform defaultAttachPoint;
     public bool replaceOnPatient = true;
 
-    // ✅ 新增（不会影响原逻辑）
     [Header("Extra Display")]
     public SideBarExtraDisplay extraDisplay;
 
@@ -55,7 +54,7 @@ public class GameManager_JFM : MonoBehaviour
     }
 
     // =========================
-    // ✅ 正确物品注册
+    // 正确物品注册
     // =========================
     public bool RegisterCorrectItem(DraggableItem2D item)
     {
@@ -76,13 +75,11 @@ public class GameManager_JFM : MonoBehaviour
                 iconSprite = special.GetSideBarIcon();
             }
 
-            // ✅ Sidebar
             if (sideBarUI != null)
             {
                 sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
             }
 
-            // ✅ 新增：大图 + 隐藏 Patient
             if (extraDisplay != null)
             {
                 extraDisplay.OnItemUnlocked(item.name);
@@ -122,7 +119,6 @@ public class GameManager_JFM : MonoBehaviour
                 sideBarUI.RevealNextWithIcon(iconSprite, playAnim: true);
             }
 
-            // ✅ 同样触发额外显示
             if (extraDisplay != null)
             {
                 extraDisplay.OnItemUnlocked(item.name);
@@ -271,35 +267,83 @@ public class GameManager_JFM : MonoBehaviour
         if (item == null) return;
 
         finalSelectedItem = item;
+        Sprite selectedSprite = item.GetSprite();
+
+        bool goToFinal = false;
 
         if (currentDay == 1)
         {
             GameProgress_JFM.day1SelectedItemName = item.name;
+            GameProgress_JFM.day1SelectedSprite = selectedSprite;
+
             GameProgress_JFM.currentNewsDay = 1;
             GameProgress_JFM.nextSceneAfterNews = "day2_clinic";
         }
         else if (currentDay == 2)
         {
             GameProgress_JFM.day2SelectedItemName = item.name;
+            GameProgress_JFM.day2SelectedSprite = selectedSprite;
+
             GameProgress_JFM.currentNewsDay = 2;
             GameProgress_JFM.nextSceneAfterNews = "day3_clinic";
         }
         else if (currentDay == 3)
         {
             GameProgress_JFM.day3SelectedItemName = item.name;
+            GameProgress_JFM.day3SelectedSprite = selectedSprite;
+
             GameProgress_JFM.currentNewsDay = 3;
             GameProgress_JFM.nextSceneAfterNews = "day4_clinic";
+        }
+        else if (currentDay == 4)
+        {
+            GameProgress_JFM.day4SelectedItemName = item.name;
+            GameProgress_JFM.day4SelectedSprite = selectedSprite;
+
+            GameProgress_JFM.currentNewsDay = 4;
+            GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
+        }
+        else if (currentDay == 5)
+        {
+            GameProgress_JFM.day5SelectedItemName = item.name;
+            GameProgress_JFM.day5SelectedSprite = selectedSprite;
+
+            GameProgress_JFM.currentNewsDay = 5;
+            GameProgress_JFM.nextSceneAfterNews = "day6_clinic";
+        }
+        else if (currentDay == 6)
+        {
+            GameProgress_JFM.day6SelectedItemName = item.name;
+            GameProgress_JFM.day6SelectedSprite = selectedSprite;
+
+            GameProgress_JFM.currentNewsDay = 6;
+            GameProgress_JFM.nextSceneAfterNews = "day7_clinic";
+        }
+        else if (currentDay == 7)
+        {
+            GameProgress_JFM.day7SelectedItemName = item.name;
+            GameProgress_JFM.day7SelectedSprite = selectedSprite;
+
+            goToFinal = true;
         }
 
         if (sceneFade != null)
         {
             Time.timeScale = 1f;
-            sceneFade.FadeToScene("news_scenes");
+
+            if (goToFinal)
+            {
+                sceneFade.FadeToScene("final_achievement");
+            }
+            else
+            {
+                sceneFade.FadeToScene("news_scenes");
+            }
         }
     }
 
     // =========================
-    // Ferrari 特殊结算（完整保留）
+    // 特殊结算
     // =========================
     public void CompleteDayWithSpecialResult(string resultName)
     {
@@ -309,23 +353,62 @@ public class GameManager_JFM : MonoBehaviour
             return;
         }
 
+        bool goToFinal = false;
+
         if (currentDay == 1)
         {
             GameProgress_JFM.day1SelectedItemName = resultName;
+            GameProgress_JFM.day1SelectedSprite = null;
+
             GameProgress_JFM.currentNewsDay = 1;
             GameProgress_JFM.nextSceneAfterNews = "day2_clinic";
         }
         else if (currentDay == 2)
         {
             GameProgress_JFM.day2SelectedItemName = resultName;
+            GameProgress_JFM.day2SelectedSprite = null;
+
             GameProgress_JFM.currentNewsDay = 2;
             GameProgress_JFM.nextSceneAfterNews = "day3_clinic";
         }
         else if (currentDay == 3)
         {
             GameProgress_JFM.day3SelectedItemName = resultName;
+            GameProgress_JFM.day3SelectedSprite = null;
+
             GameProgress_JFM.currentNewsDay = 3;
             GameProgress_JFM.nextSceneAfterNews = "day4_clinic";
+        }
+        else if (currentDay == 4)
+        {
+            GameProgress_JFM.day4SelectedItemName = resultName;
+            GameProgress_JFM.day4SelectedSprite = null;
+
+            GameProgress_JFM.currentNewsDay = 4;
+            GameProgress_JFM.nextSceneAfterNews = "day5_clinic";
+        }
+        else if (currentDay == 5)
+        {
+            GameProgress_JFM.day5SelectedItemName = resultName;
+            GameProgress_JFM.day5SelectedSprite = null;
+
+            GameProgress_JFM.currentNewsDay = 5;
+            GameProgress_JFM.nextSceneAfterNews = "day6_clinic";
+        }
+        else if (currentDay == 6)
+        {
+            GameProgress_JFM.day6SelectedItemName = resultName;
+            GameProgress_JFM.day6SelectedSprite = null;
+
+            GameProgress_JFM.currentNewsDay = 6;
+            GameProgress_JFM.nextSceneAfterNews = "day7_clinic";
+        }
+        else if (currentDay == 7)
+        {
+            GameProgress_JFM.day7SelectedItemName = resultName;
+            GameProgress_JFM.day7SelectedSprite = null;
+
+            goToFinal = true;
         }
 
         Debug.Log("Special result recorded: " + resultName);
@@ -333,7 +416,15 @@ public class GameManager_JFM : MonoBehaviour
         if (sceneFade != null)
         {
             Time.timeScale = 1f;
-            sceneFade.FadeToScene("news_scenes");
+
+            if (goToFinal)
+            {
+                sceneFade.FadeToScene("final_achievement");
+            }
+            else
+            {
+                sceneFade.FadeToScene("news_scenes");
+            }
         }
     }
 

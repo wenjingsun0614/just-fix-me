@@ -381,6 +381,15 @@ MonoBehaviour:
   balloonSprite: {fileID: 0}
   broomSprite: {fileID: 0}
   reportSprite: {fileID: 0}
+  FerrariSprite: {fileID: 0}
+  organizerSprite: {fileID: 0}
+  keyboardSprite: {fileID: 0}
+  BallonSprite: {fileID: 0}
+  LampSprite: {fileID: 0}
+  TieSprite: {fileID: 0}
+  TelescopeSprite: {fileID: 0}
+  lowBrightnessSprite: {fileID: 0}
+  GumSprite: {fileID: 0}
   typeSpeed: 0.03
   arrowFadeSpeed: 2.2
   arrowFloatSpeed: 2
@@ -640,6 +649,15 @@ MonoBehaviour:
   balloonSprite: {fileID: -5635714540128689419, guid: caa42549b5104654a8754e943fe16e75, type: 3}
   broomSprite: {fileID: -6769702176870385060, guid: 8f9c7ec6f719d8b429ba5a1140a8f89e, type: 3}
   reportSprite: {fileID: -6769702176870385060, guid: 8f9c7ec6f719d8b429ba5a1140a8f89e, type: 3}
+  FerrariSprite: {fileID: 0}
+  organizerSprite: {fileID: 0}
+  keyboardSprite: {fileID: 0}
+  BallonSprite: {fileID: 0}
+  LampSprite: {fileID: 0}
+  TieSprite: {fileID: 0}
+  TelescopeSprite: {fileID: 0}
+  lowBrightnessSprite: {fileID: 0}
+  GumSprite: {fileID: 0}
   typeSpeed: 0.03
   arrowFadeSpeed: 2.2
   arrowFloatSpeed: 2
@@ -855,6 +873,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282276754}
   m_CullTransparentMesh: 1
+--- !u!1 &1284624973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1284624975}
+  - component: {fileID: 1284624974}
+  m_Layer: 0
+  m_Name: FinalAchievementPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1284624974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284624973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d601f6d9a11fe94aae14611e721c22f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FinalAchievementPanel
+  day1Image: {fileID: 0}
+  day2Image: {fileID: 0}
+  day3Image: {fileID: 0}
+  day4Image: {fileID: 0}
+  day5Image: {fileID: 0}
+  day6Image: {fileID: 0}
+  day7Image: {fileID: 0}
+  emptyPlaceholderSprite: {fileID: 0}
+  achievementText: {fileID: 0}
+  birthdayHatSprite: {fileID: 0}
+  balloonSprite: {fileID: 0}
+  bubbleGumSprite: {fileID: 0}
+  cloudSprite: {fileID: 0}
+  brightnessSprite: {fileID: 0}
+  muteSprite: {fileID: 0}
+  roadblockSprite: {fileID: 0}
+  broomSprite: {fileID: 0}
+  iceCreamConeSprite: {fileID: 0}
+  oceanBallSprite: {fileID: 0}
+  hornSprite: {fileID: 0}
+  pianoSprite: {fileID: 0}
+  iceCubeTraySprite: {fileID: 0}
+  ferrariSprite: {fileID: 0}
+  binocularsSprite: {fileID: 0}
+--- !u!4 &1284624975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284624973}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1742.1724, y: 1054.6619, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956555416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,3 +1262,4 @@ SceneRoots:
   - {fileID: 1956555420}
   - {fileID: 406286875}
   - {fileID: 705920271}
+  - {fileID: 1284624975}

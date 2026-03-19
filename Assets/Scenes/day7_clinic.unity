@@ -7561,6 +7561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenPanelOnClick
   panelToOpen: {fileID: 627436379}
+  introController: {fileID: 0}
 --- !u!61 &252168664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10909,8 +10910,9 @@ MonoBehaviour:
   itemSelectionPanel: {fileID: 1366360859}
   defaultAttachPoint: {fileID: 0}
   replaceOnPatient: 1
+  extraDisplay: {fileID: 0}
   sceneFade: {fileID: 602992300}
-  nextSceneName: day8_clinic
+  nextSceneName: final_achievement
   ferrariOverrideActive: 0
   ferrariOverrideResultName: 
 --- !u!4 &705920271
