@@ -1,16 +1,19 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class FinalFixButton : MonoBehaviour
 {
+    [Header("Drop Zone")]
     public Collider2D dropZoneCollider;
-    public string endingSceneName = "final_achievement_scene";
 
+    [Header("Snap")]
     public float snapToCenterTime = 0.15f;
     public Transform bubbleCenter;
+
+    [Header("Ending")]
+    public Day8EndingSequence endingSequence;
 
     private Camera cam;
     private Collider2D col;
@@ -78,6 +81,7 @@ public class FinalFixButton : MonoBehaviour
         {
             float t = 0f;
             Vector3 start = transform.position;
+
             while (t < snapToCenterTime)
             {
                 t += Time.deltaTime;
@@ -85,10 +89,19 @@ public class FinalFixButton : MonoBehaviour
                 transform.position = Vector3.Lerp(start, bubbleCenter.position, p);
                 yield return null;
             }
+
+            transform.position = bubbleCenter.position;
         }
 
         yield return new WaitForSeconds(0.3f);
 
-        SceneManager.LoadScene(endingSceneName);
+        if (endingSequence != null)
+        {
+            endingSequence.PlayEndingSequence();
+        }
+        else
+        {
+            Debug.LogWarning("FinalFixButton: endingSequence is not assigned.");
+        }
     }
 }
