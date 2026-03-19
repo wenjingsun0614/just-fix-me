@@ -12,9 +12,13 @@ public class Day6BrightnessSecret : MonoBehaviour
     [Header("Refs")]
     public GameManager_JFM gameManager;
     public DraggableItem2D hiddenRewardItem;
+    public PatientVisualStateController patientStateController;
 
     [Header("State")]
     public bool hasTriggered = false;
+
+    [Tooltip("要切换到的状态名，必须和 PatientVisualStateController 里的 itemName 一致")]
+    public string brightnessStateItemName = "LowBrightness";
 
     public void CheckBrightnessSecret()
     {
@@ -29,7 +33,14 @@ public class Day6BrightnessSecret : MonoBehaviour
             hasTriggered = true;
             Debug.Log("Day6 brightness secret triggered!");
 
+            // 1. 解锁隐藏物品
             gameManager.RegisterSpecialItem(hiddenRewardItem, true);
+
+            // 2. 触发病人状态切换
+            if (patientStateController != null)
+            {
+                patientStateController.ApplyStateByItemName(brightnessStateItemName);
+            }
         }
     }
 }

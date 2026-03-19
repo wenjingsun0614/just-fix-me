@@ -146,37 +146,11 @@ public class GameManager_JFM : MonoBehaviour
         item.HideInWorld();
         currentEquippedItem = item;
 
-        Transform attach = item.patientAttachPoint != null ? item.patientAttachPoint : defaultAttachPoint;
-        if (attach == null) return;
-
-        if (replaceOnPatient && currentPlaced != null)
+        PatientVisualStateController patientStateController = FindFirstObjectByType<PatientVisualStateController>();
+        if (patientStateController != null)
         {
-            Destroy(currentPlaced);
-            currentPlaced = null;
+            patientStateController.ApplyStateByItemName(item.name);
         }
-
-        GameObject placed = null;
-
-        OrganizerSpecialItem special = item.GetComponent<OrganizerSpecialItem>();
-        if (special != null && special.GetPatientDisplayPrefab() != null)
-        {
-            placed = Instantiate(special.GetPatientDisplayPrefab(), attach.position, attach.rotation);
-            placed.transform.localScale = item.transform.localScale;
-        }
-        else
-        {
-            placed = new GameObject(item.name + "_Placed");
-            placed.transform.position = attach.position;
-            placed.transform.rotation = attach.rotation;
-            placed.transform.localScale = item.transform.localScale;
-
-            var placedSR = placed.AddComponent<SpriteRenderer>();
-            placedSR.sprite = item.GetSprite();
-            placedSR.sortingLayerID = item.GetSortingLayerID();
-            placedSR.sortingOrder = item.GetSortingOrder() + 1;
-        }
-
-        currentPlaced = placed;
     }
 
     // =========================

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 48c76acae2ad98048bb360cfa8c40b30
+guid: 555cd2448087c1a4e8d2434bade4ae99
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3184079263844053581
-    second: 1_barrier_0
+      213: -1250030833752170082
+    second: 6_BrightlessBar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 340
+  spritePixelsToUnits: 220
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1_barrier_0
+      name: 6_BrightlessBar_0
       rect:
         serializedVersion: 2
-        x: 658
-        y: 307
-        width: 1421
-        height: 3079
+        x: 595
+        y: 832
+        width: 828
+        height: 1933
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d42bc12783f103c20800000000000000
-      internalID: 3184079263844053581
+      spriteID: e91aae3649ff6aee0800000000000000
+      internalID: -1250030833752170082
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1_barrier_0: 3184079263844053581
+      6_BrightlessBar_0: -1250030833752170082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

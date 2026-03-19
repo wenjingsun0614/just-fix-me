@@ -1,40 +1,40 @@
 fileFormatVersion: 2
-guid: 4789d8f5e94774f42a0bec69fde168ae
+guid: 2382fae819dfb3248afed091df37774a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4479763505052795169
-    second: 7_bottle_0
+      213: -5060259699714436470
+    second: 5_BALLON_0
   - first:
-      213: -4041010353030175288
-    second: 7_bottle_1
+      213: 979199074210938418
+    second: 5_BALLON_1
   - first:
-      213: -404143683130842152
-    second: 7_bottle_2
+      213: -4335990796199248600
+    second: 5_BALLON_2
   - first:
-      213: -8461422125025734225
-    second: 7_bottle_3
+      213: 7952220800535995880
+    second: 5_BALLON_3
   - first:
-      213: -5629065228631463751
-    second: 7_bottle_4
+      213: -2006114635972818968
+    second: 5_BALLON_4
   - first:
-      213: -5501422555702085118
-    second: 7_bottle_5
+      213: -7655139895103137041
+    second: 5_BALLON_5
   - first:
-      213: -3452280559433308248
-    second: 7_bottle_6
+      213: -6275741465173928579
+    second: 5_BALLON_6
   - first:
-      213: -2279362116790362431
-    second: 7_bottle_7
+      213: 636529317951984818
+    second: 5_BALLON_7
   - first:
-      213: 3835441041709163
-    second: 7_bottle_8
+      213: -5050641674622036619
+    second: 5_BALLON_8
   - first:
-      213: 8977432854637884834
-    second: 7_bottle_9
+      213: 6182938152939295708
+    second: 5_BALLON_9
   - first:
-      213: 5070607717668853162
-    second: 7_bottle_10
+      213: -8617748809713374382
+    second: 5_BALLON_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,16 +126,29 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 7_bottle_0
+      name: 5_BALLON_0
       rect:
         serializedVersion: 2
-        x: 45
+        x: 53
         y: 0
-        width: 2510
+        width: 2494
         height: 3600
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,18 +158,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fdeb193b3dea4d1c0800000000000000
-      internalID: -4479763505052795169
+      spriteID: a82db4f0d9856c9b0800000000000000
+      internalID: -5060259699714436470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_1
+      name: 5_BALLON_1
       rect:
         serializedVersion: 2
-        x: 171
-        y: 2953
+        x: 374
+        y: 2933
         width: 6
         height: 6
       alignment: 0
@@ -167,18 +180,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c5e5fd7e727be7c0800000000000000
-      internalID: -4041010353030175288
+      spriteID: 23efbb6be50d69d00800000000000000
+      internalID: 979199074210938418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_2
+      name: 5_BALLON_2
       rect:
         serializedVersion: 2
-        x: 2369
-        y: 2953
+        x: 1796
+        y: 2933
         width: 6
         height: 6
       alignment: 0
@@ -189,18 +202,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8d3a4c02671346af0800000000000000
-      internalID: -404143683130842152
+      spriteID: 82d3e2b085773d3c0800000000000000
+      internalID: -4335990796199248600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_3
+      name: 5_BALLON_3
       rect:
         serializedVersion: 2
-        x: 2526
-        y: 2953
+        x: 1991
+        y: 2933
         width: 6
         height: 6
       alignment: 0
@@ -211,85 +224,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa1d537686df29a80800000000000000
-      internalID: -8461422125025734225
+      spriteID: 8e5ab677fa6fb5e60800000000000000
+      internalID: 7952220800535995880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_4
+      name: 5_BALLON_4
       rect:
         serializedVersion: 2
-        x: 2088
-        y: 2741
-        width: 14
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9b82be5affa81e1b0800000000000000
-      internalID: -5629065228631463751
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 7_bottle_5
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 2470
+        x: 1743
+        y: 1682
         width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 20a3e08555507a3b0800000000000000
-      internalID: -5501422555702085118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 7_bottle_6
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 245
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8a7adf54f190710d0800000000000000
-      internalID: -3452280559433308248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 7_bottle_7
-      rect:
-        serializedVersion: 2
-        x: 778
-        y: 58
-        width: 7
         height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ce5a3a3b341e50e0800000000000000
-      internalID: -2279362116790362431
+      spriteID: 8e7c0201e59d824e0800000000000000
+      internalID: -2006114635972818968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_8
+      name: 5_BALLON_5
       rect:
         serializedVersion: 2
-        x: 1661
-        y: 58
-        width: 7
-        height: 7
+        x: 101
+        y: 59
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6819d43050ad0000800000000000000
-      internalID: 3835441041709163
+      spriteID: fead476f2da73c590800000000000000
+      internalID: -7655139895103137041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_9
+      name: 5_BALLON_6
       rect:
         serializedVersion: 2
-        x: 1995
-        y: 58
-        width: 7
-        height: 7
+        x: 413
+        y: 59
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,20 +290,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a5bc97ed9f369c70800000000000000
-      internalID: 8977432854637884834
+      spriteID: d755e12436618e8a0800000000000000
+      internalID: -6275741465173928579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 7_bottle_10
+      name: 5_BALLON_7
       rect:
         serializedVersion: 2
-        x: 2446
+        x: 782
         y: 58
-        width: 7
-        height: 7
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,8 +312,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aa5910f9ada6e5640800000000000000
-      internalID: 5070607717668853162
+      spriteID: 2b456adca0865d800800000000000000
+      internalID: 636529317951984818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5_BALLON_8
+      rect:
+        serializedVersion: 2
+        x: 1990
+        y: 58
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5759e58082488e9b0800000000000000
+      internalID: -5050641674622036619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5_BALLON_9
+      rect:
+        serializedVersion: 2
+        x: 2186
+        y: 59
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd31822dd753ec550800000000000000
+      internalID: 6182938152939295708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 5_BALLON_10
+      rect:
+        serializedVersion: 2
+        x: 2438
+        y: 58
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b2d79cd1b976880800000000000000
+      internalID: -8617748809713374382
       vertices: []
       indices: 
       edges: []
@@ -385,17 +398,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      7_bottle_0: -4479763505052795169
-      7_bottle_1: -4041010353030175288
-      7_bottle_10: 5070607717668853162
-      7_bottle_2: -404143683130842152
-      7_bottle_3: -8461422125025734225
-      7_bottle_4: -5629065228631463751
-      7_bottle_5: -5501422555702085118
-      7_bottle_6: -3452280559433308248
-      7_bottle_7: -2279362116790362431
-      7_bottle_8: 3835441041709163
-      7_bottle_9: 8977432854637884834
+      5_BALLON_0: -5060259699714436470
+      5_BALLON_1: 979199074210938418
+      5_BALLON_10: -8617748809713374382
+      5_BALLON_2: -4335990796199248600
+      5_BALLON_3: 7952220800535995880
+      5_BALLON_4: -2006114635972818968
+      5_BALLON_5: -7655139895103137041
+      5_BALLON_6: -6275741465173928579
+      5_BALLON_7: 636529317951984818
+      5_BALLON_8: -5050641674622036619
+      5_BALLON_9: 6182938152939295708
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
