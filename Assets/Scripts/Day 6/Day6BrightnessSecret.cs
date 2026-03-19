@@ -6,8 +6,11 @@ public class Day6BrightnessSecret : MonoBehaviour
     [Header("Brightness")]
     public Slider brightnessSlider;
 
-    [Tooltip("如果你的 slider 范围是 0~100，这里填 10；如果是 0~1，这里填 0.1")]
+    [Tooltip("Slider range is 0~100, trigger when brightness is <= this value.")]
     public float triggerThreshold = 10f;
+
+    [Tooltip("Default brightness when entering Day6. Slider range is 0~100.")]
+    public float defaultBrightness = 50f;
 
     [Header("Refs")]
     public GameManager_JFM gameManager;
@@ -17,8 +20,25 @@ public class Day6BrightnessSecret : MonoBehaviour
     [Header("State")]
     public bool hasTriggered = false;
 
-    [Tooltip("要切换到的状态名，必须和 PatientVisualStateController 里的 itemName 一致")]
+    [Tooltip("Must match the itemName in PatientVisualStateController.")]
     public string brightnessStateItemName = "LowBrightness";
+
+    void Start()
+    {
+        InitializeBrightness();
+    }
+
+    void InitializeBrightness()
+    {
+        if (brightnessSlider == null) return;
+
+        // Important:
+        // Set the slider value without notifying listeners,
+        // so existing onValueChanged triggers will NOT fire during initialization.
+        brightnessSlider.SetValueWithoutNotify(defaultBrightness);
+
+        Debug.Log("Day6 brightness initialized to: " + defaultBrightness);
+    }
 
     public void CheckBrightnessSecret()
     {
@@ -33,10 +53,10 @@ public class Day6BrightnessSecret : MonoBehaviour
             hasTriggered = true;
             Debug.Log("Day6 brightness secret triggered!");
 
-            // 1. 解锁隐藏物品
+            // 1. Unlock hidden item
             gameManager.RegisterSpecialItem(hiddenRewardItem, true);
 
-            // 2. 触发病人状态切换
+            // 2. Trigger patient state switch
             if (patientStateController != null)
             {
                 patientStateController.ApplyStateByItemName(brightnessStateItemName);
