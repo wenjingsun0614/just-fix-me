@@ -387,6 +387,7 @@ MonoBehaviour:
   BallonSprite: {fileID: 0}
   LampSprite: {fileID: 0}
   TieSprite: {fileID: 0}
+  SongSprite: {fileID: 0}
   CrySprite: {fileID: 0}
   lowBrightnessSprite: {fileID: 0}
   GumSprite: {fileID: 0}
@@ -640,7 +641,7 @@ MonoBehaviour:
   continueArrow: {fileID: 0}
   continueArrowCanvasGroup: {fileID: 0}
   fallbackNextSceneName: day4_clinic
-  defaultNewsSprite: {fileID: 0}
+  defaultNewsSprite: {fileID: -6550532838708472360, guid: 2141c4f843079fc41998ace85482e2ff, type: 3}
   doctorSprite: {fileID: -6550532838708472360, guid: 2141c4f843079fc41998ace85482e2ff, type: 3}
   coneSprite: {fileID: -599253286527479169, guid: c3d81318f7c6383438096023602113b5, type: 3}
   birthdayCapSprite: {fileID: -7898469590970236737, guid: 63bd288d70d39504aaecd209e8402b36, type: 3}
@@ -655,6 +656,7 @@ MonoBehaviour:
   BallonSprite: {fileID: 4458457045279674377, guid: aeb986c902fb89f4b9de5c5ce7daec4f, type: 3}
   LampSprite: {fileID: 3981655609879260728, guid: ffce530154c494844bc9a3eb252e0be0, type: 3}
   TieSprite: {fileID: 3138015113664690265, guid: da3a30d1f9d637c41a052cd09f325edc, type: 3}
+  SongSprite: {fileID: 8608872047296336561, guid: 1f624de2baa726049ab878c036e22c6a, type: 3}
   CrySprite: {fileID: 8608872047296336561, guid: 1f624de2baa726049ab878c036e22c6a, type: 3}
   lowBrightnessSprite: {fileID: 215345297934088109, guid: aecc83292abf37840ae8dc72e5eef842, type: 3}
   GumSprite: {fileID: 8754628919314724033, guid: f2ccd94fe9057f742a23a9c3f80d5ec2, type: 3}

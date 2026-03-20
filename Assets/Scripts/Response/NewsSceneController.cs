@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class NewsSceneController : MonoBehaviour
 {
+    private bool isPlayingExtra = false;
+    private Sprite currentExtraSprite;
+
     [Header("UI")]
     public Image tvScreenImage;
     public TMP_Text dialogueText;
@@ -44,6 +47,7 @@ public class NewsSceneController : MonoBehaviour
     public Sprite TieSprite;
 
     [Header("Branch Images - Day6 News")]
+    public Sprite SongSprite;
     public Sprite CrySprite;
     public Sprite lowBrightnessSprite;
     public Sprite GumSprite;
@@ -115,15 +119,18 @@ public class NewsSceneController : MonoBehaviour
     {
         if (tvScreenImage == null) return;
 
-        tvScreenImage.sprite = null;
+        // ⭐⭐ 核心：第二段期间强制锁图
+        if (isPlayingExtra && currentExtraSprite != null)
+        {
+            tvScreenImage.sprite = currentExtraSprite;
+            return;
+        }
 
+        // 原本逻辑
         if (sprite != null)
             tvScreenImage.sprite = sprite;
         else if (defaultNewsSprite != null)
             tvScreenImage.sprite = defaultNewsSprite;
-
-        tvScreenImage.color = Color.white; // 防白图
-        tvScreenImage.SetAllDirty();
     }
 
     void SetupBranchContent()
@@ -349,7 +356,7 @@ public class NewsSceneController : MonoBehaviour
 
             //第二段
             hasExtraPart = true;
-            extraSprite = CrySprite;
+            extraSprite = SongSprite;
 
             extraLines.Clear();
             extraLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
@@ -369,11 +376,16 @@ public class NewsSceneController : MonoBehaviour
             currentLines.Add("Coupled with the recent non-stop rain, many wonder:");
             currentLines.Add("Is our climate becoming London-style?");
 
-            currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
-            currentLines.Add("with many claiming “this is true music”. ");
-            currentLines.Add("One viral comment states, “This song saved my life. ");
-            currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
-            currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
+            //第二段
+            hasExtraPart = true;
+            extraSprite = SongSprite;
+
+            extraLines.Clear();
+            extraLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+            extraLines.Add("with many claiming “this is true music”.");
+            extraLines.Add("One viral comment states, “This song saved my life.");
+            extraLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+            extraLines.Add("Instead of attacking, he just sat there and started crying with me.");
 
         }
 
@@ -393,14 +405,13 @@ public class NewsSceneController : MonoBehaviour
     {
         hasExtraPart = false;
 
-        // 防止立即触发下一次点击
-        isTransitioning = true;
+        // ⭐⭐⭐ 关键：彻底停止所有旧协程
+        StopAllCoroutines();
 
-        StopTypingOnly();
+        isPlayingExtra = true;
+        currentExtraSprite = extraSprite;
 
         currentLines.Clear();
-
-        SetNewsImage(extraSprite);
 
         foreach (var line in extraLines)
         {
@@ -409,10 +420,10 @@ public class NewsSceneController : MonoBehaviour
 
         currentIndex = 0;
 
-        ShowCurrentLine();
+        // ⭐ 先切图
+        tvScreenImage.sprite = currentExtraSprite;
 
-        // 下一帧解锁
-        StartCoroutine(UnlockNextFrame());
+        ShowCurrentLine();
     }
 
     void SetupFallbackNews()
@@ -426,12 +437,13 @@ public class NewsSceneController : MonoBehaviour
         if (dialogueText == null) return;
         if (currentLines.Count == 0) return;
 
-        isTransitioning = true; //加锁
-
         StopTypingOnly();
 
-        if (continueArrow != null)
-            continueArrow.gameObject.SetActive(false);
+        // 每一句都强制重新赋值
+        if (isPlayingExtra && currentExtraSprite != null)
+        {
+            tvScreenImage.sprite = currentExtraSprite;
+        }
 
         typingCoroutine = StartCoroutine(TypeLine(currentLines[currentIndex]));
     }
