@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BalloonSpecialBehaviour : MonoBehaviour
 {
+    
     [Header("Points")]
     public Transform hangerPoint;
     public Transform ceilingPoint;
@@ -33,6 +34,7 @@ public class BalloonSpecialBehaviour : MonoBehaviour
     private bool isAnimating = false;
     private Vector3 ceilingBasePos;
     private float floatSeed;
+
 
     void Awake()
     {

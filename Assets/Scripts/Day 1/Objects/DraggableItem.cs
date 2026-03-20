@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class DraggableItem2D : MonoBehaviour
 {
+    public bool disableScaleReset = false;
+
     [Header("Drag")]
     public float snapBackTime = 0.18f;
 
@@ -219,7 +221,8 @@ public class DraggableItem2D : MonoBehaviour
 
     void ResetVisualState()
     {
-        transform.localScale = startScale;
+        if (!disableScaleReset)
+            transform.localScale = startScale;
 
         if (sr != null)
         {
@@ -280,6 +283,7 @@ public class DraggableItem2D : MonoBehaviour
         if (balloon != null)
         {
             balloon.ApplyCompletedShelfPoseIfNeeded();
+            GetComponent<DraggableItem2D>().disableScaleReset = true;
         }
 
         if (sr != null)
@@ -320,14 +324,9 @@ public class DraggableItem2D : MonoBehaviour
     void ReturnHome()
     {
         transform.position = homePos;
-        transform.localScale = startScale;
 
-        if (sr != null)
-        {
-            Color c = sr.color;
-            c.a = 1f;
-            sr.color = c;
-        }
+        if (!disableScaleReset)
+            transform.localScale = startScale;
     }
 
     void SpawnPlacedFallback()
@@ -347,7 +346,12 @@ public class DraggableItem2D : MonoBehaviour
     IEnumerator SnapBack()
     {
         yield return FadeTo(1f, 0.05f);
-        transform.localScale = startScale;
+
+        if (!disableScaleReset)
+        {
+            transform.localScale = startScale;
+        }
+
         yield return MoveTo(transform.position, homePos, snapBackTime);
 
         CloudDriftInArea cloud = GetComponent<CloudDriftInArea>();
