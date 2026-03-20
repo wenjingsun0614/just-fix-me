@@ -44,7 +44,7 @@ public class NewsSceneController : MonoBehaviour
     public Sprite TieSprite;
 
     [Header("Branch Images - Day6 News")]
-    public Sprite TelescopeSprite;
+    public Sprite CrySprite;
     public Sprite lowBrightnessSprite;
     public Sprite GumSprite;
 
@@ -64,6 +64,10 @@ public class NewsSceneController : MonoBehaviour
 
     private List<string> currentLines = new List<string>();
     private int currentIndex = 0;
+
+    private List<string> extraLines = new List<string>();
+    private Sprite extraSprite;
+    private bool hasExtraPart = false;
 
     private Coroutine typingCoroutine;
     private bool isTyping = false;
@@ -106,15 +110,20 @@ public class NewsSceneController : MonoBehaviour
         }
     }
 
-    // ⭐⭐⭐ 新增：统一换图方法
+    // 统一换图方法
     void SetNewsImage(Sprite sprite)
     {
         if (tvScreenImage == null) return;
+
+        tvScreenImage.sprite = null;
 
         if (sprite != null)
             tvScreenImage.sprite = sprite;
         else if (defaultNewsSprite != null)
             tvScreenImage.sprite = defaultNewsSprite;
+
+        tvScreenImage.color = Color.white; // 防白图
+        tvScreenImage.SetAllDirty();
     }
 
     void SetupBranchContent()
@@ -295,7 +304,7 @@ public class NewsSceneController : MonoBehaviour
             currentLines.Add("if he keeps mimicking other animals during his performances.");
 
             currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
-            currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+            currentLines.Add("They are using “Make the Corn Great Again” as their slogan,");
             currentLines.Add("the motivations behind remain a mystery.");
         }
 
@@ -308,7 +317,7 @@ public class NewsSceneController : MonoBehaviour
             currentLines.Add("The hashtag #FreeTheMic is now trending.");
 
             currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
-            currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+            currentLines.Add("They are using “Make the Corn Great Again” as their slogan,");
             currentLines.Add("the motivations behind remain a mystery.");
         }
 
@@ -316,7 +325,7 @@ public class NewsSceneController : MonoBehaviour
         {
             SetNewsImage(TieSprite);
             currentLines.Add("Corn is the new gold! Recently, corn becomes extremely popular the among gym lovers.");
-            currentLines.Add("They are using “Make the Corn Great Again” as their slogan，");
+            currentLines.Add("They are using “Make the Corn Great Again” as their slogan,");
             currentLines.Add("the motivations behind remain a mystery.");
         }
 
@@ -330,12 +339,26 @@ public class NewsSceneController : MonoBehaviour
 
         if (day6 == "GumballJar")
         {
+            //第一段
             SetNewsImage(GumSprite);
+
             currentLines.Add("Miss Chameleon has nearly succeeded in constructing her own hot air balloon.");
             currentLines.Add("The secret behind it is her exceptionally long tongue,");
-            currentLines.Add("which helps her blow incredibly large, durable bubbles. ");
+            currentLines.Add("which helps her blow incredibly large, durable bubbles.");
             currentLines.Add("Miss Chameleon plans to conduct her maiden flight as soon as the weather clears.");
+
+            //第二段
+            hasExtraPart = true;
+            extraSprite = CrySprite;
+
+            extraLines.Clear();
+            extraLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+            extraLines.Add("with many claiming “this is true music”.");
+            extraLines.Add("One viral comment states, “This song saved my life.");
+            extraLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+            extraLines.Add("Instead of attacking, he just sat there and started crying with me.");
         }
+
 
         else if (day6 == "LowBrightness")
         {
@@ -346,22 +369,51 @@ public class NewsSceneController : MonoBehaviour
             currentLines.Add("Coupled with the recent non-stop rain, many wonder:");
             currentLines.Add("Is our climate becoming London-style?");
 
+            currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+            currentLines.Add("with many claiming “this is true music”. ");
+            currentLines.Add("One viral comment states, “This song saved my life. ");
+            currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+            currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
+
         }
 
         else if (day6 == "telescope")
         {
-            SetNewsImage(TelescopeSprite);
+            SetNewsImage(CrySprite);
+            currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+            currentLines.Add("with many claiming “this is true music”. ");
+            currentLines.Add("One viral comment states, “This song saved my life. ");
+            currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+            currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
         }
-
-        currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
-        currentLines.Add("with many claiming “this is true music”. ");
-        currentLines.Add("One viral comment states, “This song saved my life. ");
-        currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
-        currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
-
 
     }
 
+    void PlayExtraPart()
+    {
+        hasExtraPart = false;
+
+        // 防止立即触发下一次点击
+        isTransitioning = true;
+
+        StopTypingOnly();
+
+        currentLines.Clear();
+
+        SetNewsImage(extraSprite);
+
+        foreach (var line in extraLines)
+        {
+            currentLines.Add(line);
+        }
+
+        currentIndex = 0;
+
+        ShowCurrentLine();
+
+        // 下一帧解锁
+        StartCoroutine(UnlockNextFrame());
+    }
 
     void SetupFallbackNews()
     {
@@ -418,9 +470,14 @@ public class NewsSceneController : MonoBehaviour
 
         isTransitioning = true;
 
-        // 先判断是不是最后一句
         if (currentIndex == currentLines.Count - 1)
         {
+            if (hasExtraPart)
+            {
+                PlayExtraPart();
+                return;
+            }
+
             StartCoroutine(ExitWithDelay());
             return;
         }
