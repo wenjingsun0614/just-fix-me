@@ -346,7 +346,6 @@ public class NewsSceneController : MonoBehaviour
 
         if (day6 == "GumballJar")
         {
-            //第一段
             SetNewsImage(GumSprite);
 
             currentLines.Add("Miss Chameleon has nearly succeeded in constructing her own hot air balloon.");
@@ -354,16 +353,11 @@ public class NewsSceneController : MonoBehaviour
             currentLines.Add("which helps her blow incredibly large, durable bubbles.");
             currentLines.Add("Miss Chameleon plans to conduct her maiden flight as soon as the weather clears.");
 
-            //第二段
-            hasExtraPart = true;
-            extraSprite = SongSprite;
-
-            extraLines.Clear();
-            extraLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
-            extraLines.Add("with many claiming “this is true music”.");
-            extraLines.Add("One viral comment states, “This song saved my life.");
-            extraLines.Add("I was about to be eaten by a crocodile, but then this song played.");
-            extraLines.Add("Instead of attacking, he just sat there and started crying with me.");
+            currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+            currentLines.Add("with many claiming “this is true music”. ");
+            currentLines.Add("One viral comment states, “This song saved my life. ");
+            currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+            currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
         }
 
 
@@ -376,16 +370,11 @@ public class NewsSceneController : MonoBehaviour
             currentLines.Add("Coupled with the recent non-stop rain, many wonder:");
             currentLines.Add("Is our climate becoming London-style?");
 
-            //第二段
-            hasExtraPart = true;
-            extraSprite = SongSprite;
-
-            extraLines.Clear();
-            extraLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
-            extraLines.Add("with many claiming “this is true music”.");
-            extraLines.Add("One viral comment states, “This song saved my life.");
-            extraLines.Add("I was about to be eaten by a crocodile, but then this song played.");
-            extraLines.Add("Instead of attacking, he just sat there and started crying with me.");
+            currentLines.Add("Mr. Seagull’s new single has moved countless listeners to tears,");
+            currentLines.Add("with many claiming “this is true music”. ");
+            currentLines.Add("One viral comment states, “This song saved my life. ");
+            currentLines.Add("I was about to be eaten by a crocodile, but then this song played.");
+            currentLines.Add("Instead of attacking, he just sat there and started crying with me.");
 
         }
 
