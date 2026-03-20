@@ -69,8 +69,8 @@ public class NewsSceneController : MonoBehaviour
     private bool isTyping = false;
     private bool sceneReady = false;
     private bool isTransitioning = false; // 锁
-    private bool pendingClick = false;    // 缓存点击
     private bool isExiting = false;       // 防止重复切场景
+    private bool canAdvance = false;
 
     private Vector2 arrowBasePos;
 
@@ -86,13 +86,13 @@ public class NewsSceneController : MonoBehaviour
 
     void Update()
     {
+        if (isExiting) return;
         if (!sceneReady) return;
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
             if (isTransitioning)
             {
-                pendingClick = true; // 打字时缓存点击
                 return;
             }
 
@@ -290,7 +290,7 @@ public class NewsSceneController : MonoBehaviour
             SetNewsImage(BallonSprite);
             currentLines.Add("Despite Mr. Seagull's technical precision,");
             currentLines.Add("fans think he needs to take better care of his vocal folds. ");
-            currentLines.Add("“Last time he sounded like a bull, and this time, he was more like a mouse or an alien.”");
+            currentLines.Add("Last time he sounded like a bull, and this time, he was more like a mouse or an alien.");
             currentLines.Add("Some are even threatening to shout for a refund ");
             currentLines.Add("if he keeps mimicking other animals during his performances.");
 
@@ -362,6 +362,7 @@ public class NewsSceneController : MonoBehaviour
 
     }
 
+
     void SetupFallbackNews()
     {
         currentLines.Add("Tonight's report is currently unavailable.");
@@ -383,6 +384,13 @@ public class NewsSceneController : MonoBehaviour
         typingCoroutine = StartCoroutine(TypeLine(currentLines[currentIndex]));
     }
 
+    IEnumerator UnlockNextFrame()
+    {
+        yield return null; // 等一帧
+
+        isTransitioning = false;
+    }
+
     void HandleClick()
     {
         if (isTyping)
@@ -390,32 +398,42 @@ public class NewsSceneController : MonoBehaviour
             StopTypingOnly();
             dialogueText.text = currentLines[currentIndex];
             isTyping = false;
+
             ShowArrow();
+
+            canAdvance = true;
             return;
         }
+
+        if (!canAdvance) return;
+
+        canAdvance = false;
 
         AdvanceDialogue();
     }
 
     void AdvanceDialogue()
     {
-        currentIndex++;
+        if (isExiting) return;
 
-        if (currentIndex >= currentLines.Count)
+        isTransitioning = true;
+
+        // 先判断是不是最后一句
+        if (currentIndex == currentLines.Count - 1)
         {
-            GoToNextScene();
+            StartCoroutine(ExitWithDelay());
             return;
         }
 
+        currentIndex++;
+
         ShowCurrentLine();
+
+        StartCoroutine(UnlockNextFrame());
     }
 
     void GoToNextScene()
     {
-        if (isExiting) return; // 防连点
-
-        isExiting = true;
-
         StopTypingOnly();
 
         string targetScene = GameProgress_JFM.nextSceneAfterNews;
@@ -424,6 +442,18 @@ public class NewsSceneController : MonoBehaviour
             targetScene = fallbackNextSceneName;
 
         SceneManager.LoadScene(targetScene);
+    }
+
+    IEnumerator ExitWithDelay()
+    {
+        if (isExiting) yield break;
+
+        isExiting = true;
+        isTransitioning = true;
+
+        yield return new WaitForSeconds(0.1f);
+
+        GoToNextScene();
     }
 
     IEnumerator TypeLine(string line)
@@ -440,15 +470,13 @@ public class NewsSceneController : MonoBehaviour
         isTyping = false;
 
         ShowArrow();
+        canAdvance = true;
 
-        isTransitioning = false; // 解锁
+        // 锁一帧（关键）
+        isTransitioning = true;
+        StartCoroutine(UnlockNextFrame());
 
-        //如果期间玩家点过则自动继续
-        if (pendingClick)
-        {
-            pendingClick = false;
-            HandleClick();
-        }
+
     }
 
     void ShowArrow()
@@ -524,5 +552,7 @@ public class NewsSceneController : MonoBehaviour
             StopCoroutine(typingCoroutine);
             typingCoroutine = null;
         }
+
+
     }
 }

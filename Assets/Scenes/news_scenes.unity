@@ -649,15 +649,15 @@ MonoBehaviour:
   balloonSprite: {fileID: -5635714540128689419, guid: caa42549b5104654a8754e943fe16e75, type: 3}
   broomSprite: {fileID: -6769702176870385060, guid: 8f9c7ec6f719d8b429ba5a1140a8f89e, type: 3}
   reportSprite: {fileID: -6769702176870385060, guid: 8f9c7ec6f719d8b429ba5a1140a8f89e, type: 3}
-  FerrariSprite: {fileID: 0}
-  organizerSprite: {fileID: 0}
-  keyboardSprite: {fileID: 0}
-  BallonSprite: {fileID: 0}
-  LampSprite: {fileID: 0}
-  TieSprite: {fileID: 0}
+  FerrariSprite: {fileID: 1457869028802382622, guid: 75f2a54c5cfb90a4e8db0c5dc94bd322, type: 3}
+  organizerSprite: {fileID: 6323566066200440578, guid: 932f5c5521244af45b3feca4555b34ee, type: 3}
+  keyboardSprite: {fileID: -3588877077981847638, guid: fd651870ca48d4245b0d2838e2baa10a, type: 3}
+  BallonSprite: {fileID: 4458457045279674377, guid: aeb986c902fb89f4b9de5c5ce7daec4f, type: 3}
+  LampSprite: {fileID: 3981655609879260728, guid: ffce530154c494844bc9a3eb252e0be0, type: 3}
+  TieSprite: {fileID: 3138015113664690265, guid: da3a30d1f9d637c41a052cd09f325edc, type: 3}
   TelescopeSprite: {fileID: 0}
   lowBrightnessSprite: {fileID: 0}
-  GumSprite: {fileID: 0}
+  GumSprite: {fileID: 8754628919314724033, guid: f2ccd94fe9057f742a23a9c3f80d5ec2, type: 3}
   typeSpeed: 0.03
   arrowFadeSpeed: 2.2
   arrowFloatSpeed: 2
@@ -902,6 +902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d601f6d9a11fe94aae14611e721c22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalAchievementPanel
+  organizerOverrideSprite: {fileID: 0}
+  FerrariEasterEggOverrideSprite: {fileID: 0}
+  gumballJarOverrideSprite: {fileID: 0}
   day1Image: {fileID: 0}
   day2Image: {fileID: 0}
   day3Image: {fileID: 0}
@@ -909,23 +912,13 @@ MonoBehaviour:
   day5Image: {fileID: 0}
   day6Image: {fileID: 0}
   day7Image: {fileID: 0}
+  nextButtons: {fileID: 0}
   emptyPlaceholderSprite: {fileID: 0}
   achievementText: {fileID: 0}
-  birthdayHatSprite: {fileID: 0}
-  balloonSprite: {fileID: 0}
-  bubbleGumSprite: {fileID: 0}
-  cloudSprite: {fileID: 0}
-  brightnessSprite: {fileID: 0}
-  muteSprite: {fileID: 0}
-  roadblockSprite: {fileID: 0}
-  broomSprite: {fileID: 0}
-  iceCreamConeSprite: {fileID: 0}
-  oceanBallSprite: {fileID: 0}
-  hornSprite: {fileID: 0}
-  pianoSprite: {fileID: 0}
-  iceCubeTraySprite: {fileID: 0}
-  ferrariSprite: {fileID: 0}
-  binocularsSprite: {fileID: 0}
+  imageFadeDuration: 0.35
+  delayBetweenImages: 0.12
+  delayBeforeTraitText: 0.4
+  typewriterSpeed: 0.03
 --- !u!4 &1284624975
 Transform:
   m_ObjectHideFlags: 0
