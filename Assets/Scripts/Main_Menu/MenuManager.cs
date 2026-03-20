@@ -52,7 +52,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        sceneFade.FadeToScene("day1_clinic");
+        sceneFade.FadeToScene("opening");
     }
 
     public void StartDAY1()

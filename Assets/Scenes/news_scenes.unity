@@ -655,8 +655,8 @@ MonoBehaviour:
   BallonSprite: {fileID: 4458457045279674377, guid: aeb986c902fb89f4b9de5c5ce7daec4f, type: 3}
   LampSprite: {fileID: 3981655609879260728, guid: ffce530154c494844bc9a3eb252e0be0, type: 3}
   TieSprite: {fileID: 3138015113664690265, guid: da3a30d1f9d637c41a052cd09f325edc, type: 3}
-  TelescopeSprite: {fileID: 0}
-  lowBrightnessSprite: {fileID: 0}
+  TelescopeSprite: {fileID: 8608872047296336561, guid: 1f624de2baa726049ab878c036e22c6a, type: 3}
+  lowBrightnessSprite: {fileID: 215345297934088109, guid: aecc83292abf37840ae8dc72e5eef842, type: 3}
   GumSprite: {fileID: 8754628919314724033, guid: f2ccd94fe9057f742a23a9c3f80d5ec2, type: 3}
   typeSpeed: 0.03
   arrowFadeSpeed: 2.2
