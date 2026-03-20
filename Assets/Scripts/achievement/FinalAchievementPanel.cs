@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 public class FinalAchievementPanel : MonoBehaviour
 {
+    [Header("Day3 Override")]
+    public Sprite organizerOverrideSprite;
+    public Sprite FerrariEasterEggOverrideSprite;
+
+    [Header("Day6 Override")]
+    public Sprite gumballJarOverrideSprite;
+
     [Header("Selected Item Slots")]
     public Image day1Image;
     public Image day2Image;
@@ -36,10 +43,10 @@ public class FinalAchievementPanel : MonoBehaviour
     {
         SetupImage(day1Image, GameProgress_JFM.day1SelectedSprite);
         SetupImage(day2Image, GameProgress_JFM.day2SelectedSprite);
-        SetupImage(day3Image, GameProgress_JFM.day3SelectedSprite);
+        SetupDay3Image();
         SetupImage(day4Image, GameProgress_JFM.day4SelectedSprite);
         SetupImage(day5Image, GameProgress_JFM.day5SelectedSprite);
-        SetupImage(day6Image, GameProgress_JFM.day6SelectedSprite);
+        SetupDay6Image();
         SetupImage(day7Image, GameProgress_JFM.day7SelectedSprite);
 
         PrepareImagesForFade();
@@ -51,6 +58,44 @@ public class FinalAchievementPanel : MonoBehaviour
         }
 
         StartCoroutine(PlaySequence());
+    }
+
+    void SetupDay3Image()
+    {
+        if (day3Image == null) return;
+
+        string item = GameProgress_JFM.day3SelectedItemName;
+        Sprite spriteToUse = GameProgress_JFM.day3SelectedSprite;
+
+        // 如果是 Organizer → 用手动拖的
+        if (item == "Organizer" && organizerOverrideSprite != null)
+        {
+            spriteToUse = organizerOverrideSprite;
+        }
+
+        // 如果是FerrariEasterEgg  → 用手动拖的
+        if (item == "FerrariEasterEgg" && FerrariEasterEggOverrideSprite != null)
+        {
+            spriteToUse = FerrariEasterEggOverrideSprite;
+        }
+
+        SetupImage(day3Image, spriteToUse);
+    }
+
+    void SetupDay6Image()
+    {
+        if (day6Image == null) return;
+
+        string item = GameProgress_JFM.day6SelectedItemName;
+        Sprite spriteToUse = GameProgress_JFM.day6SelectedSprite;
+
+        // ⭐ Gumball Jar override
+        if (item == "GumballJar" && gumballJarOverrideSprite != null)
+        {
+            spriteToUse = gumballJarOverrideSprite;
+        }
+
+        SetupImage(day6Image, spriteToUse);
     }
 
     void SetupImage(Image targetImage, Sprite recordedSprite)

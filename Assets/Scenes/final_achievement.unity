@@ -2018,6 +2018,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d601f6d9a11fe94aae14611e721c22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalAchievementPanel
+  organizerOverrideSprite: {fileID: 21300000, guid: 67166fdb768c0d74fb52c88f8345b8f7, type: 3}
+  FerrariEasterEggOverrideSprite: {fileID: 21300000, guid: 3e8954406e79cee4a92777735f70188a, type: 3}
+  gumballJarOverrideSprite: {fileID: 21300000, guid: 16b2ccd9e26379b469feab5e4787ef12, type: 3}
   day1Image: {fileID: 272737858}
   day2Image: {fileID: 1123783917}
   day3Image: {fileID: 478558074}
