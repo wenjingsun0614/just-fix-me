@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenPanelOnClick
   panelToOpen: {fileID: 465269986}
-  introController: {fileID: 0}
+  introController: {fileID: 272483925}
 --- !u!1 &264284824
 GameObject:
   m_ObjectHideFlags: 0
@@ -5807,6 +5807,7 @@ MonoBehaviour:
   nextSceneName: news_scenes
   ferrariOverrideActive: 0
   ferrariOverrideResultName: FerrariHorse
+  successClip: {fileID: 0}
 --- !u!4 &705920271
 Transform:
   m_ObjectHideFlags: 0

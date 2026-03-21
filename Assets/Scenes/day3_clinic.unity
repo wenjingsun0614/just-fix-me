@@ -6985,7 +6985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenPanelOnClick
   panelToOpen: {fileID: 627436379}
-  introController: {fileID: 0}
+  introController: {fileID: 1784666637}
 --- !u!61 &252168664
 BoxCollider2D:
   m_ObjectHideFlags: 0
