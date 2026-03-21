@@ -10,7 +10,7 @@ public class License_pop_up : MonoBehaviour
     public DayIntroController introController;
     void OnMouseDown()
     {
-        // ✅ 统一交互锁
+        // 统一交互锁
         if (!GameFlow_JFM.CanDrag)
             return;
 
@@ -20,7 +20,7 @@ public class License_pop_up : MonoBehaviour
         }
     }
 
-    // 👉 关闭按钮调用这个
+    // 关闭按钮调用
     public void ClosePanel()
     {
         if (panelToOpen != null)
