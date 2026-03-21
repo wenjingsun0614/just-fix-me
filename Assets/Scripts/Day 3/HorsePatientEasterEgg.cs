@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -199,7 +199,22 @@ public class HorsePatientEasterEgg : MonoBehaviour
             horseAnimator.enabled = false;
 
         if (ferrariPopupPanel != null)
+        {
             ferrariPopupPanel.SetActive(true);
+
+            // âœ… åªåœ¨ popup å‡ºç°æ—¶æ’­æ”¾
+            if (successClip != null)
+            {
+                GameObject tempGO = new GameObject("TempAudio");
+                AudioSource source = tempGO.AddComponent<AudioSource>();
+
+                source.clip = successClip;
+                source.ignoreListenerPause = true;
+                source.Play();
+
+                Destroy(tempGO, successClip.length);
+            }
+        }
     }
 
     void PlayFerrariFlash()
@@ -252,7 +267,7 @@ public class HorsePatientEasterEgg : MonoBehaviour
         if (doctorReactionBubble != null)
             doctorReactionBubble.SetActive(false);
 
-        // ¹Ø¼ü£º¼¤»î Ferrari override£¬¸²¸ÇÆÕÍ¨Ñ¡ÔñÂß¼­
+        // å…³é”®ï¼šæ¿€æ´» Ferrari overrideï¼Œè¦†ç›–æ™®é€šé€‰æ‹©é€»è¾‘
         if (gameManager != null)
             gameManager.ActivateFerrariOverride(specialResultName);
 

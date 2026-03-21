@@ -8807,6 +8807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704e0f79b586f07458c6990a4b49e49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HorsePatientEasterEgg
+  successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
   draggingEnabled: 0
   snapBackTime: 0.15
   pennantDropZone: {fileID: 1367052454}
@@ -10371,6 +10372,7 @@ MonoBehaviour:
   nextSceneName: 
   ferrariOverrideActive: 0
   ferrariOverrideResultName: FerrariHorse
+  successClip: {fileID: 0}
 --- !u!4 &705920271
 Transform:
   m_ObjectHideFlags: 0
@@ -11767,7 +11769,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2315f241eebf1cc4dbb21ea2a8d2459b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SideBarUI
-  successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
   slots:
   - bgOff: {fileID: 1051449673}
     bgOn: {fileID: 1496701219}
@@ -24856,7 +24857,6 @@ GameObject:
   - component: {fileID: 2096076128}
   - component: {fileID: 2096076130}
   - component: {fileID: 2096076129}
-  - component: {fileID: 2096076131}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -29740,18 +29740,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &2096076131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096076127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d9ac26049efc14a9efa53bb9dfe347, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
 --- !u!1 &2125527427
 GameObject:
   m_ObjectHideFlags: 0
