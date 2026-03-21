@@ -4,13 +4,16 @@ using UnityEngine.UI;
 
 public class SideBarUI : MonoBehaviour
 {
+    
     [System.Serializable]
     public class Slot
+
     {
         public Image bgOff;      // 灰底（未完成）
         public Image bgOn;       // 蓝底（完成点亮）
         public Image itemIcon;   // 物品图标
         public Image checkIcon;  // 绿色勾
+
 
         [HideInInspector] public Vector3 bgOnBaseScale;
         [HideInInspector] public Vector3 itemBaseScale;

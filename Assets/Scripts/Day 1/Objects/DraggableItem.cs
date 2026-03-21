@@ -6,6 +6,8 @@ public class DraggableItem2D : MonoBehaviour
 {
     public bool disableScaleReset = false;
 
+    public AudioClip successClip;
+
     [Header("Drag")]
     public float snapBackTime = 0.18f;
 
@@ -192,6 +194,11 @@ public class DraggableItem2D : MonoBehaviour
         yield return ScaleTo(displayBaseScale, returnTime);
 
         if (dropZoneFX != null) dropZoneFX.PlaySuccess();
+
+        if (successClip != null)
+        {
+            AudioSource.PlayClipAtPoint(successClip, Camera.main.transform.position);
+        }
 
         if (gameManager != null)
         {

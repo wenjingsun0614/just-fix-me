@@ -1,2 +1,19 @@
 fileFormatVersion: 2
 guid: 0849cab538269a74a966a0722b78e48b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
+  - dropZoneCollider: {instanceID: 0}
+  - dropZoneFX: {instanceID: 0}
+  - bubbleCenter: {instanceID: 0}
+  - patientAttachPoint: {instanceID: 0}
+  - gameManager: {instanceID: 0}
+  - sideBarUI: {instanceID: 0}
+  - tutorialHint: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

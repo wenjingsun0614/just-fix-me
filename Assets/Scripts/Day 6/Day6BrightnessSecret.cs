@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class Day6BrightnessSecret : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioClip successClip;
+
     [Header("Brightness")]
     public Slider brightnessSlider;
 
@@ -52,6 +55,19 @@ public class Day6BrightnessSecret : MonoBehaviour
         {
             hasTriggered = true;
             Debug.Log("Day6 brightness secret triggered!");
+
+            // ≤•∑≈“Ù–ß
+            if (successClip != null)
+            {
+                GameObject tempGO = new GameObject("TempAudio");
+                AudioSource source = tempGO.AddComponent<AudioSource>();
+
+                source.clip = successClip;
+                source.ignoreListenerPause = true; //∫À–ƒ
+                source.Play();
+
+                Destroy(tempGO, successClip.length);
+            }
 
             // 1. Unlock hidden item
             gameManager.RegisterSpecialItem(hiddenRewardItem, true);

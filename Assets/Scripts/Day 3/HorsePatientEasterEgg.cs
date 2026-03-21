@@ -5,6 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class HorsePatientEasterEgg : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioClip successClip;
+
     [Header("Drag")]
     public bool draggingEnabled = false;
     public float snapBackTime = 0.15f;

@@ -5287,6 +5287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickProbe2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -5669,6 +5671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -6024,6 +6028,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -7570,6 +7576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 0}
@@ -8901,6 +8909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -9491,6 +9501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -9915,6 +9927,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -10392,6 +10406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 0}
@@ -11116,6 +11132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -11885,6 +11903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -12202,6 +12222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a91fe0d72aec024b898fba71d15a2dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Day6BrightnessSecret
+  successClip: {fileID: 8300000, guid: 0fe9d4d0a7ae86547b435493b439df43, type: 3}
   brightnessSlider: {fileID: 204950459}
   triggerThreshold: 10
   defaultBrightness: 50
@@ -12903,6 +12924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 0}
@@ -18999,6 +19022,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -26405,6 +26430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 0}
@@ -28159,6 +28186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}
@@ -28464,6 +28493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 0}
@@ -28632,6 +28663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0849cab538269a74a966a0722b78e48b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DraggableItem2D
+  disableScaleReset: 0
+  successClip: {fileID: 0}
   snapBackTime: 0.18
   dragSortingBoost: 50
   dropZoneCollider: {fileID: 198785786}

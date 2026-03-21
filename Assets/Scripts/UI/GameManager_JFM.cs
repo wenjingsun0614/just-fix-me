@@ -178,11 +178,26 @@ public class GameManager_JFM : MonoBehaviour
         arrowCo = StartCoroutine(FadeCanvasGroup(nextArrow, nextArrow.alpha, 1f, arrowFadeTime, true));
     }
 
+    public AudioClip successClip; // 加在类里
+
     public void ActivateFerrariOverride(string resultName = "FerrariHorse")
     {
         ferrariOverrideActive = true;
         ferrariOverrideResultName = resultName;
         ForceShowNextArrow();
+
+        // 在这里播放音效（Ferrari触发瞬间）
+        if (successClip != null)
+        {
+            GameObject tempGO = new GameObject("TempAudio");
+            AudioSource source = tempGO.AddComponent<AudioSource>();
+
+            source.clip = successClip;
+            source.ignoreListenerPause = true;
+            source.Play();
+
+            Destroy(tempGO, successClip.length);
+        }
     }
 
     public void OnClickNextArrow()
