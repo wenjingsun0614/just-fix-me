@@ -8,10 +8,10 @@ public class License_pop_up : MonoBehaviour
 
     [Header("Intro Controller")]
     public DayIntroController introController;
-
     void OnMouseDown()
     {
-        if (introController != null && !introController.IsIntroFinished())
+        // ✅ 统一交互锁
+        if (!GameFlow_JFM.CanDrag)
             return;
 
         if (panelToOpen != null)
