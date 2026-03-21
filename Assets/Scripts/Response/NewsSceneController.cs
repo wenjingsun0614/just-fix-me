@@ -278,8 +278,8 @@ public class NewsSceneController : MonoBehaviour
         else if (day3 == "Organizer")
         {
             SetNewsImage(organizerSprite);
-            currentLines.Add("Miss Dark Horse, a new NPC at the amusement park’s kid zone, ");
-            currentLines.Add("is believed to be magical. She juggles the gashapon handed over by kids with ease. ");
+            currentLines.Add("Miss Dark Horse, a new NPC at the amusement park’s kid zone,is believed to be magical.");
+            currentLines.Add(" She juggles the gashapon handed over by kids with ease. ");
             currentLines.Add("Followers on the internet hope the traffic gets back to normal quickly ");
             currentLines.Add("so they can revisit their childhood.");
         }
