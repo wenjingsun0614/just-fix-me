@@ -6,6 +6,9 @@ public class Day6BrightnessSecret : MonoBehaviour
     [Header("Audio")]
     public AudioClip successClip;
 
+    [Header("Hint")]
+    public SimpleHintFade hint;
+
     [Header("Brightness")]
     public Slider brightnessSlider;
 
@@ -63,8 +66,21 @@ public class Day6BrightnessSecret : MonoBehaviour
                 AudioSource source = tempGO.AddComponent<AudioSource>();
 
                 source.clip = successClip;
-                source.ignoreListenerPause = true; //ºËÐÄ
+                source.ignoreListenerPause = true;
                 source.Play();
+
+                // hint
+                SimpleHintFade hintFound = FindObjectOfType<SimpleHintFade>();
+
+                if (hintFound != null)
+                {
+                    Debug.Log("FOUND HINT");
+                    hintFound.Show("You can now hide better in the darkness.");
+                }
+                else
+                {
+                    Debug.Log("NO HINT FOUND IN SCENE");
+                }
 
                 Destroy(tempGO, successClip.length);
             }

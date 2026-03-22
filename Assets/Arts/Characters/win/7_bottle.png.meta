@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 69fb2e16c9f20544ca296aa6abe7045f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4479763505052795169
+    second: 7_bottle_0
+  - first:
+      213: -4041010353030175288
+    second: 7_bottle_1
+  - first:
+      213: -404143683130842152
+    second: 7_bottle_2
+  - first:
+      213: -8461422125025734225
+    second: 7_bottle_3
+  - first:
+      213: -5629065228631463751
+    second: 7_bottle_4
+  - first:
+      213: -5501422555702085118
+    second: 7_bottle_5
+  - first:
+      213: -3452280559433308248
+    second: 7_bottle_6
+  - first:
+      213: -2279362116790362431
+    second: 7_bottle_7
+  - first:
+      213: 3835441041709163
+    second: 7_bottle_8
+  - first:
+      213: 8977432854637884834
+    second: 7_bottle_9
+  - first:
+      213: 5070607717668853162
+    second: 7_bottle_10
+  - first:
+      213: 6737710531984500770
+    second: 7_bottle_11
+  - first:
+      213: -2529668867151344092
+    second: 7_bottle_12
+  - first:
+      213: -2301464215946200942
+    second: 7_bottle_13
+  - first:
+      213: 7139729770125960488
+    second: 7_bottle_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 320
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 7_bottle_0
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 0
+        width: 2510
+        height: 3600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdeb193b3dea4d1c0800000000000000
+      internalID: -4479763505052795169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_1
+      rect:
+        serializedVersion: 2
+        x: 2165
+        y: 3250
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c5e5fd7e727be7c0800000000000000
+      internalID: -4041010353030175288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d3a4c02671346af0800000000000000
+      internalID: -404143683130842152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_3
+      rect:
+        serializedVersion: 2
+        x: 2133
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1d537686df29a80800000000000000
+      internalID: -8461422125025734225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_4
+      rect:
+        serializedVersion: 2
+        x: 2192
+        y: 2952
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b82be5affa81e1b0800000000000000
+      internalID: -5629065228631463751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_5
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a3e08555507a3b0800000000000000
+      internalID: -5501422555702085118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_6
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a7adf54f190710d0800000000000000
+      internalID: -3452280559433308248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_7
+      rect:
+        serializedVersion: 2
+        x: 2369
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce5a3a3b341e50e0800000000000000
+      internalID: -2279362116790362431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_8
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 2953
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6819d43050ad0000800000000000000
+      internalID: 3835441041709163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_9
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 2470
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a5bc97ed9f369c70800000000000000
+      internalID: 8977432854637884834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_10
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 245
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa5910f9ada6e5640800000000000000
+      internalID: 5070607717668853162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_11
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 228285ae708218d50800000000000000
+      internalID: 6737710531984500770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_12
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42e441e619fc4ecd0800000000000000
+      internalID: -2529668867151344092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_13
+      rect:
+        serializedVersion: 2
+        x: 1995
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298f0414d7e8f00e0800000000000000
+      internalID: -2301464215946200942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 7_bottle_14
+      rect:
+        serializedVersion: 2
+        x: 2446
+        y: 58
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 825a3a4e56a651360800000000000000
+      internalID: 7139729770125960488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      7_bottle_0: -4479763505052795169
+      7_bottle_1: -4041010353030175288
+      7_bottle_10: 5070607717668853162
+      7_bottle_11: 6737710531984500770
+      7_bottle_12: -2529668867151344092
+      7_bottle_13: -2301464215946200942
+      7_bottle_14: 7139729770125960488
+      7_bottle_2: -404143683130842152
+      7_bottle_3: -8461422125025734225
+      7_bottle_4: -5629065228631463751
+      7_bottle_5: -5501422555702085118
+      7_bottle_6: -3452280559433308248
+      7_bottle_7: -2279362116790362431
+      7_bottle_8: 3835441041709163
+      7_bottle_9: 8977432854637884834
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
