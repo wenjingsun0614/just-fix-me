@@ -1267,6 +1267,7 @@ MonoBehaviour:
   nextSceneName: 
   ferrariOverrideActive: 0
   ferrariOverrideResultName: 
+  successClip: {fileID: 0}
 --- !u!4 &705920271
 Transform:
   m_ObjectHideFlags: 0
@@ -2499,6 +2500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Day8EndingSequence
   blackOverlay: {fileID: 1524407885}
+  typeStartClip: {fileID: 8300000, guid: 145000c09d415e946a9c23f78ab85963, type: 3}
   centerMessageText: {fileID: 50013836}
   creditsTitleText: {fileID: 1157872014}
   creditsBodyText: {fileID: 856848399}

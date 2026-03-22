@@ -9,6 +9,10 @@ public class Day8EndingSequence : MonoBehaviour
     [Header("Overlay")]
     public Image blackOverlay;
 
+    [Header("Audio")]
+    public AudioClip typeStartClip;
+
+
     [Header("Main Message")]
     public TMP_Text centerMessageText;
 
@@ -77,6 +81,7 @@ public class Day8EndingSequence : MonoBehaviour
             SetTMPAlpha(centerMessageText, 1f);
         }
 
+
         if (creditsTitleText != null)
         {
             creditsTitleText.text = "";
@@ -108,6 +113,20 @@ public class Day8EndingSequence : MonoBehaviour
         StartCoroutine(EndingRoutine());
     }
 
+    void PlayTypeStartSound()
+    {
+        if (typeStartClip == null) return;
+
+        GameObject tempGO = new GameObject("TempAudio");
+        AudioSource source = tempGO.AddComponent<AudioSource>();
+
+        source.clip = typeStartClip;
+        source.ignoreListenerPause = true;
+        source.Play();
+
+        Destroy(tempGO, typeStartClip.length);
+    }
+
     IEnumerator EndingRoutine()
     {
         // 1. Fade to black
@@ -120,6 +139,10 @@ public class Day8EndingSequence : MonoBehaviour
         if (centerMessageText != null)
         {
             centerMessageText.text = "";
+
+            // 在“开始打字那一刻”播放音效
+            PlayTypeStartSound();
+
             yield return StartCoroutine(TypeText(centerMessageText, centerMessage, typeSpeed));
         }
 

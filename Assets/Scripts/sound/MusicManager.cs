@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MusicManager : MonoBehaviour
 {
+    
     public static MusicManager instance;
     public AudioSource audioSource;
 
     public AudioClip gameMusic;
     public AudioClip menuMusic;
+    public AudioClip newsMusic;
+
+    public float fadeDuration = 1.5f; // 淡出时间
 
     void Awake()
     {
@@ -37,10 +42,36 @@ public class MusicManager : MonoBehaviour
         Debug.Log("进入场景：" + scene.name);
 
         // opening → 关闭音乐
-        if (scene.name == "opening")
+        if (scene.name == "opening" )
         {
             StopMusic();
             return;
+        }
+
+        // day8 → 音乐渐出
+        if (scene.name == "day8_clinic")
+        {
+            StartCoroutine(FadeOutMusic());
+            return;
+        }
+
+        IEnumerator FadeOutMusic()
+        {
+            if (audioSource == null) yield break;
+
+            float startVolume = audioSource.volume;
+
+            float t = 0f;
+
+            while (t < fadeDuration)
+            {
+                t += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(startVolume, 0f, t / fadeDuration);
+                yield return null;
+            }
+
+            audioSource.Stop();
+            audioSource.volume = startVolume; // 恢复音量（下次用）
         }
 
         // 主菜单
@@ -50,13 +81,21 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
+        // news
+        if (scene.name == "news_scenes")
+        {
+            PlayMusic(newsMusic);
+            return;
+        }
+
         // 所有 clinic 场景
-        if (scene.name.Contains("_clinic"))
+        if (scene.name.Contains("_clinic") && scene.name != "day8_clinic")
         {
             PlayMusic(gameMusic);
             return;
         }
     }
+        
 
     void PlayMusic(AudioClip clip)
     {
